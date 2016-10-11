@@ -13,7 +13,7 @@ Installation OverviewBefore installing Drupal 8,">
 <meta property="og:site_name" content="Alex's Heya">
 <meta property="og:description" content="Drupal Setup GuideThis Document explains how to install Drupal 8 in Ubuntu 16.04 LTS Server, along with installing and setting Apache 2, PHP and MySQL.
 Installation OverviewBefore installing Drupal 8,">
-<meta property="og:updated_time" content="2016-10-10T15:38:14.000Z">
+<meta property="og:updated_time" content="2016-10-11T15:43:44.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Set up Drupal 8 on Ubuntu">
 <meta name="twitter:description" content="Drupal Setup GuideThis Document explains how to install Drupal 8 in Ubuntu 16.04 LTS Server, along with installing and setting Apache 2, PHP and MySQL.
@@ -61,7 +61,7 @@ Installation OverviewBefore installing Drupal 8,">
         
           <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
         
-        <a id="nav-search-btn" class="nav-icon" title="Søk"></a>
+        <a id="nav-search-btn" class="nav-icon" title="Zoeken"></a>
       </nav>
       <div id="search-form-wrap">
         <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://ukeyim.me"></form>
@@ -93,45 +93,37 @@ Installation OverviewBefore installing Drupal 8,">
     <div class="article-entry" itemprop="articleBody">
       
         <h1 id="Drupal-Setup-Guide"><a href="#Drupal-Setup-Guide" class="headerlink" title="Drupal Setup Guide"></a>Drupal Setup Guide</h1><p><strong>This Document explains how to install Drupal 8 in Ubuntu 16.04 LTS Server, along with installing and setting Apache 2, PHP and MySQL.</strong></p>
-<h2 id="Installation-Overview"><a href="#Installation-Overview" class="headerlink" title="Installation Overview"></a>Installation Overview</h2><p>Before installing Drupal 8, check the requirements on <a href="https://www.drupal.org/docs/7/system-requirements/overview" target="_blank" rel="external">Drupal requirements</a>. This guide uses Apache 2, PHP 7. , MySQL as the development environment.</p>
-<p><em>note: Ubuntu 16.04 LTS Server includes Apache 2, PHP, MySQL by default, you can select to include them while installing the Ubuntu on your PC.</em></p>
-<h2 id="Install-MySQL-Apache2-PHP"><a href="#Install-MySQL-Apache2-PHP" class="headerlink" title="Install MySQL, Apache2, PHP"></a>Install MySQL, Apache2, PHP</h2><h4 id="MySQL"><a href="#MySQL" class="headerlink" title="MySQL"></a>MySQL</h4><ul>
+<h2 id="Installation-Overview"><a href="#Installation-Overview" class="headerlink" title="Installation Overview"></a>Installation Overview</h2><p>Before installing Drupal 8, check the requirements on <a href="https://www.drupal.org/docs/7/system-requirements/overview" target="_blank" rel="external">Drupal requirements</a>. This guide uses Apache/2.4.18, PHP 7.0.8 , MySQL v5.7 as the development environment.</p>
+<p><em>Note: Ubuntu 16.04 LTS Server includes Apache 2, PHP, MySQL by default, you can select to include them while installing the Ubuntu on your PC.</em></p>
+<h2 id="Before-You-Begin"><a href="#Before-You-Begin" class="headerlink" title="Before You Begin"></a>Before You Begin</h2><ul>
+<li>The Drupal installation consists the usage of browser, so you should have GUI (instead of pure CLI interface) first. For Ubuntu 16.04 LTS Server does <strong>NOT</strong> contain a GUI interface, you may pick KDE, Gnome, Lxde as Desktop Environment first.</li>
+<li>Most command below needs the <code>sudo</code> permission, if the terminal returns <code>Permission denied</code>, remember to use <code>sudo</code> as possible.<a id="more"></a>
+Install MySQL, Apache2, PHP</li>
+</ul>
+<hr>
+<h4 id="MySQL"><a href="#MySQL" class="headerlink" title="MySQL"></a>MySQL</h4><ul>
 <li>Install MySQL</li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"># sudo apt-get update</div><div class="line"># sudo apt-get install mysql</div></pre></td></tr></table></figure>
-<ul>
-<li>Config MySQL<br>Remember setup MySQL user and password after installation.</li>
-</ul>
-<h4 id="Apache2"><a href="#Apache2" class="headerlink" title="Apache2"></a>Apache2</h4><ul>
-<li>Install Apache2</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"># sudo apt-get update</div><div class="line"># sudo apt-get install apache2</div></pre></td></tr></table></figure>
-<ul>
-<li><p>Config Apache2</p>
-</li>
-<li><p>mod_rewrite</p>
-</li>
-</ul>
-<p>To enable mod_rewrite:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"># a2enmod rewrite</div><div class="line"># /etc/init.d/apache2 restart</div></pre></td></tr></table></figure>
-<p><em>Note: the command a2enmod rewrite is unique to the Debian Linux based systems.</em></p>
-<ul>
-<li>clean_urls</li>
-</ul>
-<p>To get clean URLs working, modify /etc/apache2/apache.conf, the result should be like</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">AllowOverride All</div></pre></td></tr></table></figure>
-<p>(otherwise the .htaccess file won’t take effect.)<br>After modify the config file, remember to restarting the apache2 server with <code>/etc/init.d/apache2 restart</code></p>
-<h4 id="PHP"><a href="#PHP" class="headerlink" title="PHP"></a>PHP</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"># sudo apt-get update</div><div class="line"># sudo apt-get install php php-gd php-dom php-simplexml php-xml</div></pre></td></tr></table></figure>
-<h2 id="Install-Drupal-8"><a href="#Install-Drupal-8" class="headerlink" title="Install Drupal 8"></a>Install Drupal 8</h2><p>Download Drupal 8 from <a href="https://www.drupal.org/download" target="_blank" rel="external">Download &amp; Extend</a></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">```</div></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">```</div></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">```</div></pre></td></tr></table></figure>
-<p>```</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"># sudo apt-get update</div><div class="line"># sudo apt-get install mysql-server</div><div class="line"># sudo apt-get install mysql-client-core5.7</div><div class="line">```	</div><div class="line">*Note: remember to set root password while installing mysql-server*</div><div class="line"></div><div class="line">* Config MySQL  </div><div class="line">*   Remember setup MySQL user and password after installation.</div><div class="line">*   Log into MySQL server with `mysql -u root -p`, enter the </div><div class="line">*   Create a database. You can create datebase with any name you like(assuming &apos;**drupal**&apos; here).</div></pre></td></tr></table></figure>
+<p>CREATE DATABASE drupal;<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">#### Apache2</div><div class="line">* Install Apache2</div></pre></td></tr></table></figure></p>
+<h1 id="sudo-apt-get-update"><a href="#sudo-apt-get-update" class="headerlink" title="sudo apt-get update"></a>sudo apt-get update</h1><h1 id="sudo-apt-get-install-apache2"><a href="#sudo-apt-get-install-apache2" class="headerlink" title="sudo apt-get install apache2"></a>sudo apt-get install apache2</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">*Note: you can check the Apache running by visiting the `http://localhost`. If a &apos;Apache2 Ubuntu Default Page&apos; shows, the Apache server works.*</div><div class="line"></div><div class="line">* Config Apache2</div><div class="line"></div><div class="line">* mod\_rewrite</div><div class="line"></div><div class="line">To enable mod_rewrite:</div></pre></td></tr></table></figure>
+<h1 id="sudo-a2enmod-rewrite"><a href="#sudo-a2enmod-rewrite" class="headerlink" title="sudo a2enmod rewrite"></a>sudo a2enmod rewrite</h1><h1 id="sudo-service-apache2-restart"><a href="#sudo-service-apache2-restart" class="headerlink" title="sudo service apache2 restart"></a>sudo service apache2 restart</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">*Note: the command a2enmod rewrite is unique to the Debian Linux based systems.*</div><div class="line"></div><div class="line">* clean\_urls</div><div class="line"></div><div class="line">Assuming to set `/var/www/` as the folder to install Drupal 8.</div><div class="line"></div><div class="line">To get clean URLs working, modify `/etc/apache2/apache2.conf`, the result should be like</div></pre></td></tr></table></figure>
+<p><directory var="" www=""><br>Options Indexs FollowSymLinks<br>AllowOverride All<br>Require all granted<br></directory><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">(otherwise the .htaccess file won&apos;t take effect.)</div><div class="line">After modify the config file, remember to restarting the apache2 server with `sudo service apache2 restart`</div><div class="line"></div><div class="line">*Notes: Also you should change the permission of `/var/www/` folder using `# sudo chmod 777 /var/www/` for the installation of Drupal 8.*</div><div class="line"></div><div class="line">#### PHP</div></pre></td></tr></table></figure></p>
+<h1 id="sudo-apt-get-update-1"><a href="#sudo-apt-get-update-1" class="headerlink" title="sudo apt-get update"></a>sudo apt-get update</h1><h1 id="sudo-apt-get-install-php-php-gd-php-dom-php-simplexml-php-xml"><a href="#sudo-apt-get-install-php-php-gd-php-dom-php-simplexml-php-xml" class="headerlink" title="sudo apt-get install php php-gd php-dom php-simplexml php-xml"></a>sudo apt-get install php php-gd php-dom php-simplexml php-xml</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">Install Drupal 8</div><div class="line">---</div><div class="line">* Download Drupal 8 from [Download &amp; Extend](https://www.drupal.org/download).</div><div class="line">* After download the file `drupal-8.2.1.tar.gz`, extract the file(you will get `drupal-8.2.1`),rename it as `drupal` and move it into `/var/www/html/`.</div><div class="line">* Open the browser, visit `http://localhost/drupal/`</div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line">Troubleshoot</div><div class="line">---</div><div class="line">	* I can not extract the drupal-8.2.1.tar.gz file  </div><div class="line">Extract it with `tar -zxvf drupal-x.y.z.tar.gz` (considering `x.y.z` is the version you downloaded.) </div><div class="line">	* I can not move the folder to /var/www/html/</div><div class="line">	Use`sudo mv ~/Downloads/drupal /var/www/html/drupal`</div><div class="line">	* When I visit `http://localhost/drupal/`, it only shows `handle($request) $response- send() $kernel- terminate($request $response);`</div></pre></td></tr></table></figure>
+<pre><code><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">	</div></pre></td></tr></table></figure>
 
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">	</div></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">	</div></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">	</div></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">	</div></pre></td></tr></table></figure>
+</code></pre>
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://ukeyim.me/2016/10/10/Set-up-Drupal-8-on-Ubuntu/" data-id="ciu48400s0000oxmu773xwsco" class="article-share-link">Share</a>
+      <a data-url="http://ukeyim.me/2016/10/10/Set-up-Drupal-8-on-Ubuntu/" data-id="ciu484inl0000qdmuk6hhcs6j" class="article-share-link">Delen</a>
       
       
     </footer>
@@ -142,7 +134,7 @@ Installation OverviewBefore installing Drupal 8,">
   
   
     <a href="/2016/10/09/install-drupal-8-in-Ubuntu-16-04-LTS/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Older</strong>
+      <strong class="article-nav-caption">Ouder</strong>
       <div class="article-nav-title">install drupal-8 in Ubuntu 16.04 LTS</div>
     </a>
   
@@ -160,7 +152,7 @@ Installation OverviewBefore installing Drupal 8,">
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Tags</h3>
+    <h3 class="widget-title">Labels</h3>
     <div class="widget">
       <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/daily-life/">daily_life</a></li></ul>
     </div>
@@ -179,7 +171,7 @@ Installation OverviewBefore installing Drupal 8,">
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Arkiv</h3>
+    <h3 class="widget-title">Archieven</h3>
     <div class="widget">
       <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">October 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">September 2016</a></li></ul>
     </div>
@@ -189,7 +181,7 @@ Installation OverviewBefore installing Drupal 8,">
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Siste innlegg</h3>
+    <h3 class="widget-title">Recente berichten</h3>
     <div class="widget">
       <ul>
         

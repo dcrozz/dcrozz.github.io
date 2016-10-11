@@ -57,7 +57,7 @@
         
           <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
         
-        <a id="nav-search-btn" class="nav-icon" title="Søk"></a>
+        <a id="nav-search-btn" class="nav-icon" title="Zoeken"></a>
       </nav>
       <div id="search-form-wrap">
         <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://ukeyim.me"></form>
@@ -91,45 +91,20 @@
     <div class="article-entry" itemprop="articleBody">
       
         <h1 id="Drupal-Setup-Guide"><a href="#Drupal-Setup-Guide" class="headerlink" title="Drupal Setup Guide"></a>Drupal Setup Guide</h1><p><strong>This Document explains how to install Drupal 8 in Ubuntu 16.04 LTS Server, along with installing and setting Apache 2, PHP and MySQL.</strong></p>
-<h2 id="Installation-Overview"><a href="#Installation-Overview" class="headerlink" title="Installation Overview"></a>Installation Overview</h2><p>Before installing Drupal 8, check the requirements on <a href="https://www.drupal.org/docs/7/system-requirements/overview" target="_blank" rel="external">Drupal requirements</a>. This guide uses Apache 2, PHP 7. , MySQL as the development environment.</p>
-<p><em>note: Ubuntu 16.04 LTS Server includes Apache 2, PHP, MySQL by default, you can select to include them while installing the Ubuntu on your PC.</em></p>
-<h2 id="Install-MySQL-Apache2-PHP"><a href="#Install-MySQL-Apache2-PHP" class="headerlink" title="Install MySQL, Apache2, PHP"></a>Install MySQL, Apache2, PHP</h2><h4 id="MySQL"><a href="#MySQL" class="headerlink" title="MySQL"></a>MySQL</h4><ul>
-<li>Install MySQL</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"># sudo apt-get update</div><div class="line"># sudo apt-get install mysql</div></pre></td></tr></table></figure>
-<ul>
-<li>Config MySQL<br>Remember setup MySQL user and password after installation.</li>
-</ul>
-<h4 id="Apache2"><a href="#Apache2" class="headerlink" title="Apache2"></a>Apache2</h4><ul>
-<li>Install Apache2</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"># sudo apt-get update</div><div class="line"># sudo apt-get install apache2</div></pre></td></tr></table></figure>
-<ul>
-<li><p>Config Apache2</p>
-</li>
-<li><p>mod_rewrite</p>
-</li>
-</ul>
-<p>To enable mod_rewrite:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"># a2enmod rewrite</div><div class="line"># /etc/init.d/apache2 restart</div></pre></td></tr></table></figure>
-<p><em>Note: the command a2enmod rewrite is unique to the Debian Linux based systems.</em></p>
-<ul>
-<li>clean_urls</li>
-</ul>
-<p>To get clean URLs working, modify /etc/apache2/apache.conf, the result should be like</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">AllowOverride All</div></pre></td></tr></table></figure>
-<p>(otherwise the .htaccess file won’t take effect.)<br>After modify the config file, remember to restarting the apache2 server with <code>/etc/init.d/apache2 restart</code></p>
-<h4 id="PHP"><a href="#PHP" class="headerlink" title="PHP"></a>PHP</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"># sudo apt-get update</div><div class="line"># sudo apt-get install php php-gd php-dom php-simplexml php-xml</div></pre></td></tr></table></figure>
-<h2 id="Install-Drupal-8"><a href="#Install-Drupal-8" class="headerlink" title="Install Drupal 8"></a>Install Drupal 8</h2><p>Download Drupal 8 from <a href="https://www.drupal.org/download" target="_blank" rel="external">Download &amp; Extend</a></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">```</div></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">```</div></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">```</div></pre></td></tr></table></figure>
-<p>```</p>
-
+<h2 id="Installation-Overview"><a href="#Installation-Overview" class="headerlink" title="Installation Overview"></a>Installation Overview</h2><p>Before installing Drupal 8, check the requirements on <a href="https://www.drupal.org/docs/7/system-requirements/overview">Drupal requirements</a>. This guide uses Apache/2.4.18, PHP 7.0.8 , MySQL v5.7 as the development environment.</p>
+<p><em>Note: Ubuntu 16.04 LTS Server includes Apache 2, PHP, MySQL by default, you can select to include them while installing the Ubuntu on your PC.</em></p>
+<h2 id="Before-You-Begin"><a href="#Before-You-Begin" class="headerlink" title="Before You Begin"></a>Before You Begin</h2><ul>
+<li>The Drupal installation consists the usage of browser, so you should have GUI (instead of pure CLI interface) first. For Ubuntu 16.04 LTS Server does <strong>NOT</strong> contain a GUI interface, you may pick KDE, Gnome, Lxde as Desktop Environment first.</li>
+<li>Most command below needs the <code>sudo</code> permission, if the terminal returns <code>Permission denied</code>, remember to use <code>sudo</code> as possible.
+        
+          <p class="article-more-link">
+            <a href="/2016/10/10/Set-up-Drupal-8-on-Ubuntu/#more">Read More</a>
+          </p>
+        
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://ukeyim.me/2016/10/10/Set-up-Drupal-8-on-Ubuntu/" data-id="ciu48400s0000oxmu773xwsco" class="article-share-link">Share</a>
+      <a data-url="http://ukeyim.me/2016/10/10/Set-up-Drupal-8-on-Ubuntu/" data-id="ciu484inl0000qdmuk6hhcs6j" class="article-share-link">Delen</a>
       
       
     </footer>
@@ -166,7 +141,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://ukeyim.me/2016/10/09/install-drupal-8-in-Ubuntu-16-04-LTS/" data-id="ciu48401g0004oxmut0jt4ynh" class="article-share-link">Share</a>
+      <a data-url="http://ukeyim.me/2016/10/09/install-drupal-8-in-Ubuntu-16-04-LTS/" data-id="ciu484inp0001qdmuzlg3f3nc" class="article-share-link">Delen</a>
       
       
     </footer>
@@ -204,7 +179,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://ukeyim.me/2016/09/25/we-cook-tonight/" data-id="ciu48401f0003oxmu74ldlm45" class="article-share-link">Share</a>
+      <a data-url="http://ukeyim.me/2016/09/25/we-cook-tonight/" data-id="ciu484inu0004qdmubstefjrl" class="article-share-link">Delen</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/daily-life/">daily_life</a></li></ul>
@@ -242,7 +217,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://ukeyim.me/2016/09/21/test-Hexo-blog/" data-id="ciu4840190001oxmu9b57t6tl" class="article-share-link">Share</a>
+      <a data-url="http://ukeyim.me/2016/09/21/test-Hexo-blog/" data-id="ciu484int0003qdmuzspbab46" class="article-share-link">Delen</a>
       
       
     </footer>
@@ -287,7 +262,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://ukeyim.me/2016/09/17/hello-world/" data-id="ciu48401c0002oxmu8qvl74bk" class="article-share-link">Share</a>
+      <a data-url="http://ukeyim.me/2016/09/17/hello-world/" data-id="ciu484ins0002qdmu4yl17wn6" class="article-share-link">Delen</a>
       
       
     </footer>
@@ -307,7 +282,7 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Tags</h3>
+    <h3 class="widget-title">Labels</h3>
     <div class="widget">
       <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/daily-life/">daily_life</a></li></ul>
     </div>
@@ -326,7 +301,7 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Arkiv</h3>
+    <h3 class="widget-title">Archieven</h3>
     <div class="widget">
       <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">October 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">September 2016</a></li></ul>
     </div>
@@ -336,7 +311,7 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Siste innlegg</h3>
+    <h3 class="widget-title">Recente berichten</h3>
     <div class="widget">
       <ul>
         
