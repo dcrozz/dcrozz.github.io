@@ -3,36 +3,17 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Set Drupal on Mac | Alex&#39;s Heya</title>
+  <title>Mot-clé: nmap | Alex&#39;s Heya</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Apache &amp;amp; PHP config on MacThree ways to check the php config
-
-php -i | grep php.ini
-php –ini
-create php file with following line: &amp;lt;?php phpinfo(); and open the file in the browser
-
-PHP opcache">
-<meta property="og:type" content="article">
-<meta property="og:title" content="Set Drupal on Mac">
-<meta property="og:url" content="http://ukeyim.me/2016/10/17/Set-Drupal-on-Mac/index.html">
+  <meta name="description" content="juz try blogging with Hexo">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Alex's Heya">
+<meta property="og:url" content="http://ukeyim.me/tags/nmap/index.html">
 <meta property="og:site_name" content="Alex's Heya">
-<meta property="og:description" content="Apache &amp;amp; PHP config on MacThree ways to check the php config
-
-php -i | grep php.ini
-php –ini
-create php file with following line: &amp;lt;?php phpinfo(); and open the file in the browser
-
-PHP opcache">
-<meta property="og:updated_time" content="2016-10-18T04:22:20.000Z">
+<meta property="og:description" content="juz try blogging with Hexo">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Set Drupal on Mac">
-<meta name="twitter:description" content="Apache &amp;amp; PHP config on MacThree ways to check the php config
-
-php -i | grep php.ini
-php –ini
-create php file with following line: &amp;lt;?php phpinfo(); and open the file in the browser
-
-PHP opcache">
+<meta name="twitter:title" content="Alex's Heya">
+<meta name="twitter:description" content="juz try blogging with Hexo">
   
     <link rel="alternate" href="/atom.xml" title="Alex&#39;s Heya" type="application/atom+xml">
   
@@ -85,78 +66,39 @@ PHP opcache">
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-Set-Drupal-on-Mac" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2016/10/17/Set-Drupal-on-Mac/" class="article-date">
-  <time datetime="2016-10-17T15:49:32.000Z" itemprop="datePublished">2016-10-17</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
+        <section id="main">
   
-    <h1 class="article-title" itemprop="name">
-      Set Drupal on Mac
+  
+    
+    
+      
+      
+      <section class="archives-wrap">
+        <div class="archive-year-wrap">
+          <a href="/archives/2016" class="archive-year">2016</a>
+        </div>
+        <div class="archives">
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      <a href="/2016/10/18/linux sniffing-nmap/" class="archive-article-date">
+  <time datetime="2016-10-18T04:12:14.000Z" itemprop="datePublished">Oct 18</time>
+</a>
+      
+  
+    <h1 itemprop="name">
+      <a class="archive-article-title" href="/2016/10/18/linux sniffing-nmap/">linux嗅探命令:nmap研究(待更新)</a>
     </h1>
   
 
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="Apache-amp-PHP-config-on-Mac"><a href="#Apache-amp-PHP-config-on-Mac" class="headerlink" title="Apache &amp; PHP config on Mac"></a>Apache &amp; PHP config on Mac</h1><p>Three ways to check the php config</p>
-<ul>
-<li>php -i | grep php.ini</li>
-<li>php –ini</li>
-<li>create php file with following line: &lt;?php phpinfo(); and open the file in the browser</li>
-</ul>
-<h2 id="PHP-opcache-config"><a href="#PHP-opcache-config" class="headerlink" title="PHP opcache config"></a>PHP opcache config</h2><p>/etc/php.ini<br><a id="more"></a></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">zend_extension=/usr/lib/php/extensions/no-debug-non-zts-20121212/opcache.so  #!!important</div><div class="line">opcache.memory_consumption=128</div><div class="line">opcache.interned_strings_buffer=8</div><div class="line">opcache.max_accelerated_files=4000</div><div class="line">opcache.revalidate_freq=60</div><div class="line">opcache.fast_shutdown=1</div><div class="line">opcache.enable_cli=1</div></pre></td></tr></table></figure>
-<h2 id="Troubleshoot"><a href="#Troubleshoot" class="headerlink" title="Troubleshoot"></a>Troubleshoot</h2><h3 id="PHP连接MySQL的时候报错SQLSTATE-HY000-2002-No-such-file-or-directory"><a href="#PHP连接MySQL的时候报错SQLSTATE-HY000-2002-No-such-file-or-directory" class="headerlink" title="PHP连接MySQL的时候报错SQLSTATE[HY000] [2002] No such file or directory"></a>PHP连接MySQL的时候报错SQLSTATE[HY000] [2002] No such file or directory</h3><p>错误环境：Mac OS 10.10</p>
-<p>找到mysql.sock文件的位置<br><code>$sudo find / -name mysql.sock</code></p>
-<p>——结果如下———-<br><code>find: /dev/fd/3: Not a directory
-find: /dev/fd/4: Not a directory
-/private/tmp/mysql.sock</code></p>
-<p>检查/var/mysql是否存在<br><code>$ll /var/mysql</code></p>
-<p>如果/var/mysql不存在则创建<br><code>$sudo mkdir /var/mysql</code></p>
-<p>将mysql.sock文件映射到/var/mysql路径中<br><code>$sudo ln -s /private/tmp/mysql.sock  /var/mysql/mysql.sock</code></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://ukeyim.me/2016/10/17/Set-Drupal-on-Mac/" data-id="ciufrm7kv0003wdmu79x6m5c4" class="article-share-link">Partager</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/mac-drupal/">mac, drupal</a></li></ul>
-
-    </footer>
+    </header>
   </div>
-  
-    
-<nav id="article-nav">
-  
-    <a href="/2016/10/18/linux sniffing-nmap/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Récent</strong>
-      <div class="article-nav-title">
-        
-          linux嗅探命令:nmap研究(待更新)
-        
-      </div>
-    </a>
-  
-  
-    <a href="/2016/10/16/Visual-Revelation-Reading-Note/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Ancien</strong>
-      <div class="article-nav-title">&lt;Visual Revelation&gt;--Reading Note</div>
-    </a>
-  
-</nav>
-
-  
 </article>
+  
+  
+    </div></section>
+  
 
 </section>
         
