@@ -3,18 +3,30 @@
 <head>
   <meta charset="utf-8">
   
-  <title>linux嗅探命令:nmap研究 | Alex&#39;s Heya</title>
+  <title>linux嗅探命令:nmap研究(待更新) | Alex&#39;s Heya</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="nmap（待更新）Nmap使用不同的技术来执行扫描，包括：TCP的connect（）扫描，TCP反向的ident扫描，FTP反弹扫描等。所有这些扫描的类型有自己的优点和缺点，我们接下来将讨论这些问题。">
+  <meta name="description" content="Nmap使用不同的技术来执行扫描，包括：TCP的connect（）扫描，TCP反向的ident扫描，FTP反弹扫描等。所有这些扫描的类型有自己的优点和缺点，我们接下来将讨论这些问题。
+
+扫描单／多个# nmap 192.168.1.2 192.168.1.5 192.168.1.19-192.168.1.25
+扫描整个子网# nmap 192.168.1.1/24
+扫描文件里面的ip# nmap">
 <meta property="og:type" content="article">
-<meta property="og:title" content="linux嗅探命令:nmap研究">
+<meta property="og:title" content="linux嗅探命令:nmap研究(待更新)">
 <meta property="og:url" content="http://ukeyim.me/2016/10/18/linux sniffing-nmap/index.html">
 <meta property="og:site_name" content="Alex's Heya">
-<meta property="og:description" content="nmap（待更新）Nmap使用不同的技术来执行扫描，包括：TCP的connect（）扫描，TCP反向的ident扫描，FTP反弹扫描等。所有这些扫描的类型有自己的优点和缺点，我们接下来将讨论这些问题。">
-<meta property="og:updated_time" content="2016-10-18T04:15:46.000Z">
+<meta property="og:description" content="Nmap使用不同的技术来执行扫描，包括：TCP的connect（）扫描，TCP反向的ident扫描，FTP反弹扫描等。所有这些扫描的类型有自己的优点和缺点，我们接下来将讨论这些问题。
+
+扫描单／多个# nmap 192.168.1.2 192.168.1.5 192.168.1.19-192.168.1.25
+扫描整个子网# nmap 192.168.1.1/24
+扫描文件里面的ip# nmap">
+<meta property="og:updated_time" content="2016-10-18T04:20:16.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="linux嗅探命令:nmap研究">
-<meta name="twitter:description" content="nmap（待更新）Nmap使用不同的技术来执行扫描，包括：TCP的connect（）扫描，TCP反向的ident扫描，FTP反弹扫描等。所有这些扫描的类型有自己的优点和缺点，我们接下来将讨论这些问题。">
+<meta name="twitter:title" content="linux嗅探命令:nmap研究(待更新)">
+<meta name="twitter:description" content="Nmap使用不同的技术来执行扫描，包括：TCP的connect（）扫描，TCP反向的ident扫描，FTP反弹扫描等。所有这些扫描的类型有自己的优点和缺点，我们接下来将讨论这些问题。
+
+扫描单／多个# nmap 192.168.1.2 192.168.1.5 192.168.1.19-192.168.1.25
+扫描整个子网# nmap 192.168.1.1/24
+扫描文件里面的ip# nmap">
   
     <link rel="alternate" href="/atom.xml" title="Alex&#39;s Heya" type="application/atom+xml">
   
@@ -81,7 +93,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      linux嗅探命令:nmap研究
+      linux嗅探命令:nmap研究(待更新)
     </h1>
   
 
@@ -89,12 +101,12 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="nmap（待更新）"><a href="#nmap（待更新）" class="headerlink" title="nmap（待更新）"></a>nmap（待更新）</h1><p>Nmap使用不同的技术来执行扫描，包括：TCP的connect（）扫描，TCP反向的ident扫描，FTP反弹扫描等。所有这些扫描的类型有自己的优点和缺点，我们接下来将讨论这些问题。<br><a id="more"></a></p>
+        <p>Nmap使用不同的技术来执行扫描，包括：TCP的connect（）扫描，TCP反向的ident扫描，FTP反弹扫描等。所有这些扫描的类型有自己的优点和缺点，我们接下来将讨论这些问题。</p>
 <ul>
 <li>扫描单／多个<br><code># nmap 192.168.1.2 192.168.1.5 192.168.1.19-192.168.1.25</code></li>
 <li>扫描整个子网<br><code># nmap 192.168.1.1/24</code></li>
 <li>扫描文件里面的ip<br><code># nmap -iL target.txt</code></li>
-<li>扫描除过某一个ip外的所有子网主机,命令：<br><code># nmap192.168.1.1/24-exclude192.168.1.1</code></li>
+<li>扫描除过某一个ip外的所有子网主机,命令：<br><code># nmap192.168.1.1/24-exclude192.168.1.1</code><a id="more"></a></li>
 <li>扫描特定主机上的80,21,23端口,命令如下<br><code># nmap-p80,21,23192.168.1.1</code><br>比较实用的还有以下三个：</li>
 <li>SYN扫描,又称为半开放扫描，它不打开一个完全的TCP连接，执行得很快（Nmap发送SYN包到远程主机，但是它不会产生任何会话.因此不会在目标主机上产生任何日志记录,因为没有形成会话。）：<br><code># nmap -sS 192.168.32.0/24</code></li>
 <li>当SYN扫描不能用时，TCP Connect()扫描就是默认的TCP扫描：<br><code># nmap -sT 192.168.32.0/24</code></li>
@@ -179,7 +191,7 @@ nmap -v -iR 10000 -Pn -p 80
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://ukeyim.me/2016/10/18/linux sniffing-nmap/" data-id="ciuez8wca0000ku2tco0dri42" class="article-share-link">Share</a>
+      <a data-url="http://ukeyim.me/2016/10/18/linux sniffing-nmap/" data-id="ciuezbdae0003n22t2zzfuwy2" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/linux/">linux</a></li></ul>
@@ -244,7 +256,7 @@ nmap -v -iR 10000 -Pn -p 80
       <ul>
         
           <li>
-            <a href="/2016/10/18/linux sniffing-nmap/">linux嗅探命令:nmap研究</a>
+            <a href="/2016/10/18/linux sniffing-nmap/">linux嗅探命令:nmap研究(待更新)</a>
           </li>
         
           <li>
