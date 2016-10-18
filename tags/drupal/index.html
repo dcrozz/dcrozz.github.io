@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   
-  <title>Tag: reading | Alex&#39;s Heya</title>
+  <title>Tag: drupal | Alex&#39;s Heya</title>
   <meta name="description" content="{{theme.description}}" />
   <meta name="keywords" content="{{theme.keywords}}" />
   <meta name="HandheldFriendly" content="True" />
@@ -13,7 +13,7 @@
   <meta name="description" content="juz try blogging with Hexo">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Alex's Heya">
-<meta property="og:url" content="http://ukeyim.me/tags/reading/index.html">
+<meta property="og:url" content="http://ukeyim.me/tags/drupal/index.html">
 <meta property="og:site_name" content="Alex's Heya">
 <meta property="og:description" content="juz try blogging with Hexo">
 <meta name="twitter:card" content="summary">
@@ -79,7 +79,7 @@
     <main id="main" role="main">
       
 	<section class="page-header tag">
-    <h1>- <span>reading</span> -</h1>
+    <h1>- <span>drupal</span> -</h1>
   </section>
 
 
@@ -93,40 +93,71 @@
 
   
   <h2 class="title">
-    <a href="/2016/10/16/Visual-Revelation-Reading-Note/">
-      &lt;Visual Revelation&gt;--Reading Note
+    <a href="/2016/10/17/Set-Drupal-on-Mac/">
+      Set Drupal on Mac
     </a>
   </h2>
   
   <time>
-    Oct 16, 2016
+    Oct 17, 2016
   </time>
   <section class="content">
-	  <h1 id="Visual-Revelations"><a href="#Visual-Revelations" class="headerlink" title="Visual Revelations"></a>Visual Revelations</h1><h2 id="Chapter-1-How-to-Display-Data-Badly"><a href="#Chapter-1-How-to-Display-Data-Badly" class="headerlink" title="Chapter 1. How to Display Data Badly"></a>Chapter 1. How to Display Data Badly</h2><p><strong>The Aim of Good Data Graphics is to Display Data Accurately and Clearly</strong><br><strong>How to display data badly:</strong></p>
-<ol>
-<li>Don’t show much data</li>
-<li>Show the data inaccurately</li>
-<li>Obfurscate the data</li>
-</ol>
-<hr>
-<h3 id="Don’t-Show-Data"><a href="#Don’t-Show-Data" class="headerlink" title="Don’t Show Data"></a>Don’t Show Data</h3><p><strong>Rule1 Show as little data is possible(minimize the data density)</strong><br>Edward Tufte defines that:</p>
+	  <h1 id="Apache-amp-PHP-config-on-Mac"><a href="#Apache-amp-PHP-config-on-Mac" class="headerlink" title="Apache &amp; PHP config on Mac"></a>Apache &amp; PHP config on Mac</h1><p>Three ways to check the php config</p>
 <ul>
-<li><em>data density index</em> : <em>the number of numbers plotted per square inch</em></li>
-<li><em>data/ink ratio</em> : <em>the ratio of the amount of ink used to graph the data divided by the amount of ink int the graph.</em></li>
+<li>php -i | grep php.ini</li>
+<li>php –ini</li>
+<li>create php file with following line: &lt;?php phpinfo(); and open the file in the browser</li>
 </ul>
-<p>A graph contains little or no information the plot can look empty and thus raise the viewer’s suspicions that nothing is to be communicated. -&gt;  <strong>Chartjunk</strong></p>
-<p><img src="http://imgur.com/uSAbFUV.png" width="200px"></p>
-<!--Try a way to add pic more easily-->
+<h2 id="PHP-opcache-config"><a href="#PHP-opcache-config" class="headerlink" title="PHP opcache config"></a>PHP opcache config</h2><p>/etc/php.ini</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">zend_extension=/usr/lib/php/extensions/no-debug-non-zts-20121212/opcache.so  #!!important</div><div class="line">opcache.memory_consumption=128</div><div class="line">opcache.interned_strings_buffer=8</div><div class="line">opcache.max_accelerated_files=4000</div><div class="line">opcache.revalidate_freq=60</div><div class="line">opcache.fast_shutdown=1</div><div class="line">opcache.enable_cli=1</div></pre></td></tr></table></figure>
+<h2 id="Troubleshoot"><a href="#Troubleshoot" class="headerlink" title="Troubleshoot"></a>Troubleshoot</h2>
 
     
 	  <div class="readmore">
-      <a href="/2016/10/16/Visual-Revelation-Reading-Note/">Read More</a>
+      <a href="/2016/10/17/Set-Drupal-on-Mac/">Read More</a>
     </div>
     
     
     
 	  <div class="tags">
-      <a class="tag-link" href="/tags/reading/">reading</a>
+      <a class="tag-link" href="/tags/drupal/">drupal</a><a class="tag-link" href="/tags/mac/">mac</a>
+	  </div>
+    
+
+  </section>
+</article>
+  
+    <article class="post ">
+
+  
+  <h2 class="title">
+    <a href="/2016/10/10/Set-up-Drupal-8-on-Ubuntu/">
+      Set up Drupal 8 on Ubuntu
+    </a>
+  </h2>
+  
+  <time>
+    Oct 10, 2016
+  </time>
+  <section class="content">
+	  <h1 id="Drupal-Setup-Guide"><a href="#Drupal-Setup-Guide" class="headerlink" title="Drupal Setup Guide"></a>Drupal Setup Guide</h1><p><strong>This Document explains how to install Drupal 8 in Ubuntu 16.04 LTS Server, along with installing and setting Apache 2, PHP and MySQL.</strong></p>
+<h2 id="Installation-Overview"><a href="#Installation-Overview" class="headerlink" title="Installation Overview"></a>Installation Overview</h2><p>Before installing Drupal 8, check the requirements on <a href="https://www.drupal.org/docs/7/system-requirements/overview">Drupal requirements</a>. This guide uses Apache/2.4.18, PHP 7.0.8 , MySQL v5.7 as the development environment.</p>
+<p><em>Note: Ubuntu 16.04 LTS Server includes Apache 2, PHP, MySQL by default, you can select to include them while installing the Ubuntu on your PC.</em></p>
+<h2 id="Before-You-Begin"><a href="#Before-You-Begin" class="headerlink" title="Before You Begin"></a>Before You Begin</h2><ul>
+<li>The Drupal installation consists the usage of browser, so you should have GUI (instead of pure CLI interface) first. For Ubuntu 16.04 LTS Server does <strong>NOT</strong> contain a GUI interface, you may pick KDE, Gnome, Lxde as Desktop Environment first.</li>
+<li>Most command below needs the <code>sudo</code> permission, if the terminal returns <code>Permission denied</code>, remember to use <code>sudo</code> as possible.</li>
+</ul>
+<h2 id="Install-MySQL-Apache2-PHP"><a href="#Install-MySQL-Apache2-PHP" class="headerlink" title="Install MySQL, Apache2, PHP"></a>Install MySQL, Apache2, PHP</h2>
+
+    
+	  <div class="readmore">
+      <a href="/2016/10/10/Set-up-Drupal-8-on-Ubuntu/">Read More</a>
+    </div>
+    
+    
+    
+	  <div class="tags">
+      <a class="tag-link" href="/tags/drupal/">drupal</a><a class="tag-link" href="/tags/linux/">linux</a>
 	  </div>
     
 
