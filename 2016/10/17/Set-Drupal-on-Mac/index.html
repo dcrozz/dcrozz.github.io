@@ -28,7 +28,7 @@ php –ini
 create php file with following line: &amp;lt;?php phpinfo(); and open the file in the browser
 
 PHP opcache">
-<meta property="og:updated_time" content="2016-10-18T18:25:38.000Z">
+<meta property="og:updated_time" content="2016-10-18T18:27:43.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Set Drupal on Mac">
 <meta name="twitter:description" content="Apache &amp;amp; PHP config on MacThree ways to check the php config
@@ -105,7 +105,7 @@ PHP opcache">
     </a>
   </h2>
 	<time>
-	  Oct 17, 2016
+	  10月 17, 2016
 	</time>
 	<section class="content">
   	<div class="article-entry" itemprop="articleBody">
@@ -116,9 +116,9 @@ PHP opcache">
 <li>create php file with following line: &lt;?php phpinfo(); and open the file in the browser</li>
 </ul>
 <h2 id="PHP-opcache-config"><a href="#PHP-opcache-config" class="headerlink" title="PHP opcache config"></a>PHP opcache config</h2><p>/etc/php.ini</p>
+<a id="more"></a>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">zend_extension=/usr/lib/php/extensions/no-debug-non-zts-20121212/opcache.so  #!!important</div><div class="line">opcache.memory_consumption=128</div><div class="line">opcache.interned_strings_buffer=8</div><div class="line">opcache.max_accelerated_files=4000</div><div class="line">opcache.revalidate_freq=60</div><div class="line">opcache.fast_shutdown=1</div><div class="line">opcache.enable_cli=1</div></pre></td></tr></table></figure>
-<h2 id="Troubleshoot"><a href="#Troubleshoot" class="headerlink" title="Troubleshoot"></a>Troubleshoot</h2><a id="more"></a>
-<h3 id="PHP连接MySQL的时候报错SQLSTATE-HY000-2002-No-such-file-or-directory"><a href="#PHP连接MySQL的时候报错SQLSTATE-HY000-2002-No-such-file-or-directory" class="headerlink" title="PHP连接MySQL的时候报错SQLSTATE[HY000] [2002] No such file or directory"></a>PHP连接MySQL的时候报错SQLSTATE[HY000] [2002] No such file or directory</h3><p>错误环境：Mac OS 10.10</p>
+<h2 id="Troubleshoot"><a href="#Troubleshoot" class="headerlink" title="Troubleshoot"></a>Troubleshoot</h2><h3 id="PHP连接MySQL的时候报错SQLSTATE-HY000-2002-No-such-file-or-directory"><a href="#PHP连接MySQL的时候报错SQLSTATE-HY000-2002-No-such-file-or-directory" class="headerlink" title="PHP连接MySQL的时候报错SQLSTATE[HY000] [2002] No such file or directory"></a>PHP连接MySQL的时候报错SQLSTATE[HY000] [2002] No such file or directory</h3><p>错误环境：Mac OS 10.10</p>
 <p>找到mysql.sock文件的位置<br><code>$sudo find / -name mysql.sock</code></p>
 <p>——结果如下———-<br><code>find: /dev/fd/3: Not a directory
 find: /dev/fd/4: Not a directory

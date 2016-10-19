@@ -10,15 +10,15 @@
   <meta name="HandheldFriendly" content="True" />
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="juz try blogging with Hexo">
+  <meta name="description" content="An Alex only Loves Angel">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Alex's Heya">
 <meta property="og:url" content="http://ukeyim.me/index.html">
 <meta property="og:site_name" content="Alex's Heya">
-<meta property="og:description" content="juz try blogging with Hexo">
+<meta property="og:description" content="An Alex only Loves Angel">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Alex's Heya">
-<meta name="twitter:description" content="juz try blogging with Hexo">
+<meta name="twitter:description" content="An Alex only Loves Angel">
   
   
     <link rel="icon" href="/favicon.png">
@@ -89,23 +89,50 @@
 
   
   <h2 class="title">
+    <a href="/2016/10/19/Mac-10-11-修改usb网卡的mac地址/">
+      osx 10.11 El Capitan 修改usb网卡的mac地址
+    </a>
+  </h2>
+  
+  <time>
+    10月 19, 2016
+  </time>
+  <section class="content">
+	  <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>在HKU实验室搬砖，这边的网络和mac绑定的，调试linux服务器只能用一台局域网里的垃圾windows8.1，实在是太annoying，果断改mac上mac。</p>
+<h2 id="过程"><a href="#过程" class="headerlink" title="过程"></a>过程</h2><p>本想用ifconfig直接修改mac地址，</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ ipconfig en0 down</div><div class="line">$ sudo ipconfig en0 ether xx:xx:xx:xx:xx</div></pre></td></tr></table></figure>
+<p>结果收到提示<code>ifconfig: ioctl (SIOCAIFADDR): Device power is off</code><br>查了一下osx 10.7还是多少以上不能用<code>ifconfig</code>这样改，所幸发现了<a href="https://github.com/feross/SpoofMAC">SpoofMac</a>，装了可以轻轻松松修改en0了不过…<br>
+
+    
+	  <div class="readmore">
+      <a href="/2016/10/19/Mac-10-11-修改usb网卡的mac地址/">Read More</a>
+    </div>
+    
+    
+    
+	  <div class="tags">
+      <a class="tag-link" href="/tags/osx/">osx</a>
+	  </div>
+    
+
+  </section>
+</article>
+  
+    <article class="post ">
+
+  
+  <h2 class="title">
     <a href="/2016/10/18/linux sniffing-nmap/">
       linux嗅探命令:nmap研究(待更新)
     </a>
   </h2>
   
   <time>
-    Oct 18, 2016
+    10月 18, 2016
   </time>
   <section class="content">
 	  <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>起因是连着港大的wifi没法直接通过22号端口（ssh）访问别的站点（git push），debug的时候就在想是不是什么端口被关了，想扫描一下端口（其实好像不是扫描端口的问题），连这两天看了几篇讲nmap的文章感觉很不错，顺便恶补一下我的网络知识。</p>
-<h2 id="nmap入门"><a href="#nmap入门" class="headerlink" title="nmap入门"></a>nmap入门</h2><p>简单介绍一下，Nmap使用不同的技术来执行扫描，包括：TCP的connect（）扫描，TCP反向的ident扫描，FTP反弹扫描等。下面放一点简单的指令。</p>
-<ul>
-<li><p>扫描单／多个<br><code># nmap 192.168.1.2 192.168.1.5 192.168.1.19-192.168.1.25</code></p>
-</li>
-<li><p>扫描整个子网<br><code># nmap 192.168.1.1/24</code></p>
-</li>
-<li><p>扫描文件里面的ip<br><code># nmap -iL target.txt</code></p>
+<h2 id="nmap入门"><a href="#nmap入门" class="headerlink" title="nmap入门"></a>nmap入门</h2>
 
     
 	  <div class="readmore">
@@ -132,7 +159,7 @@
   </h2>
   
   <time>
-    Oct 17, 2016
+    10月 17, 2016
   </time>
   <section class="content">
 	  <h1 id="Apache-amp-PHP-config-on-Mac"><a href="#Apache-amp-PHP-config-on-Mac" class="headerlink" title="Apache &amp; PHP config on Mac"></a>Apache &amp; PHP config on Mac</h1><p>Three ways to check the php config</p>
@@ -142,8 +169,6 @@
 <li>create php file with following line: &lt;?php phpinfo(); and open the file in the browser</li>
 </ul>
 <h2 id="PHP-opcache-config"><a href="#PHP-opcache-config" class="headerlink" title="PHP opcache config"></a>PHP opcache config</h2><p>/etc/php.ini</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">zend_extension=/usr/lib/php/extensions/no-debug-non-zts-20121212/opcache.so  #!!important</div><div class="line">opcache.memory_consumption=128</div><div class="line">opcache.interned_strings_buffer=8</div><div class="line">opcache.max_accelerated_files=4000</div><div class="line">opcache.revalidate_freq=60</div><div class="line">opcache.fast_shutdown=1</div><div class="line">opcache.enable_cli=1</div></pre></td></tr></table></figure>
-<h2 id="Troubleshoot"><a href="#Troubleshoot" class="headerlink" title="Troubleshoot"></a>Troubleshoot</h2>
 
     
 	  <div class="readmore">
@@ -170,7 +195,7 @@
   </h2>
   
   <time>
-    Oct 16, 2016
+    10月 16, 2016
   </time>
   <section class="content">
 	  <h1 id="Visual-Revelations"><a href="#Visual-Revelations" class="headerlink" title="Visual Revelations"></a>Visual Revelations</h1><h2 id="Chapter-1-How-to-Display-Data-Badly"><a href="#Chapter-1-How-to-Display-Data-Badly" class="headerlink" title="Chapter 1. How to Display Data Badly"></a>Chapter 1. How to Display Data Badly</h2><p><strong>The Aim of Good Data Graphics is to Display Data Accurately and Clearly</strong><br><strong>How to display data badly:</strong></p>
@@ -180,14 +205,7 @@
 <li>Obfurscate the data</li>
 </ol>
 <hr>
-<h3 id="Don’t-Show-Data"><a href="#Don’t-Show-Data" class="headerlink" title="Don’t Show Data"></a>Don’t Show Data</h3><p><strong>Rule1 Show as little data is possible(minimize the data density)</strong><br>Edward Tufte defines that:</p>
-<ul>
-<li><em>data density index</em> : <em>the number of numbers plotted per square inch</em></li>
-<li><em>data/ink ratio</em> : <em>the ratio of the amount of ink used to graph the data divided by the amount of ink int the graph.</em></li>
-</ul>
-<p>A graph contains little or no information the plot can look empty and thus raise the viewer’s suspicions that nothing is to be communicated. -&gt;  <strong>Chartjunk</strong></p>
-<p><img src="http://imgur.com/uSAbFUV.png" width="200px"></p>
-<!--Try a way to add pic more easily-->
+<h3 id="Don’t-Show-Data"><a href="#Don’t-Show-Data" class="headerlink" title="Don’t Show Data"></a>Don’t Show Data</h3><p><strong>Rule1 Show as little data is possible(minimize the data density)</strong><br>Edward Tufte defines that:<br>
 
     
 	  <div class="readmore">
@@ -214,17 +232,13 @@
   </h2>
   
   <time>
-    Oct 10, 2016
+    10月 10, 2016
   </time>
   <section class="content">
 	  <h1 id="Drupal-Setup-Guide"><a href="#Drupal-Setup-Guide" class="headerlink" title="Drupal Setup Guide"></a>Drupal Setup Guide</h1><p><strong>This Document explains how to install Drupal 8 in Ubuntu 16.04 LTS Server, along with installing and setting Apache 2, PHP and MySQL.</strong></p>
 <h2 id="Installation-Overview"><a href="#Installation-Overview" class="headerlink" title="Installation Overview"></a>Installation Overview</h2><p>Before installing Drupal 8, check the requirements on <a href="https://www.drupal.org/docs/7/system-requirements/overview">Drupal requirements</a>. This guide uses Apache/2.4.18, PHP 7.0.8 , MySQL v5.7 as the development environment.</p>
 <p><em>Note: Ubuntu 16.04 LTS Server includes Apache 2, PHP, MySQL by default, you can select to include them while installing the Ubuntu on your PC.</em></p>
-<h2 id="Before-You-Begin"><a href="#Before-You-Begin" class="headerlink" title="Before You Begin"></a>Before You Begin</h2><ul>
-<li>The Drupal installation consists the usage of browser, so you should have GUI (instead of pure CLI interface) first. For Ubuntu 16.04 LTS Server does <strong>NOT</strong> contain a GUI interface, you may pick KDE, Gnome, Lxde as Desktop Environment first.</li>
-<li>Most command below needs the <code>sudo</code> permission, if the terminal returns <code>Permission denied</code>, remember to use <code>sudo</code> as possible.</li>
-</ul>
-<h2 id="Install-MySQL-Apache2-PHP"><a href="#Install-MySQL-Apache2-PHP" class="headerlink" title="Install MySQL, Apache2, PHP"></a>Install MySQL, Apache2, PHP</h2>
+<h2 id="Before-You-Begin"><a href="#Before-You-Begin" class="headerlink" title="Before You Begin"></a>Before You Begin</h2>
 
     
 	  <div class="readmore">
