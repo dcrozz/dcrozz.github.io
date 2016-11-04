@@ -89,6 +89,49 @@
 
   
   <h2 class="title">
+    <a href="/2016/11/04/D8笔记－给幻灯片增加url连接/">
+      D8笔记－给幻灯片增加url连接
+    </a>
+  </h2>
+  
+  <time>
+    11月 4, 2016
+  </time>
+  <section class="content">
+	  <p>进度太滑水今天被boss批评了（望天</p>
+<p>本来以为很好实现的功能结果到处找不到哪里可以加连接，简单搜索一下这个功能竟然还有要用插件，试了两个插件以后最后还是找到免插件的解决方案（其实也是写不来token）。  </p>
+<p>原文：</p>
+<blockquote>
+<pre><code>BY jeni_dc commented 5 years ago 
+
+I&apos;d just create a view to display that image on my node type. Add another field to store the link in your node, then create a view with two fields, your link and your image. Arrange the fields in your view so the link is first, then the image.
+
+Exclude the link field from display. When setting up your image field in the view you&apos;ll need to rewrite the results. Select &quot;output this field as a link&quot;, and in the link path enter the token for your link field, that will be in the replacement patterns below.
+
+Then to make sure your view is only showing the image and link associated with the particular node you are viewing, you&apos;ll need to add a contextual filter. Just add a filter for &quot;Content: Nid&quot; and select &quot;Hide view&quot; for when the filter is not available.
+
+Then in your panel for your node display, remove the field that was displaying your image and add the view in it&apos;s place.
+</code></pre>
+
+    
+	  <div class="readmore">
+      <a href="/2016/11/04/D8笔记－给幻灯片增加url连接/">Read More</a>
+    </div>
+    
+    
+    
+	  <div class="tags">
+      <a class="tag-link" href="/tags/drupal/">drupal</a>
+	  </div>
+    
+
+  </section>
+</article>
+  
+    <article class="post ">
+
+  
+  <h2 class="title">
     <a href="/2016/11/04/Drupal-8-主题开发笔记/">
       Drupal 8 主题开发笔记
     </a>
@@ -198,39 +241,6 @@
     </div>
     
     
-    
-
-  </section>
-</article>
-  
-    <article class="post ">
-
-  
-  <h2 class="title">
-    <a href="/2016/10/19/Mac-10-11-修改usb网卡的mac地址/">
-      osx 10.11 El Capitan 修改usb网卡的mac地址
-    </a>
-  </h2>
-  
-  <time>
-    10月 19, 2016
-  </time>
-  <section class="content">
-	  <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>在HKU实验室搬砖，这边的网络和mac绑定的，调试linux服务器只能用一台局域网里的垃圾windows8.1，实在是太annoying，果断改mac上mac。</p>
-<h2 id="过程"><a href="#过程" class="headerlink" title="过程"></a>过程</h2><p>本想用ifconfig直接修改mac地址，</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ ipconfig en0 down</div><div class="line">$ sudo ipconfig en0 ether xx:xx:xx:xx:xx</div></pre></td></tr></table></figure>
-<p>结果收到提示<code>ifconfig: ioctl (SIOCAIFADDR): Device power is off</code><br>查了一下osx 10.7还是多少以上不能用<code>ifconfig</code>这样改，所幸发现了<a href="https://github.com/feross/SpoofMAC">SpoofMac</a>，装了可以轻轻松松修改en0了不过…<br>
-
-    
-	  <div class="readmore">
-      <a href="/2016/10/19/Mac-10-11-修改usb网卡的mac地址/">Read More</a>
-    </div>
-    
-    
-    
-	  <div class="tags">
-      <a class="tag-link" href="/tags/osx/">osx</a>
-	  </div>
     
 
   </section>

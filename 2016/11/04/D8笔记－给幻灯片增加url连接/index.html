@@ -4,21 +4,40 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   
-  <title>Archives: 2016/11 | Alex&#39;s Heya</title>
+  <title>D8笔记－给幻灯片增加url连接 | Alex&#39;s Heya</title>
   <meta name="description" content="{{theme.description}}" />
   <meta name="keywords" content="{{theme.keywords}}" />
   <meta name="HandheldFriendly" content="True" />
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="An Alex only Loves Angel">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Alex's Heya">
-<meta property="og:url" content="http://ukeyim.me/archives/2016/11/index.html">
+  <meta name="description" content="进度太滑水今天被boss批评了（望天
+本来以为很好实现的功能结果到处找不到哪里可以加连接，简单搜索一下这个功能竟然还有要用插件，试了两个插件以后最后还是找到免插件的解决方案（其实也是写不来token）。  
+原文：
+
+BY jeni_dc commented 5 years ago 
+
+I&amp;apos;d just create a view to display that image on my">
+<meta property="og:type" content="article">
+<meta property="og:title" content="D8笔记－给幻灯片增加url连接">
+<meta property="og:url" content="http://ukeyim.me/2016/11/04/D8笔记－给幻灯片增加url连接/index.html">
 <meta property="og:site_name" content="Alex's Heya">
-<meta property="og:description" content="An Alex only Loves Angel">
+<meta property="og:description" content="进度太滑水今天被boss批评了（望天
+本来以为很好实现的功能结果到处找不到哪里可以加连接，简单搜索一下这个功能竟然还有要用插件，试了两个插件以后最后还是找到免插件的解决方案（其实也是写不来token）。  
+原文：
+
+BY jeni_dc commented 5 years ago 
+
+I&amp;apos;d just create a view to display that image on my">
+<meta property="og:updated_time" content="2016-11-04T09:22:22.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Alex's Heya">
-<meta name="twitter:description" content="An Alex only Loves Angel">
+<meta name="twitter:title" content="D8笔记－给幻灯片增加url连接">
+<meta name="twitter:description" content="进度太滑水今天被boss批评了（望天
+本来以为很好实现的功能结果到处找不到哪里可以加连接，简单搜索一下这个功能竟然还有要用插件，试了两个插件以后最后还是找到免插件的解决方案（其实也是写不来token）。  
+原文：
+
+BY jeni_dc commented 5 years ago 
+
+I&amp;apos;d just create a view to display that image on my">
   
   
     <link rel="icon" href="/favicon.png">
@@ -77,33 +96,20 @@
     <script>setLoadingBarProgress(40);</script>
     
     <main id="main" role="main">
-      
-	
-
-
-	<section class="page-header archive">
-    <h1>- <span>2016.11</span> -</h1>
-  </section>
-
-
-
-
-<section class="post-list">
-	
-    <article class="post ">
-
-  
-  <h2 class="title">
-    <a href="/2016/11/04/D8笔记－给幻灯片增加url连接/">
-      D8笔记－给幻灯片增加url连接
+      <article id="post-D8笔记－给幻灯片增加url连接"
+  class="post article white-box article-type-post"
+  itemscope itemprop="blogPost">
+	<h2 class="title">
+  	<a href="/2016/11/04/D8笔记－给幻灯片增加url连接/">
+    	D8笔记－给幻灯片增加url连接
     </a>
   </h2>
-  
-  <time>
-    11月 4, 2016
-  </time>
-  <section class="content">
-	  <p>进度太滑水今天被boss批评了（望天</p>
+	<time>
+	  11月 4, 2016
+	</time>
+	<section class="content">
+  	<div class="article-entry" itemprop="articleBody">
+    	<p>进度太滑水今天被boss批评了（望天</p>
 <p>本来以为很好实现的功能结果到处找不到哪里可以加连接，简单搜索一下这个功能竟然还有要用插件，试了两个插件以后最后还是找到免插件的解决方案（其实也是写不来token）。  </p>
 <p>原文：</p>
 <blockquote>
@@ -116,52 +122,25 @@ Exclude the link field from display. When setting up your image field in the vie
 Then to make sure your view is only showing the image and link associated with the particular node you are viewing, you&apos;ll need to add a contextual filter. Just add a filter for &quot;Content: Nid&quot; and select &quot;Hide view&quot; for when the filter is not available.
 
 Then in your panel for your node display, remove the field that was displaying your image and add the view in it&apos;s place.
-</code></pre>
+</code></pre><a id="more"></a>
+<p>思路：</p>
+</blockquote>
+<ol>
+<li>给每张幻灯片（自定义content types）增加url的field</li>
+<li>在用view做幻灯片的时候，先add url这个field，并设为<strong>excluded from display</strong>，这样就不会显示url</li>
+<li>然后再add image field，注意先后不能错， 在image的setting -&gt; rewrite the result -&gt; output this field as a link，添加replacement pattern， 可以在下面的备选里看到url field（没看到的话就出错了）。</li>
+<li>完成！</li>
+</ol>
 
-    
-	  <div class="readmore">
-      <a href="/2016/11/04/D8笔记－给幻灯片增加url连接/">Read More</a>
-    </div>
-    
-    
-    
-	  <div class="tags">
-      <a class="tag-link" href="/tags/drupal/">drupal</a>
+  	</div>
+	  
+	  <div class="article-tags tags">
+		  
+        <a class="tag-link" href="/tags/drupal/">drupal</a>
+      
 	  </div>
-    
-
-  </section>
+	</section>
 </article>
-  
-    <article class="post ">
-
-  
-  <h2 class="title">
-    <a href="/2016/11/04/Drupal-8-主题开发笔记/">
-      Drupal 8 主题开发笔记
-    </a>
-  </h2>
-  
-  <time>
-    11月 4, 2016
-  </time>
-  <section class="content">
-	  <p>参考：<a href="http://drupalchina.cn/book/export/html/5515">Drupal 8 主题开发指南</a><br>今天终于会用一点d8的主题，本着“没有女朋友不会自己扮哦”的心态自己造轮子吧。<br>大概日常的使用这里面都包含了，不够的话链接里面也会有，算是阅读比较好了，下一篇写一下Twig的语法（好像也不是很难）。</p>
-<p>下面习惯性的先看目录结构：</p>
-<h2 id="d8主题文件夹结构"><a href="#d8主题文件夹结构" class="headerlink" title="d8主题文件夹结构"></a>d8主题文件夹结构</h2>
-
-    
-	  <div class="readmore">
-      <a href="/2016/11/04/Drupal-8-主题开发笔记/">Read More</a>
-    </div>
-    
-    
-    
-
-  </section>
-</article>
-  
-</section>
 
 
 
