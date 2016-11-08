@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   
-  <title>Alex&#39;s Heya</title>
+  <title>Tag: london | Alex&#39;s Heya</title>
   <meta name="description" content="{{theme.description}}" />
   <meta name="keywords" content="{{theme.keywords}}" />
   <meta name="HandheldFriendly" content="True" />
@@ -13,7 +13,7 @@
   <meta name="description" content="An Alex only Loves Angel">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Alex's Heya">
-<meta property="og:url" content="http://ukeyim.me/index.html">
+<meta property="og:url" content="http://ukeyim.me/tags/london/index.html">
 <meta property="og:site_name" content="Alex's Heya">
 <meta property="og:description" content="An Alex only Loves Angel">
 <meta name="twitter:card" content="summary">
@@ -78,6 +78,10 @@
     
     <main id="main" role="main">
       
+	<section class="page-header tag">
+    <h1>- <span>london</span> -</h1>
+  </section>
+
 
 
 
@@ -367,154 +371,8 @@
   </section>
 </article>
   
-    <article class="post ">
-
-  
-  <h2 class="title">
-    <a href="/2016/11/04/D8笔记－给幻灯片增加url连接/">
-      D8笔记－给幻灯片增加url连接
-    </a>
-  </h2>
-  
-  <time>
-    11月 4, 2016
-  </time>
-  <section class="content">
-	  <p>进度太滑水今天被boss批评了（望天</p>
-<p>本来以为很好实现的功能结果到处找不到哪里可以加连接，简单搜索一下这个功能竟然还有要用插件，试了两个插件以后最后还是找到免插件的解决方案（其实也是写不来token）。  </p>
-<p>原文：</p>
-<blockquote>
-<pre><code>BY jeni_dc commented 5 years ago 
-
-I&apos;d just create a view to display that image on my node type. Add another field to store the link in your node, then create a view with two fields, your link and your image. Arrange the fields in your view so the link is first, then the image.
-
-Exclude the link field from display. When setting up your image field in the view you&apos;ll need to rewrite the results. Select &quot;output this field as a link&quot;, and in the link path enter the token for your link field, that will be in the replacement patterns below.
-
-Then to make sure your view is only showing the image and link associated with the particular node you are viewing, you&apos;ll need to add a contextual filter. Just add a filter for &quot;Content: Nid&quot; and select &quot;Hide view&quot; for when the filter is not available.
-
-Then in your panel for your node display, remove the field that was displaying your image and add the view in it&apos;s place.
-</code></pre>
-
-    
-	  <div class="readmore">
-      <a href="/2016/11/04/D8笔记－给幻灯片增加url连接/">Read More</a>
-    </div>
-    
-    
-    
-	  <div class="tags">
-      <a class="tag-link" href="/tags/drupal/">drupal</a>
-	  </div>
-    
-
-  </section>
-</article>
-  
-    <article class="post no-title">
-
-  
-  <time>
-    10月 25, 2016
-  </time>
-  <section class="content">
-	  <h1 id="Drupal-Setup-Guide"><a href="#Drupal-Setup-Guide" class="headerlink" title="Drupal Setup Guide"></a>Drupal Setup Guide</h1><p><strong>This Document explains how to install Drupal 8 in Ubuntu 16.04 LTS Server, along with installing and setting Apache 2, PHP and MySQL.</strong></p>
-<h2 id="Installation-Overview"><a href="#Installation-Overview" class="headerlink" title="Installation Overview"></a>Installation Overview</h2><p>Before installing Drupal 8, check the requirements on <a href="https://www.drupal.org/docs/7/system-requirements/overview">Drupal requirements</a>. This guide uses Apache/2.4.18, PHP 7.0.8 , MySQL v5.7 as the development environment.</p>
-<p><em>Note: Ubuntu 16.04 LTS Server includes Apache 2, PHP, MySQL by default, you can select to include them while installing the Ubuntu on your PC.</em></p>
-<h2 id="Before-You-Begin"><a href="#Before-You-Begin" class="headerlink" title="Before You Begin"></a>Before You Begin</h2><ul>
-<li>The Drupal installation consists the usage of browser, so you should have GUI (instead of pure CLI interface) first. For Ubuntu 16.04 LTS Server does <strong>NOT</strong> contain a GUI interface, you may pick KDE, Gnome, Lxde as Desktop Environment first.</li>
-<li>Most command below needs the <code>sudo</code> permission, if the terminal returns <code>Permission denied</code>, remember to use <code>sudo</code> as possible.</li>
-</ul>
-<h2 id="Install-MySQL-Apache2-PHP"><a href="#Install-MySQL-Apache2-PHP" class="headerlink" title="Install MySQL, Apache2, PHP"></a>Install MySQL, Apache2, PHP</h2><h4 id="MySQL"><a href="#MySQL" class="headerlink" title="MySQL"></a>MySQL</h4><ul>
-<li><p>Install MySQL</p>
-
-    
-	  <div class="readmore">
-      <a href="/2016/10/25/Set-up-Drupal-8-on-Ubuntu/">Read More</a>
-    </div>
-    
-    
-    
-
-  </section>
-</article>
-  
-    <article class="post ">
-
-  
-  <h2 class="title">
-    <a href="/2016/10/19/Mac-10-11-修改usb网卡的mac地址/">
-      osx 10.11 El Capitan 修改usb网卡的mac地址
-    </a>
-  </h2>
-  
-  <time>
-    10月 19, 2016
-  </time>
-  <section class="content">
-	  <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>在HKU实验室搬砖，这边的网络和mac绑定的，调试linux服务器只能用一台局域网里的垃圾windows8.1，实在是太annoying，果断改mac上mac。</p>
-<h2 id="过程"><a href="#过程" class="headerlink" title="过程"></a>过程</h2><p>本想用ifconfig直接修改mac地址，</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ ipconfig en0 down</div><div class="line">$ sudo ipconfig en0 ether xx:xx:xx:xx:xx</div></pre></td></tr></table></figure>
-<p>结果收到提示<code>ifconfig: ioctl (SIOCAIFADDR): Device power is off</code><br>查了一下osx 10.7还是多少以上不能用<code>ifconfig</code>这样改，所幸发现了<a href="https://github.com/feross/SpoofMAC">SpoofMac</a>，装了可以轻轻松松修改en0了不过…<br>
-
-    
-	  <div class="readmore">
-      <a href="/2016/10/19/Mac-10-11-修改usb网卡的mac地址/">Read More</a>
-    </div>
-    
-    
-    
-	  <div class="tags">
-      <a class="tag-link" href="/tags/osx/">osx</a>
-	  </div>
-    
-
-  </section>
-</article>
-  
-    <article class="post ">
-
-  
-  <h2 class="title">
-    <a href="/2016/10/18/linux sniffing-nmap/">
-      linux嗅探命令:nmap研究(待更新)
-    </a>
-  </h2>
-  
-  <time>
-    10月 18, 2016
-  </time>
-  <section class="content">
-	  <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>起因是连着港大的wifi没法直接通过22号端口（ssh）访问别的站点（git push），debug的时候就在想是不是什么端口被关了，想扫描一下端口（其实好像不是扫描端口的问题），连这两天看了几篇讲nmap的文章感觉很不错，顺便恶补一下我的网络知识。</p>
-<h2 id="nmap入门"><a href="#nmap入门" class="headerlink" title="nmap入门"></a>nmap入门</h2>
-
-    
-	  <div class="readmore">
-      <a href="/2016/10/18/linux sniffing-nmap/">Read More</a>
-    </div>
-    
-    
-    
-	  <div class="tags">
-      <a class="tag-link" href="/tags/linux/">linux</a><a class="tag-link" href="/tags/nmap/">nmap</a>
-	  </div>
-    
-
-  </section>
-</article>
-  
 </section>
 
-
-  <nav id="page-nav">
-    
-    
-    <a class="next" rel="next" href="/page/2/">
-      <span class="text">Next</span>
-      <span class="icon icon-chevron-right"></span>
-    </a>
-    
-  </nav>
-  
 
       <script>setLoadingBarProgress(60);</script>
     </main>
