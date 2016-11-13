@@ -20,7 +20,7 @@ d8主题文件夹结构">
 <meta property="og:description" content="参考：Drupal 8 主题开发指南今天终于会用一点d8的主题，本着“没有女朋友不会自己扮哦”的心态自己造轮子吧。大概日常的使用这里面都包含了，不够的话链接里面也会有，算是阅读比较好了，下一篇写一下Twig的语法（好像也不是很难）。
 下面习惯性的先看目录结构：
 d8主题文件夹结构">
-<meta property="og:updated_time" content="2016-11-03T17:25:06.000Z">
+<meta property="og:updated_time" content="2016-11-13T14:52:18.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Drupal 8 主题开发笔记">
 <meta name="twitter:description" content="参考：Drupal 8 主题开发指南今天终于会用一点d8的主题，本着“没有女朋友不会自己扮哦”的心态自己造轮子吧。大概日常的使用这里面都包含了，不够的话链接里面也会有，算是阅读比较好了，下一篇写一下Twig的语法（好像也不是很难）。
@@ -56,7 +56,7 @@ d8主题文件夹结构">
 		<a id="logo" href="/">
 			<img src="/images/logo.png" />
 			<span id="site-desc">
-			  an alex loves angel
+			  an alex always loves angel
       </span>
 		</a>
 		<button id="site-nav-switch">
@@ -233,6 +233,24 @@ page--node--edit.html.twig (前缀设定为 page__node__edit)
 page--front.html.twig (但只有当node/1/edit是首页时)
 </code></pre><p>当页面实际渲染时，查看最后的建议。如果它存在，就使用该建议。否则，查看前一条建议，如此等等。当然，如果不存在覆写建议，那么<code>page.html.twig</code>就是最终的建议。这也解释了为什么<code>page--front.html.twig</code>存在的话会为首页覆写任何其它建议：它始终是指定为首页的页面的最后建议。</p>
 <h3 id="与Drupal-7的区别-Differences-with-Drupal-7"><a href="#与Drupal-7的区别-Differences-with-Drupal-7" class="headerlink" title="与Drupal 7的区别(Differences with Drupal 7)"></a>与Drupal 7的区别(Differences with Drupal 7)</h3><p>以前，要改变模板建议，您就在预处理函数中修改$variables[‘theme_hook_suggestion’]和 $variables[‘theme_hook_suggestions’]来引入建议。在Drupal 8中，现在模块和主题在自己的专用钩子中定义和修改主题建议。</p>
+<h3 id="在Twig模板里提取和检索变量"><a href="#在Twig模板里提取和检索变量" class="headerlink" title="在Twig模板里提取和检索变量"></a>在Twig模板里提取和检索变量</h3><p>在一个Twig模板文件里，你可以发现注释里有很多可用的变量。然而，当变量不是记录在模板文件中，或者是当主题、模块引入新的变量时，我们就需要一种方法来检索和提取模板里所有可用变量的和特定范围的变量，Twig支持在模板文件里使用dump() 函数（转存函数）来提取和检索变量。</p>
+<p>Dump函数在启用调试之前不会显示输出的变量内容。学习如何启用Twig调试</p>
+<p>开启调试后，dump函数就可以输出模板里的一个变量或多个变量的相关信息。<br>检索单个变量</p>
+<p>假设你的模板里有一个title变量，可以按如下形式，将其内容dump到你的模板：</p>
+<p><code>\{\{ dump(title) \}\}</code></p>
+<p>检索模板内所有可用变量</p>
+<p>将模板内所有可用的变量和变量的内容添加到你的模板，可用如下示例代码：</p>
+<p><code>\{\{ dump() \}\}</code></p>
+<p>Dump（转存）一个只有一个可用变量keys使用如下代码：</p>
+<p><code>\{\{ dump(_context|keys) \}\}</code></p>
+<p>以下全局变量可用于所有的Twig模板：</p>
+<pre><code>_self引用了当前模板以及模板包含的高级信息，也就是已编译的模板类名和Twig的环境信息。
+_context 引用当前的上下文和上下文所包含的所有变量，然后传递给模板，例如一个来自theme（）的变量，由预处理得来，或来自模板。增加一个\{\{ dump() \}\} 却没有定义一个变量，相当于添加了一个\{\{ dump(_context) \}\}。
+_charset 用于引用当前的字符集。
+</code></pre><p>使用dump()需注意：</p>
+<p>如果你想看到模板里所有的变量，但是因dump()（转存函数）的递归或其他类似递归的算法逻辑而导致内存不足，你可以遍历_context来引用当前上下文所包含的所有变量，从而看到所有的keys，示例如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&lt;ol&gt;</div><div class="line">    \&#123;% for key, value in _context  % \&#125;</div><div class="line">      &lt;li&gt;\&#123;\&#123; key \&#125;\&#125;&lt;/li&gt;</div><div class="line">    \&#123;% endfor %\&#125;</div><div class="line">&lt;/ol&gt;</div></pre></td></tr></table></figure>
+<p>然后用一个条件判断来检查结果（例如 <code>\{\{ % if loop.index=2 %\}\}</code>）,然后dump（转存）有需要的变量即可。</p>
 <h3 id="最后是这次鼓捣的主要目的。"><a href="#最后是这次鼓捣的主要目的。" class="headerlink" title="最后是这次鼓捣的主要目的。"></a>最后是这次鼓捣的主要目的。</h3><h2 id="给主题添加区域"><a href="#给主题添加区域" class="headerlink" title="给主题添加区域"></a>给主题添加区域</h2><p>给主题添加区域（Region）需要满足以下两点：</p>
 <ul>
 <li><p>给你的THEMENAME.info.yml文件添加区域标记。</p>
@@ -248,13 +266,24 @@ page--front.html.twig (但只有当node/1/edit是首页时)
 <p>例如:</p>
 <p><code>header: &#39;Header&#39;</code></p>
 <p>在你的Twig模板里会变成:</p>
-<p><code></code></p>
+<p><code>\{\{ page.header \}\}</code></p>
 <p>这之后，你就可以把区域当作任何Twig变量一样，把内容输出到任何你需要输出的地方，以及用任何有意义的结构包裹。</p>
+<h3 id="模板文件的位置"><a href="#模板文件的位置" class="headerlink" title="模板文件的位置"></a>模板文件的位置</h3><p>如果你想知道哪个模板生成了指定元素, 你可以使用 Twig 的 debug 功能.<br>主题名字旁边也显示了文件的位置.</p>
+<p>Twing debugging 可以在 <code>sites/default/services.yml</code> 文件内开启, 将<code>twig.config</code> 下的 debug 变量改为 <strong>true</strong>.<br>设置后,请清除缓存.</p>
+<p>如果你查看当前页面下的源文件, 你将看到 debug 的输出类似下面 Twing templates 被渲染.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">&lt;!-- THEME DEBUG --&gt;</div><div class="line">&lt;!-- CALL: theme(&apos;block&apos;) --&gt;</div><div class="line">&lt;!-- FILE NAME SUGGESTIONS:</div><div class="line">   * block--system.html.twig</div><div class="line">   * block--system-menu-block.html.twig</div><div class="line">   * block--system-menu-block--tools.html.twig</div><div class="line">   * block--bartik-tools.html.twig</div><div class="line">   x block.html.twig</div><div class="line">--&gt;</div><div class="line">&lt;!-- BEGIN OUTPUT from &apos;core/modules/block/templates/block.html.twig&apos; --&gt;</div><div class="line">&lt;div class=&quot;block block-system contextual-region block-menu&quot; id=&quot;block-bartik-tools&quot; role=&quot;navigation&quot;&gt;</div><div class="line"> </div><div class="line">      &lt;h2&gt;Tools&lt;/h2&gt;</div><div class="line">    &lt;div data-contextual-id=&quot;block:block=bartik_tools:|menu:menu=tools:&quot;&gt;&lt;/div&gt;</div><div class="line"></div><div class="line">  &lt;div class=&quot;content&quot;&gt;</div><div class="line">    &lt;ul class=&quot;menu clearfix&quot;&gt;&lt;li class=&quot;first collapsed&quot;&gt;&lt;a href=&quot;/node/add&quot;&gt;Add content&lt;/a&gt;&lt;/li&gt;</div><div class="line">&lt;li class=&quot;last leaf&quot;&gt;&lt;a href=&quot;/block/add&quot; title=&quot;Add custom block&quot;&gt;Add custom block&lt;/a&gt;&lt;/li&gt;</div><div class="line">&lt;/ul&gt;</div><div class="line">  &lt;/div&gt;</div><div class="line">&lt;/div&gt;</div><div class="line"></div><div class="line">&lt;!-- END OUTPUT from &apos;core/modules/block/templates/block.html.twig&apos; --&gt;</div></pre></td></tr></table></figure>
+<p>下面是比较有用的</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&lt;!-- BEGIN OUTPUT from &apos;core/modules/block/templates/block.html.twig&apos; --&gt;</div><div class="line"></div><div class="line">&lt;!-- END OUTPUT from &apos;core/modules/block/templates/block.html.twig&apos; --&gt;</div></pre></td></tr></table></figure>
+<p>所有核心模板都在模块 /core/modules/system 文件夹下, Drupal 8 有一个子目录,名字为 “templates”</p>
+<p>在这个文件夹内,我们可以找到所有类型的 模板文件 和 page.html.twig</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">system</div><div class="line">  ...</div><div class="line">  |-templates</div><div class="line">  |  |-admin-block-content.html.twig</div><div class="line">  |  |-admin-block.html.twig</div><div class="line">  |  |-admin-page.html.twig</div><div class="line">  |  |-block--system-branding-block.html.twig</div><div class="line">  |  |-block--system-menu-block.html.twig</div><div class="line">  |  |-breadcrumb.html.twig</div><div class="line">  ...</div><div class="line">  |  |-menu-local-action.html.twig</div><div class="line">  |  |-menu-local-task.html.twig</div><div class="line">  |  |-menu-local-tasks.html.twig</div><div class="line">  |  |-menu.html.twig</div><div class="line">  |  |-page.html.twig</div><div class="line">  |  |-pager.html.twig</div><div class="line">  |  |-progress-bar.html.twig</div><div class="line">  ...</div></pre></td></tr></table></figure>
 
   	</div>
 	  
 	  <div class="article-tags tags">
 		  
+        <a class="tag-link" href="/tags/drupal/">drupal</a>
+      
 	  </div>
 	</section>
 </article>
