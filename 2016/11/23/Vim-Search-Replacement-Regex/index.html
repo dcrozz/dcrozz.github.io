@@ -4,43 +4,43 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   
-  <title>Vim Search &amp; Replacement &amp; Regex | Alex&#39;s Heya</title>
+  <title>Vim Search &amp; Replacement &amp; Regex(with Zero Width) | Alex&#39;s Heya</title>
   <meta name="description" content="{{theme.description}}" />
   <meta name="keywords" content="{{theme.keywords}}" />
   <meta name="HandheldFriendly" content="True" />
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Vim Search &amp;amp; Replacement &amp;amp; RegexOptions
+  <meta name="description" content="Vim Search &amp;amp; Replacement &amp;amp; Regex (with Zero Width)Options
 g Replace all occurrences in the line (without g - only first).
 c 表示进行确认
 p 表示替代结果逐行显示（Ctrl + L恢复屏幕）；
 省略option时仅对每行第一个匹配串进行替换；
 
 magic
-magic (\m)：除了 \$ .">
+m">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Vim Search & Replacement & Regex">
+<meta property="og:title" content="Vim Search & Replacement & Regex(with Zero Width)">
 <meta property="og:url" content="http://ukeyim.me/2016/11/23/Vim-Search-Replacement-Regex/index.html">
 <meta property="og:site_name" content="Alex's Heya">
-<meta property="og:description" content="Vim Search &amp;amp; Replacement &amp;amp; RegexOptions
+<meta property="og:description" content="Vim Search &amp;amp; Replacement &amp;amp; Regex (with Zero Width)Options
 g Replace all occurrences in the line (without g - only first).
 c 表示进行确认
 p 表示替代结果逐行显示（Ctrl + L恢复屏幕）；
 省略option时仅对每行第一个匹配串进行替换；
 
 magic
-magic (\m)：除了 \$ .">
-<meta property="og:updated_time" content="2016-11-23T15:53:50.000Z">
+m">
+<meta property="og:updated_time" content="2016-11-23T16:20:07.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Vim Search & Replacement & Regex">
-<meta name="twitter:description" content="Vim Search &amp;amp; Replacement &amp;amp; RegexOptions
+<meta name="twitter:title" content="Vim Search & Replacement & Regex(with Zero Width)">
+<meta name="twitter:description" content="Vim Search &amp;amp; Replacement &amp;amp; Regex (with Zero Width)Options
 g Replace all occurrences in the line (without g - only first).
 c 表示进行确认
 p 表示替代结果逐行显示（Ctrl + L恢复屏幕）；
 省略option时仅对每行第一个匹配串进行替换；
 
 magic
-magic (\m)：除了 \$ .">
+m">
   
   
     <link rel="icon" href="/favicon.png">
@@ -104,7 +104,7 @@ magic (\m)：除了 \$ .">
   itemscope itemprop="blogPost">
 	<h2 class="title">
   	<a href="/2016/11/23/Vim-Search-Replacement-Regex/">
-    	Vim Search &amp; Replacement &amp; Regex
+    	Vim Search &amp; Replacement &amp; Regex(with Zero Width)
     </a>
   </h2>
 	<time>
@@ -112,7 +112,7 @@ magic (\m)：除了 \$ .">
 	</time>
 	<section class="content">
   	<div class="article-entry" itemprop="articleBody">
-    	<h1 id="Vim-Search-amp-Replacement-amp-Regex"><a href="#Vim-Search-amp-Replacement-amp-Regex" class="headerlink" title="Vim Search &amp; Replacement &amp; Regex"></a>Vim Search &amp; Replacement &amp; Regex</h1><h2 id="Options"><a href="#Options" class="headerlink" title="Options"></a>Options</h2><ul>
+    	<h1 id="Vim-Search-amp-Replacement-amp-Regex-with-Zero-Width"><a href="#Vim-Search-amp-Replacement-amp-Regex-with-Zero-Width" class="headerlink" title="Vim Search &amp; Replacement &amp; Regex (with Zero Width)"></a>Vim Search &amp; Replacement &amp; Regex (with Zero Width)</h1><h2 id="Options"><a href="#Options" class="headerlink" title="Options"></a>Options</h2><ul>
 <li><strong>g</strong> Replace all occurrences in the line (without g - only first).</li>
 <li><strong>c</strong> 表示进行确认</li>
 <li><strong>p</strong> 表示替代结果逐行显示（Ctrl + L恢复屏幕）；</li>
@@ -122,7 +122,7 @@ magic (\m)：除了 \$ .">
 <li>magic (\m)：除了 \$ . * ^ 之外其他元字符都要加反斜杠。</li>
 <li>nomagic (\M)：除了 \$ ^ 之外其他元字符都要加反斜杠。</li>
 </ul>
-<p>这个设置也可以在正则表达式中通过 \m \M 开关临时切换。 \m 后面的正则表达式会按照 magic 处理，\M 后面的正则表达式按照 nomagic 处理， 而忽略实际的magic设置。<br><a id="more"></a></p>
+<p>这个设置也可以在正则表达式中通过 \m \M 开关临时切换。 \m 后面的正则表达式会按照 magic 处理，\M 后面的正则表达式按照 nomagic 处理， 而忽略实际的magic设置。</p>
 <h5 id="Example"><a href="#Example" class="headerlink" title="Example"></a>Example</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">/\m.* # 查找任意字符串</div><div class="line">/\M.* # 查找字符串 .* （点号后面跟个星号）</div></pre></td></tr></table></figure>
 <p>另外还有更强大的 \v 和 \V。</p>
 <ul>
@@ -139,6 +139,9 @@ magic (\m)：除了 \$ .">
 <h5 id="example"><a href="#example" class="headerlink" title="example"></a>example</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">abbbbbbbc</div><div class="line">abcccc</div><div class="line">abcbbcbcbc</div></pre></td></tr></table></figure>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">/a.\&#123;-\&#125;c </div><div class="line">get </div><div class="line">abbbbbbc</div><div class="line">abc</div><div class="line">abc</div></pre></td></tr></table></figure>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">/a.*c</div><div class="line">get</div><div class="line">abbbbbbbc</div><div class="line">abcccc</div><div class="line">abcbbcbcbc</div></pre></td></tr></table></figure>
+<h2 id="Zero-Width"><a href="#Zero-Width" class="headerlink" title="Zero-Width"></a>Zero-Width</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">1.jpg</div><div class="line">2.jpg</div><div class="line">3.jpg</div></pre></td></tr></table></figure>
+<p>With very magic(preferrted)<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">/\v\d(.jpg)@=</div></pre></td></tr></table></figure></p>
+<p>And with no very magic:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">/\d\(abc\)\@=</div></pre></td></tr></table></figure></p>
 <h2 id="Example-2"><a href="#Example-2" class="headerlink" title="Example"></a>Example</h2><h4 id="从m到n行所有的str1替换成str2"><a href="#从m到n行所有的str1替换成str2" class="headerlink" title="从m到n行所有的str1替换成str2"></a>从m到n行所有的str1替换成str2</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">:m,ns/str1/str2/g</div></pre></td></tr></table></figure>
 <h4 id="替换-M-字符"><a href="#替换-M-字符" class="headerlink" title="替换^M 字符"></a>替换^M 字符</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">:1,$s/^M//g</div></pre></td></tr></table></figure>
 <h4 id="当前行到最后"><a href="#当前行到最后" class="headerlink" title="当前行到最后"></a>当前行到最后</h4><p><code>. ,$</code></p>

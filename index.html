@@ -90,7 +90,7 @@
   
   <h2 class="title">
     <a href="/2016/11/23/Vim-Search-Replacement-Regex/">
-      Vim Search &amp; Replacement &amp; Regex
+      Vim Search &amp; Replacement &amp; Regex(with Zero Width)
     </a>
   </h2>
   
@@ -98,7 +98,7 @@
     11月 23, 2016
   </time>
   <section class="content">
-	  <h1 id="Vim-Search-amp-Replacement-amp-Regex"><a href="#Vim-Search-amp-Replacement-amp-Regex" class="headerlink" title="Vim Search &amp; Replacement &amp; Regex"></a>Vim Search &amp; Replacement &amp; Regex</h1><h2 id="Options"><a href="#Options" class="headerlink" title="Options"></a>Options</h2><ul>
+	  <h1 id="Vim-Search-amp-Replacement-amp-Regex-with-Zero-Width"><a href="#Vim-Search-amp-Replacement-amp-Regex-with-Zero-Width" class="headerlink" title="Vim Search &amp; Replacement &amp; Regex (with Zero Width)"></a>Vim Search &amp; Replacement &amp; Regex (with Zero Width)</h1><h2 id="Options"><a href="#Options" class="headerlink" title="Options"></a>Options</h2><ul>
 <li><strong>g</strong> Replace all occurrences in the line (without g - only first).</li>
 <li><strong>c</strong> 表示进行确认</li>
 <li><strong>p</strong> 表示替代结果逐行显示（Ctrl + L恢复屏幕）；</li>
@@ -108,12 +108,52 @@
 <li>magic (\m)：除了 \$ . * ^ 之外其他元字符都要加反斜杠。</li>
 <li>nomagic (\M)：除了 \$ ^ 之外其他元字符都要加反斜杠。</li>
 </ul>
-<p>这个设置也可以在正则表达式中通过 \m \M 开关临时切换。 \m 后面的正则表达式会按照 magic 处理，\M 后面的正则表达式按照 nomagic 处理， 而忽略实际的magic设置。<br>
+<p>这个设置也可以在正则表达式中通过 \m \M 开关临时切换。 \m 后面的正则表达式会按照 magic 处理，\M 后面的正则表达式按照 nomagic 处理， 而忽略实际的magic设置。</p>
+<h5 id="Example"><a href="#Example" class="headerlink" title="Example"></a>Example</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">/\m.* # 查找任意字符串</div><div class="line">/\M.* # 查找字符串 .* （点号后面跟个星号）</div></pre></td></tr></table></figure>
+<p>另外还有更强大的 \v 和 \V。</p>
+<ul>
+<li>\v （即 very magic 之意）：任何元字符都不用加反斜杠</li>
+<li>\V （即 very nomagic 之意）：任何元字符都必须加反斜杠</li>
+</ul>
+<h5 id="Example-1"><a href="#Example-1" class="headerlink" title="Example"></a>Example</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">/\v(a.c)&#123;3&#125;$ # 查找行尾的abcaccadc </div><div class="line">/\m(a.c)&#123;3&#125;$ # 查找行尾的(abc)&#123;3&#125; </div><div class="line">/\M(a.c)&#123;3&#125;$ # 查找行尾的(a.c)&#123;3&#125; </div><div class="line">/\V(a.c)&#123;3&#125;$ # 查找任意位置的(a.c)&#123;3&#125;$</div></pre></td></tr></table></figure>
+<p>默认设置是 magic，vim也推荐大家都使用magic的设置，在有特殊需要时，直接通过 \v\m\M\V 即可。</p>
+<h2 id="贪婪or非贪婪"><a href="#贪婪or非贪婪" class="headerlink" title="贪婪or非贪婪"></a>贪婪or非贪婪</h2><ul>
+<li>正常搜索都是贪婪 (<code>*</code>)</li>
+<li><code>\{-}</code>为非贪婪</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">\&#123;-n,m&#125;	matches n to m of the preceding atom, as few as possible</div><div class="line">\&#123;-n&#125;	matches n of the preceding atom</div><div class="line">\&#123;-n,&#125;	matches at least n of the preceding atom, as few as possible</div><div class="line">\&#123;-,m&#125;	matches 0 to m of the preceding atom, as few as possible</div><div class="line">\&#123;-&#125;	matches 0 or more of the preceding atom, as few as possible</div></pre></td></tr></table></figure>
+<h5 id="example"><a href="#example" class="headerlink" title="example"></a>example</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">abbbbbbbc</div><div class="line">abcccc</div><div class="line">abcbbcbcbc</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">/a.\&#123;-\&#125;c </div><div class="line">get </div><div class="line">abbbbbbc</div><div class="line">abc</div><div class="line">abc</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">/a.*c</div><div class="line">get</div><div class="line">abbbbbbbc</div><div class="line">abcccc</div><div class="line">abcbbcbcbc</div></pre></td></tr></table></figure>
+<h2 id="Zero-Width"><a href="#Zero-Width" class="headerlink" title="Zero-Width"></a>Zero-Width</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">1.jpg</div><div class="line">2.jpg</div><div class="line">3.jpg</div></pre></td></tr></table></figure>
+<p>With very magic(preferrted)<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">/\v\d(.jpg)@=</div></pre></td></tr></table></figure></p>
+<p>And with no very magic:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">/\d\(abc\)\@=</div></pre></td></tr></table></figure></p>
+<h2 id="Example-2"><a href="#Example-2" class="headerlink" title="Example"></a>Example</h2><h4 id="从m到n行所有的str1替换成str2"><a href="#从m到n行所有的str1替换成str2" class="headerlink" title="从m到n行所有的str1替换成str2"></a>从m到n行所有的str1替换成str2</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">:m,ns/str1/str2/g</div></pre></td></tr></table></figure>
+<h4 id="替换-M-字符"><a href="#替换-M-字符" class="headerlink" title="替换^M 字符"></a>替换^M 字符</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">:1,$s/^M//g</div></pre></td></tr></table></figure>
+<h4 id="当前行到最后"><a href="#当前行到最后" class="headerlink" title="当前行到最后"></a>当前行到最后</h4><p><code>. ,$</code></p>
+<h4 id="删除空行"><a href="#删除空行" class="headerlink" title="删除空行"></a>删除空行</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">刪除沒有內容的空行</div><div class="line">:1,g/^$/d</div><div class="line"></div><div class="line">刪除包含有空格組成的空行</div><div class="line">:1,g/^\s*$/d</div><div class="line"></div><div class="line">除以空格或tab開頭到結尾的空行</div><div class="line">:1,g/^[ |\t]*$/d</div><div class="line">```	</div><div class="line">注意`1,g`是到光标所到的行</div><div class="line"></div><div class="line"></div><div class="line">#### 将That or this 换成 This or that</div></pre></td></tr></table></figure>
+<p>:%s/(That) or (this)/\u\2 or \l\1/<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">#### 将句尾的child换成children</div></pre></td></tr></table></figure></p>
+<p>:%s/child([ ,.;!:?])/children\1/g<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">#### 将mgi/r/abox换成mgi/r/asquare</div></pre></td></tr></table></figure></p>
+<p>:g/mg([ira])box/s//mg//my\1square/g    &lt;=&gt;  :g/mg[ira]box/s/box/square/g<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">#### 将多个空格换成一个空格</div></pre></td></tr></table></figure></p>
+<p>:%s/  */ /g<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">#### 使用空格替换句号或者冒号后面的一个或者多个空格</div></pre></td></tr></table></figure></p>
+<p>:%s/([:.])  */\1 /g<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">#### 删除所有空行</div></pre></td></tr></table></figure></p>
+<p>:g/^$/d<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">#### 删除所有的空白行和空行</div></pre></td></tr></table></figure></p>
+<p>:g/^[  ][  ]*$/d<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">#### 在每行的开始插入两个空白</div></pre></td></tr></table></figure></p>
+<p>:%s/^/&gt;  /<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">#### 在接下来的6行末尾加入.</div></pre></td></tr></table></figure></p>
+<p>:.,5/$/./<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">#### 颠倒文件的行序</div></pre></td></tr></table></figure></p>
+<p>:g/.*/m0O  &lt;=&gt; :g/^/m0O<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">#### 寻找不是数字的开始行,并将其移到文件尾部</div></pre></td></tr></table></figure></p>
+<p>:g!/^[0-9]/m$ &lt;=&gt; g/^[^0-9]/m$<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">#### 将文件的第12到17行内容复制10词放到当前文件的尾部</div></pre></td></tr></table></figure></p>
+<p>:1,10g/^/12,17t$<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">#### 重复次数的作用</div><div class="line"></div><div class="line">将chapter开始行下面的第二行的内容写道begin文件中</div></pre></td></tr></table></figure></p>
+<p>:g/^chapter/.+2w&gt;&gt;begin<br>:/^part2/,/^part3/g/^chapter/.+2w&gt;&gt;begin<br>:/^part2/,/^part3/g/^chapter/.+2w&gt;&gt;begin|+t$<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"></div><div class="line">#### 替换上一次搜索结果</div></pre></td></tr></table></figure></p>
+<p>:%s//new/g<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">#### 在第一个字母后面加y</div></pre></td></tr></table></figure></p>
+<p>:%s/\v(\w)(\w\w)/\1y\2/g<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">#### `&amp;`的使用</div><div class="line"></div><div class="line">**&amp;** the whole matched pattern</div></pre></td></tr></table></figure></p>
+<p>:%s/^./&amp;y</p>
+<pre><code>%s applies the pattern to the whole file.
+^. matches the first character of the line.
+&amp;y adds the y after the pattern.
+</code></pre><p>```</p>
 
-    
-	  <div class="readmore">
-      <a href="/2016/11/23/Vim-Search-Replacement-Regex/">Read More</a>
-    </div>
+
     
     
     
