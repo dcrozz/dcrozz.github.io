@@ -30,7 +30,7 @@ p 表示替代结果逐行显示（Ctrl + L恢复屏幕）；
 
 magic
 m">
-<meta property="og:updated_time" content="2016-11-23T16:20:07.000Z">
+<meta property="og:updated_time" content="2016-11-23T16:21:28.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Vim Search & Replacement & Regex(with Zero Width)">
 <meta name="twitter:description" content="Vim Search &amp;amp; Replacement &amp;amp; Regex (with Zero Width)Options
@@ -120,10 +120,10 @@ m">
 </ul>
 <h2 id="magic"><a href="#magic" class="headerlink" title="magic"></a>magic</h2><ul>
 <li>magic (\m)：除了 \$ . * ^ 之外其他元字符都要加反斜杠。</li>
-<li>nomagic (\M)：除了 \$ ^ 之外其他元字符都要加反斜杠。</li>
+<li>nomagic (\M)：除了 \$ ^ 之外其他元字符都要加反斜杠。<a id="more"></a>
+这个设置也可以在正则表达式中通过 \m \M 开关临时切换。 \m 后面的正则表达式会按照 magic 处理，\M 后面的正则表达式按照 nomagic 处理， 而忽略实际的magic设置。<h5 id="Example"><a href="#Example" class="headerlink" title="Example"></a>Example</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">/\m.* # 查找任意字符串</div><div class="line">/\M.* # 查找字符串 .* （点号后面跟个星号）</div></pre></td></tr></table></figure>
+</li>
 </ul>
-<p>这个设置也可以在正则表达式中通过 \m \M 开关临时切换。 \m 后面的正则表达式会按照 magic 处理，\M 后面的正则表达式按照 nomagic 处理， 而忽略实际的magic设置。</p>
-<h5 id="Example"><a href="#Example" class="headerlink" title="Example"></a>Example</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">/\m.* # 查找任意字符串</div><div class="line">/\M.* # 查找字符串 .* （点号后面跟个星号）</div></pre></td></tr></table></figure>
 <p>另外还有更强大的 \v 和 \V。</p>
 <ul>
 <li>\v （即 very magic 之意）：任何元字符都不用加反斜杠</li>
