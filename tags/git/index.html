@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   
-  <title>Archives: 2017 | Alex&#39;s Heya</title>
+  <title>Tag: git | Alex&#39;s Heya</title>
   <meta name="description" content="{{theme.description}}" />
   <meta name="keywords" content="{{theme.keywords}}" />
   <meta name="HandheldFriendly" content="True" />
@@ -13,7 +13,7 @@
   <meta name="description" content="An Alex only Loves Angel">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Alex's Heya">
-<meta property="og:url" content="http://ukeyim.me/archives/2017/index.html">
+<meta property="og:url" content="http://ukeyim.me/tags/git/index.html">
 <meta property="og:site_name" content="Alex's Heya">
 <meta property="og:description" content="An Alex only Loves Angel">
 <meta name="twitter:card" content="summary">
@@ -78,12 +78,11 @@
     
     <main id="main" role="main">
       
-	
-
-
-	<section class="page-header archive">
-    <h1>- <span>2017</span> -</h1>
+	<section class="page-header tag">
+    <h1>- <span>git</span> -</h1>
   </section>
+
+
 
 
 
@@ -123,147 +122,7 @@
   </section>
 </article>
   
-    <article class="post ">
-
-  
-  <h2 class="title">
-    <a href="/2017/01/18/RST-Inline-Markup-Rules/">
-      RST Inline Markup Rules
-    </a>
-  </h2>
-  
-  <time>
-    1月 18, 2017
-  </time>
-  <section class="content">
-	  <p>RST Inline Markup Rules</p>
-<table>
-<thead>
-<tr>
-<th>Cross-referencing syntax</th>
-<th>content</th>
-<th>examples</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>:file:</code></td>
-<td>file</td>
-<td>:file:<code>ebms.{&lt;timestamp&gt;}@127.0.1.1.Payload.0</code> :file:<code>{&lt;timestamp&gt;}</code></td>
-</tr>
-<tr>
-<td><code>:literal:</code></td>
-<td>value</td>
-<td>:literal:<code>8080</code></td>
-</tr>
-<tr>
-<td><code>:envvar:</code></td>
-<td>environment variables</td>
-<td>:envvar:<code>Environment=JAVA_HOME=/usr/lib/jvm/java-1.8.0-openjdk-amd64/jre</code></td>
-</tr>
-<tr>
-<td><code>:samp:</code></td>
-<td>shell command / url</td>
-<td>:samp:<code>createuser -A -d -P -U {&lt;PROTGRES_ADMIN&gt;}</code> :samp:<code>http://{&lt;HERMES_HOST}:{&lt;HERMES_PORT&gt;}/corvus</code> ( same as :code: except for <code>{}</code> part will be highligh)</td>
-</tr>
-<tr>
-<td><code>:program:</code></td>
-<td>program</td>
-<td>:program:<code>as2-partnership</code></td>
-</tr>
-<tr>
-<td><code>:menuselection:</code></td>
-<td>gui selection</td>
-<td>:menuselection:<code>open with</code></td>
-</tr>
-<tr>
-<td><code>:guilabel</code></td>
-<td>gui button</td>
-<td><code>next</code>, <code>yes</code></td>
-</tr>
-</tbody>
-</table>
-
-
-    
-    
-    
-	  <div class="tags">
-      <a class="tag-link" href="/tags/rst/">rst</a>
-	  </div>
-    
-
-  </section>
-</article>
-  
-    <article class="post ">
-
-  
-  <h2 class="title">
-    <a href="/2017/01/09/MacVim-Tips-When-Editing-RST/">
-      MacVim Tips When Editing RST
-    </a>
-  </h2>
-  
-  <time>
-    1月 9, 2017
-  </time>
-  <section class="content">
-	  <p>今天帮老板写了一天的rst（其实就是修改table，人工给table换行，方便线上阅读源码）。全程用vim修改的，中间搜搜找找再造来几个小轮子，在这里记录一下心得</p>
-<h4 id="处理前"><a href="#处理前" class="headerlink" title="处理前"></a>处理前</h4><p><img src="http://upload-images.jianshu.io/upload_images/4259031-24503339a5dd733c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
-<h4 id="处理后"><a href="#处理后" class="headerlink" title="处理后"></a>处理后</h4><p><img src="http://upload-images.jianshu.io/upload_images/4259031-c6a642b36a2f5752.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br>覆盖剪切和覆盖黏贴（不影响缩进的剪切和黏贴）</p>
-<p>处理table最烦的地方就是画边框，第一次是用<a href="https://github.com/mgaitan/sublime-rst-completion">sublime的rst插件</a>画的（<a href="https://github.com/nvie/vim-rst-tables">vim版本</a>的插件蜜汁不能用），但之后的维护实在是想哭－－每次一动就要再调整边框，于是想如何不影响缩进的对文本进行插入和黏贴。</p>
-<h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><ul>
-<li>剪切：把visual选中的地方存到一个寄存器里（我用的是a，其实无所谓），之后在gv重新选中刚才的区域，r一下用空格（也可以用别的字符）替换就好。</li>
-<li>粘贴：先用R进入批量替换模式，<Ctrl-R>来调用寄存器，按下a把寄存器a里面的内容粘贴出来，在<ESC>退出，完全不影响缩进。
-
-    
-	  <div class="readmore">
-      <a href="/2017/01/09/MacVim-Tips-When-Editing-RST/">Read More</a>
-    </div>
-    
-    
-    
-	  <div class="tags">
-      <a class="tag-link" href="/tags/vim/">vim</a>
-	  </div>
-    
-
-  </section>
-</article>
-  
-    <article class="post ">
-
-  
-  <h2 class="title">
-    <a href="/2017/01/05/monitoring-stack-using-CollectD-Graphite/">
-      monitoring stack using CollectD, Graphite
-    </a>
-  </h2>
-  
-  <time>
-    1月 5, 2017
-  </time>
-  <section class="content">
-	  <h1 id="monitoring-stack-using-CollectD-Graphite"><a href="#monitoring-stack-using-CollectD-Graphite" class="headerlink" title="monitoring stack using CollectD, Graphite"></a>monitoring stack using CollectD, Graphite</h1><h3 id="Install-Graphite"><a href="#Install-Graphite" class="headerlink" title="Install Graphite"></a>Install Graphite</h3><p>On Graphite Server install graphite packages: </p>
-<p><code>sudo apt-get update</code></p>
-<p><code>sudo apt-get install graphite-web graphite-carbon</code></p>
-<h3 id="Install-and-configure-PostgreSQL"><a href="#Install-and-configure-PostgreSQL" class="headerlink" title="Install and configure PostgreSQL"></a>Install and configure PostgreSQL</h3><p><code>sudo apt-get install postgresql libpq-dev python-psycopg2</code></p>
-<p>Switch to postgres user and create DB user graphite_user<br>
-
-    
-	  <div class="readmore">
-      <a href="/2017/01/05/monitoring-stack-using-CollectD-Graphite/">Read More</a>
-    </div>
-    
-    
-    
-
-  </section>
-</article>
-  
 </section>
-
 
 
       <script>setLoadingBarProgress(60);</script>
