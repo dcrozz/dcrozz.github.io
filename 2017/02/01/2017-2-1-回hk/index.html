@@ -4,40 +4,31 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   
-  <title>Set Drupal on Mac | Alex&#39;s Heya</title>
+  <title>2017-2-1 回hk第一天 | Alex&#39;s Heya</title>
   <meta name="description" content="{{theme.description}}" />
   <meta name="keywords" content="{{theme.keywords}}" />
   <meta name="HandheldFriendly" content="True" />
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Apache &amp;amp; PHP config on MacThree ways to check the php config
-
-php -i | grep php.ini
-php –ini
-create php file with following line: &amp;lt;?php phpinfo(); and open the file in the browser
-
-PHP opcache">
+  <meta name="description" content="今天没事先发邮件请假，旷工一天，感觉彻底激怒leader了，确实不是第一次擅自决定出勤时间了，深刻反省…
+csl的sim卡丢了，要室友本人带着身份证去补办（因为是用他的身份证办的宽带然后送的sim卡），感觉是一个比花钱花时间解决事情难得多的大任务啊….
+persona5的剧情看起来实在是漫漫无期，把设定集看一下就弃b站专心学术吧，明天还要去做第二份parttime希望一切顺利。
+今天真是完美的煎熬">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Set Drupal on Mac">
-<meta property="og:url" content="http://ukeyim.me/2016/10/17/Set-Drupal-on-Mac/index.html">
+<meta property="og:title" content="2017-2-1 回hk第一天">
+<meta property="og:url" content="http://ukeyim.me/2017/02/01/2017-2-1-回hk/index.html">
 <meta property="og:site_name" content="Alex's Heya">
-<meta property="og:description" content="Apache &amp;amp; PHP config on MacThree ways to check the php config
-
-php -i | grep php.ini
-php –ini
-create php file with following line: &amp;lt;?php phpinfo(); and open the file in the browser
-
-PHP opcache">
-<meta property="og:updated_time" content="2016-11-11T08:57:53.000Z">
+<meta property="og:description" content="今天没事先发邮件请假，旷工一天，感觉彻底激怒leader了，确实不是第一次擅自决定出勤时间了，深刻反省…
+csl的sim卡丢了，要室友本人带着身份证去补办（因为是用他的身份证办的宽带然后送的sim卡），感觉是一个比花钱花时间解决事情难得多的大任务啊….
+persona5的剧情看起来实在是漫漫无期，把设定集看一下就弃b站专心学术吧，明天还要去做第二份parttime希望一切顺利。
+今天真是完美的煎熬">
+<meta property="og:updated_time" content="2017-02-01T15:46:27.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Set Drupal on Mac">
-<meta name="twitter:description" content="Apache &amp;amp; PHP config on MacThree ways to check the php config
-
-php -i | grep php.ini
-php –ini
-create php file with following line: &amp;lt;?php phpinfo(); and open the file in the browser
-
-PHP opcache">
+<meta name="twitter:title" content="2017-2-1 回hk第一天">
+<meta name="twitter:description" content="今天没事先发邮件请假，旷工一天，感觉彻底激怒leader了，确实不是第一次擅自决定出勤时间了，深刻反省…
+csl的sim卡丢了，要室友本人带着身份证去补办（因为是用他的身份证办的宽带然后送的sim卡），感觉是一个比花钱花时间解决事情难得多的大任务啊….
+persona5的剧情看起来实在是漫漫无期，把设定集看一下就弃b站专心学术吧，明天还要去做第二份parttime希望一切顺利。
+今天真是完美的煎熬">
   
   
     <link rel="icon" href="/favicon.png">
@@ -96,42 +87,29 @@ PHP opcache">
     <script>setLoadingBarProgress(40);</script>
     
     <main id="main" role="main">
-      <article id="post-Set-Drupal-on-Mac"
+      <article id="post-2017-2-1-回hk"
   class="post article white-box article-type-post"
   itemscope itemprop="blogPost">
 	<h2 class="title">
-  	<a href="/2016/10/17/Set-Drupal-on-Mac/">
-    	Set Drupal on Mac
+  	<a href="/2017/02/01/2017-2-1-回hk/">
+    	2017-2-1 回hk第一天
     </a>
   </h2>
 	<time>
-	  10月 17, 2016
+	  2月 1, 2017
 	</time>
 	<section class="content">
   	<div class="article-entry" itemprop="articleBody">
-    	<h1 id="Apache-amp-PHP-config-on-Mac"><a href="#Apache-amp-PHP-config-on-Mac" class="headerlink" title="Apache &amp; PHP config on Mac"></a>Apache &amp; PHP config on Mac</h1><p>Three ways to check the php config</p>
-<ul>
-<li>php -i | grep php.ini</li>
-<li>php –ini</li>
-<li>create php file with following line: &lt;?php phpinfo(); and open the file in the browser</li>
-</ul>
-<h2 id="PHP-opcache-config"><a href="#PHP-opcache-config" class="headerlink" title="PHP opcache config"></a>PHP opcache config</h2><p>/etc/php.ini</p>
-<a id="more"></a>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">zend_extension=/usr/lib/php/extensions/no-debug-non-zts-20121212/opcache.so  #!!important</div><div class="line">opcache.memory_consumption=128</div><div class="line">opcache.interned_strings_buffer=8</div><div class="line">opcache.max_accelerated_files=4000</div><div class="line">opcache.revalidate_freq=60</div><div class="line">opcache.fast_shutdown=1</div><div class="line">opcache.enable_cli=1</div></pre></td></tr></table></figure>
-<h2 id="Troubleshoot"><a href="#Troubleshoot" class="headerlink" title="Troubleshoot"></a>Troubleshoot</h2><h3 id="PHP连接MySQL的时候报错SQLSTATE-HY000-2002-No-such-file-or-directory"><a href="#PHP连接MySQL的时候报错SQLSTATE-HY000-2002-No-such-file-or-directory" class="headerlink" title="PHP连接MySQL的时候报错SQLSTATE[HY000] [2002] No such file or directory"></a>PHP连接MySQL的时候报错SQLSTATE[HY000] [2002] No such file or directory</h3><p>错误环境：Mac OS 10.10</p>
-<p>找到mysql.sock文件的位置<br><code>$sudo find / -name mysql.sock</code></p>
-<p>——结果如下———-<br><code>find: /dev/fd/3: Not a directory
-find: /dev/fd/4: Not a directory
-/private/tmp/mysql.sock</code></p>
-<p>检查/var/mysql是否存在<br><code>$ll /var/mysql</code></p>
-<p>如果/var/mysql不存在则创建<br><code>$sudo mkdir /var/mysql</code></p>
-<p>将mysql.sock文件映射到/var/mysql路径中<br><code>$sudo ln -s /private/tmp/mysql.sock  /var/mysql/mysql.sock</code></p>
+    	<p>今天没事先发邮件请假，旷工一天，感觉彻底激怒leader了，确实不是第一次擅自决定出勤时间了，深刻反省…</p>
+<p>csl的sim卡丢了，要室友本人带着身份证去补办（因为是用他的身份证办的宽带然后送的sim卡），感觉是一个比花钱花时间解决事情难得多的大任务啊….</p>
+<p>persona5的剧情看起来实在是漫漫无期，把设定集看一下就弃b站专心学术吧，明天还要去做第二份parttime希望一切顺利。</p>
+<p>今天真是完美的煎熬的一天啊，2017年看来开门就不这么走运呢，还是宅着看书别走远门了。<br><a id="more"></a><br>对这份信息就是为了刷一个github的contribute数的，明天一定正儿八经写代码（老板不要开除我啊QAQ）</p>
 
   	</div>
 	  
 	  <div class="article-tags tags">
 		  
-        <a class="tag-link" href="/tags/drupal/">drupal</a><a class="tag-link" href="/tags/mac/">mac</a>
+        <a class="tag-link" href="/tags/daily/">daily</a>
       
 	  </div>
 	</section>
