@@ -93,6 +93,37 @@
 
   
   <h2 class="title">
+    <a href="/2017/02/09/SOLVED-Strange-backspace-behaviour-with-zsh/">
+      [SOLVED] Strange backspace behaviour with zsh
+    </a>
+  </h2>
+  
+  <time>
+    2月 9, 2017
+  </time>
+  <section class="content">
+	  <p>ssh登录学校的ubuntu主机，不知道是不是和装了xen有关，zsh对按键响应异常，delete虽然删除了字符但是向右多显示一个空格，⬅️不显示移动光标</p>
+<p>stty erase ‘^?’ 设置无果</p>
+<p>解决方案：<br>在.zshrc里添加<br>export TERM=xterm</p>
+<p>可能是zsh默认设置了一个不存在的term的问题，重新设置一个ubuntu自带的term就OK了。</p>
+<p>ps1: 不加的话，w3m的会报错’term not set’<br>ps2: 不加的话vim会报一个’Terminal entry not found in terminfo’的错。</p>
+
+
+    
+    
+    
+	  <div class="tags">
+      <a class="tag-link" href="/tags/linux/">linux</a><a class="tag-link" href="/tags/zsh/">zsh</a>
+	  </div>
+    
+
+  </section>
+</article>
+  
+    <article class="post ">
+
+  
+  <h2 class="title">
     <a href="/2016/12/18/ssh反向隧道实现端口转发-需要公网server/">
       ssh反向隧道实现端口转发(需要公网server)
     </a>

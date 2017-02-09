@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   
-  <title>Archives | Alex&#39;s Heya</title>
+  <title>Tag: zsh | Alex&#39;s Heya</title>
   <meta name="description" content="{{theme.description}}" />
   <meta name="keywords" content="{{theme.keywords}}" />
   <meta name="HandheldFriendly" content="True" />
@@ -13,7 +13,7 @@
   <meta name="description" content="An Alex only Loves Angel">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Alex's Heya">
-<meta property="og:url" content="http://ukeyim.me/archives/page/4/index.html">
+<meta property="og:url" content="http://ukeyim.me/tags/zsh/index.html">
 <meta property="og:site_name" content="Alex's Heya">
 <meta property="og:description" content="An Alex only Loves Angel">
 <meta name="twitter:card" content="summary">
@@ -78,75 +78,50 @@
     
     <main id="main" role="main">
       
-  <article id="archive-page"
-    class="post article white-box">
-    <h2 class="title">
-      <a href="/archives">
-        Archives
-      </a>
-    </h2>
-    <section class="archive">
-      
-            <h3 class="archive-item archive-year">
-              <a id="archive-year-2016" href="/archives/2016/">
-                2016
-              </a>
-            </h3>
-      
-          <div class="archive-item archive-post">
-            <a href="/2016/11/23/Vim-Search-Replacement-Regex/">
-              <time>11-23</time>
-              <span class="title">Vim Search &amp; Replacement &amp; Regex(with Zero Width)</span>
-            </a>
-          </div>
-      
-          <div class="archive-item archive-post">
-            <a href="/2016/11/18/Drupal-8-Import-CSV-to-D8/">
-              <time>11-18</time>
-              <span class="title">Drupal 8 -- Import CSV to D8</span>
-            </a>
-          </div>
-      
-          <div class="archive-item archive-post">
-            <a href="/2016/11/14/Drupal-8-Add-Duration-to-Event/">
-              <time>11-14</time>
-              <span class="title">Drupal 8-Add Duration to Event</span>
-            </a>
-          </div>
-      
-          <div class="archive-item archive-post">
-            <a href="/2016/11/13/Visual-Revelation-Reading-Note-2/">
-              <time>11-13</time>
-              <span class="title">&lt;Visual Revelation&gt;--Reading Note (2)</span>
-            </a>
-          </div>
-      
-          <div class="archive-item archive-post">
-            <a href="/2016/11/06/Fly me to the london(updaing/">
-              <time>11-06</time>
-              <span class="title">Fly Me to the London(updaing</span>
-            </a>
-          </div>
-      
-    </section>
-  </article>
+	<section class="page-header tag">
+    <h1>- <span>zsh</span> -</h1>
+  </section>
+
+
+
+
+
+
+<section class="post-list">
+	
+    <article class="post ">
+
   
+  <h2 class="title">
+    <a href="/2017/02/09/SOLVED-Strange-backspace-behaviour-with-zsh/">
+      [SOLVED] Strange backspace behaviour with zsh
+    </a>
+  </h2>
   
-    <nav id="page-nav">
-      
-      <a class="prev" rel="prev" href="/archives/page/3/">
-        <span class="icon icon-chevron-left"></span>
-        <span class="text">Previous</span>
-      </a>
-      
-      
-      <a class="next" rel="next" href="/archives/page/5/">
-        <span class="text">Next</span>
-        <span class="icon icon-chevron-right"></span>
-      </a>
-      
-    </nav>
+  <time>
+    2月 9, 2017
+  </time>
+  <section class="content">
+	  <p>ssh登录学校的ubuntu主机，不知道是不是和装了xen有关，zsh对按键响应异常，delete虽然删除了字符但是向右多显示一个空格，⬅️不显示移动光标</p>
+<p>stty erase ‘^?’ 设置无果</p>
+<p>解决方案：<br>在.zshrc里添加<br>export TERM=xterm</p>
+<p>可能是zsh默认设置了一个不存在的term的问题，重新设置一个ubuntu自带的term就OK了。</p>
+<p>ps1: 不加的话，w3m的会报错’term not set’<br>ps2: 不加的话vim会报一个’Terminal entry not found in terminfo’的错。</p>
+
+
+    
+    
+    
+	  <div class="tags">
+      <a class="tag-link" href="/tags/linux/">linux</a><a class="tag-link" href="/tags/zsh/">zsh</a>
+	  </div>
+    
+
+  </section>
+</article>
   
+</section>
+
 
       <script>setLoadingBarProgress(60);</script>
     </main>
