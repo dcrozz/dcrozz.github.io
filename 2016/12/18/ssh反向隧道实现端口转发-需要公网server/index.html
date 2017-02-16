@@ -22,7 +22,7 @@ SSH原理与运用（二）：远程登录 - 阮一峰的网络日志 http://www
 愛と奇跡の物語 http://arondight.me/2016/02/17/使用SSH反向隧道进行内网穿透/
 SSH原理与运用（二）：远程登录 - 阮一峰的网络日志 http://www.ruanyifeng.com/blog/2011/12/ssh_port_forwarding.html
 【原创】使用ssh正向连接、反向连接、做socks代理的方法 http://dzmailbox.">
-<meta property="og:updated_time" content="2016-12-18T12:53:34.000Z">
+<meta property="og:updated_time" content="2017-02-16T13:38:18.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ssh反向隧道实现端口转发(需要公网server)">
 <meta name="twitter:description" content="参考：
@@ -120,8 +120,15 @@ SSH原理与运用（二）：远程登录 - 阮一峰的网络日志 http://www
 </ul>
 <h4 id="alarm"><a href="#alarm" class="headerlink" title="alarm:"></a>alarm:</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"># 把NAS的22号端口转发到vps的6766（自定义）端口（6777是autossh用来监听进程的）</div><div class="line">$ autossh -p 22 -M 6777 -NR &apos;*:6766:localhost:22&apos; vps_username@vps_ip -f</div><div class="line"># 把NAS的80端口转到vps的32000（自定义）端口，查看yaaw页面用的</div><div class="line">$ ssh -NT -f -R *:32000:localhost:80 vps_username@vps_ip</div><div class="line"># 转发6800，aria2的端口</div><div class="line">$ ssh -NT -f -R *:6800:localhost:6800 vps_username@vps_ip</div></pre></td></tr></table></figure>
 <h4 id="vps"><a href="#vps" class="headerlink" title="vps:"></a>vps:</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">编辑/etc/ssh/sshd_config</div><div class="line">Gatewayforward yes</div></pre></td></tr></table></figure>
+<p>注意是全局ssh的设置</p>
 <h4 id="alex"><a href="#alex" class="headerlink" title="alex:"></a>alex:</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"># 实现nat穿透 远程访问</div><div class="line">$ ssh -p 6766 alarm@vps_ip</div></pre></td></tr></table></figure>
-<p>yaaw下载的问题还没解决 待更新…</p>
+<h4 id="使用autossh自动重连"><a href="#使用autossh自动重连" class="headerlink" title="使用autossh自动重连:"></a>使用autossh自动重连:</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">autossh -p 22 -M 6777 -NR &apos;*:36000:127.0.0.1:22&apos; alex@host_ip -4 -f</div></pre></td></tr></table></figure>
+<ul>
+<li>-4 使用ipv4，否则会把连接认成是ipv6</li>
+<li>-f 在后台跑…不然没法挂着</li>
+<li>要事先加好rsa.pub，否则-f跳过了输入验证码的环节没法开启隧道</li>
+</ul>
+<h4 id="tips"><a href="#tips" class="headerlink" title="tips"></a>tips</h4><p>除了ssh使用的22号端口，80还有6800这样aria2和httpd使用的端口也可以映射，8200的dlna端口没有尝试。 仔细一想端口都暴露在外面好可怕(aria2没加密码等于是裸奔在互联网上)，以防万一还是注意一下比较好。</p>
 
   	</div>
 	  
