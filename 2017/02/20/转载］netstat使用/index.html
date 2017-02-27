@@ -20,7 +20,7 @@
 <meta property="og:description" content="写在最前面同学们，mac的netstat和linux的是不一样的啊
 前言netstat命令用于显示与IP、TCP、UDP和ICMP协议相关的统计数据，一般用于检验本机各端口的网络连接情况。netstat是在内核中访问网络及相关信息的程序，它能提供TCP连接，TCP和UDP监听，进程内存管理的相关报告。
 如果你的计算机有时候接收到的数据报导致出错数据或故障，你不必感到奇怪，TCP/IP可以容许这些类">
-<meta property="og:updated_time" content="2017-02-20T04:35:18.000Z">
+<meta property="og:updated_time" content="2017-02-20T04:36:47.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="[转载］netstat使用">
 <meta name="twitter:description" content="写在最前面同学们，mac的netstat和linux的是不一样的啊
@@ -101,6 +101,7 @@
 <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>netstat命令用于显示与IP、TCP、UDP和ICMP协议相关的统计数据，一般用于检验本机各端口的网络连接情况。netstat是在内核中访问网络及相关信息的程序，它能提供TCP连接，TCP和UDP监听，进程内存管理的相关报告。</p>
 <p>如果你的计算机有时候接收到的数据报导致出错数据或故障，你不必感到奇怪，TCP/IP可以容许这些类型的错误，并能够自动重发数据报。但如果累计的出错情况数目占到所接收的IP数据报相当大的百分比，或者它的数目正迅速增加，那么你就应该使用netstat查一查为什么会出现这些情况了。</p>
 <p>netstat命令可以显示网络接口的很多统计信息，包括打开的socket和路由表。无选项运行命令显示打开的socket。</p>
+<a id="more"></a>
 <h2 id="默认"><a href="#默认" class="headerlink" title="默认"></a>默认</h2><p><code># netstat</code></p>
 <p>我的mac上的输出</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">Active Internet connections</div><div class="line">Proto Recv-Q Send-Q  Local Address          Foreign Address        (state)</div><div class="line">tcp4       0      0  alexs-mbp.51472        www.evernote.com.https ESTABLISHED</div><div class="line">tcp4       0      0  alexs-mbp.51468        hkg12s09-in-f14..https ESTABLISHED</div><div class="line">tcp4       0      0  alexs-mbp.49451        ec2-54-149-28-20.https ESTABLISHED</div><div class="line">tcp4       0      0  alexs-mbp.49429        17.188.138.72.5223     ESTABLISHED</div><div class="line">tcp4       0      0  alexs-mbp.49425        173.112.255.173..https ESTABLISHED</div><div class="line">tcp4       0      0  alexs-mbp.49161        17.252.236.33.5223     ESTABLISHED</div><div class="line">udp4       0      0  *.*                    *.*</div><div class="line">udp4       0      0  *.*                    *.*</div><div class="line">udp4       0      0  *.61469                *.*</div><div class="line">udp4       0      0  *.*                    *.*</div><div class="line">udp4       0      0  *.*                    *.*</div><div class="line">udp4       0      0  *.*                    *.*</div><div class="line">udp6       0      0  alexs-mbp.local.ntp    *.*</div><div class="line">udp4       0      0  alexs-mbp.ntp          *.*</div></pre></td></tr></table></figure>

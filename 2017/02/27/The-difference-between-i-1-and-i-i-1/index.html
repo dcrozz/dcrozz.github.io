@@ -4,21 +4,28 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   
-  <title>Archives | Alex&#39;s Heya</title>
+  <title>The difference between i += 1 and i = i + 1 | Alex&#39;s Heya</title>
   <meta name="description" content="{{theme.description}}" />
   <meta name="keywords" content="{{theme.keywords}}" />
   <meta name="HandheldFriendly" content="True" />
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="An Alex only Loves Angel">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Alex's Heya">
-<meta property="og:url" content="http://ukeyim.me/archives/index.html">
+  <meta name="description" content="今天朋友碰到了问题
+123456789l = []lst = []lst.append(l)l += [1]# lst = [1]l = l + [2]# lst = [1]l += [3]# lst = [3]
+为什么lst里面的l值通过 l += [1]可以改变， 而l = l + [1]就没法影响lst里面的值呢？">
+<meta property="og:type" content="article">
+<meta property="og:title" content="The difference between i += 1 and i = i + 1">
+<meta property="og:url" content="http://ukeyim.me/2017/02/27/The-difference-between-i-1-and-i-i-1/index.html">
 <meta property="og:site_name" content="Alex's Heya">
-<meta property="og:description" content="An Alex only Loves Angel">
+<meta property="og:description" content="今天朋友碰到了问题
+123456789l = []lst = []lst.append(l)l += [1]# lst = [1]l = l + [2]# lst = [1]l += [3]# lst = [3]
+为什么lst里面的l值通过 l += [1]可以改变， 而l = l + [1]就没法影响lst里面的值呢？">
+<meta property="og:updated_time" content="2017-02-27T14:52:44.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Alex's Heya">
-<meta name="twitter:description" content="An Alex only Loves Angel">
+<meta name="twitter:title" content="The difference between i += 1 and i = i + 1">
+<meta name="twitter:description" content="今天朋友碰到了问题
+123456789l = []lst = []lst.append(l)l += [1]# lst = [1]l = l + [2]# lst = [1]l += [3]# lst = [3]
+为什么lst里面的l值通过 l += [1]可以改变， 而l = l + [1]就没法影响lst里面的值呢？">
   
   
     <link rel="icon" href="/favicon.png">
@@ -77,71 +84,44 @@
     <script>setLoadingBarProgress(40);</script>
     
     <main id="main" role="main">
+      <article id="post-The-difference-between-i-1-and-i-i-1"
+  class="post article white-box article-type-post"
+  itemscope itemprop="blogPost">
+	<h2 class="title">
+  	<a href="/2017/02/27/The-difference-between-i-1-and-i-i-1/">
+    	The difference between i += 1 and i = i + 1
+    </a>
+  </h2>
+	<time>
+	  2月 27, 2017
+	</time>
+	<section class="content">
+  	<div class="article-entry" itemprop="articleBody">
+    	<p>今天朋友碰到了问题</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">l = []</div><div class="line">lst = []</div><div class="line">lst.append(l)</div><div class="line">l += [1]</div><div class="line"># lst = [1]</div><div class="line">l = l + [2]</div><div class="line"># lst = [1]</div><div class="line">l += [3]</div><div class="line"># lst = [3]</div></pre></td></tr></table></figure>
+<p>为什么lst里面的l值通过 <code>l += [1]</code>可以改变， 而<code>l = l + [1]</code>就没法影响lst里面的值呢？<br><a id="more"></a></p>
+<h4 id="解决"><a href="#解决" class="headerlink" title="解决"></a>解决</h4><p>+= 是对原本的实例做加1运算， l = l + [1]是对l + [1]之后重新把值赋给叫l的变量（和原来的l不同）。</p>
+<blockquote>
+<p>The difference is that one modifies the data-structure itself (in-place operation) b += 1 while the other just reassigns the variable a = a + 1.</p>
+<p>Just for completeness:</p>
+<p>x += y is not always doing an in-place operation, there are (at least) three exceptions:</p>
+<p>   If x doesn’t implement an <strong>iadd</strong> method then the x += y statement is just a shorthand for x = x + y. This would be the case if x was something like an int.</p>
+<p>   If <strong>iadd</strong> returns NotImplemented, Python falls back to x = x + y.</p>
+<p>   The <strong>iadd</strong> method could theoretically be implemented to not work in place. It’d be really weird to do that, though.</p>
+</blockquote>
+<p>转自：<br><a href="http://stackoverflow.com/questions/41446833/what-is-the-difference-between-i-i-1-and-i-1-in-a-for-loop" target="_blank" rel="external">What is the difference between i = i + 1 and i += 1 in a ‘for’ loop? [duplicate]</a></p>
+
+  	</div>
+	  
+	  <div class="article-tags tags">
+		  
+        <a class="tag-link" href="/tags/python/">python</a>
       
-  <article id="archive-page"
-    class="post article white-box">
-    <h2 class="title">
-      <a href="/archives">
-        Archives
-      </a>
-    </h2>
-    <section class="archive">
-      
-            <h3 class="archive-item archive-year">
-              <a id="archive-year-2017" href="/archives/2017/">
-                2017
-              </a>
-            </h3>
-      
-          <div class="archive-item archive-post">
-            <a href="/2017/02/27/The-difference-between-i-1-and-i-i-1/">
-              <time>02-27</time>
-              <span class="title">The difference between i += 1 and i = i + 1</span>
-            </a>
-          </div>
-      
-          <div class="archive-item archive-post">
-            <a href="/2017/02/20/转载］netstat使用/">
-              <time>02-20</time>
-              <span class="title">[转载］netstat使用</span>
-            </a>
-          </div>
-      
-          <div class="archive-item archive-post">
-            <a href="/2017/02/14/Firefox-清除地址栏中的自动补全结果/">
-              <time>02-14</time>
-              <span class="title">Firefox 清除地址栏中的自动补全结果</span>
-            </a>
-          </div>
-      
-          <div class="archive-item archive-post">
-            <a href="/2017/02/09/Writing-a-connection-string-when-password-contains-special-characters/">
-              <time>02-09</time>
-              <span class="title">Writing a connection string when password contains special characters</span>
-            </a>
-          </div>
-      
-          <div class="archive-item archive-post">
-            <a href="/2017/02/09/SOLVED-Strange-backspace-behaviour-with-zsh/">
-              <time>02-09</time>
-              <span class="title">[SOLVED] Strange backspace behaviour with zsh</span>
-            </a>
-          </div>
-      
-    </section>
-  </article>
-  
-  
-    <nav id="page-nav">
-      
-      
-      <a class="next" rel="next" href="/archives/page/2/">
-        <span class="text">Next</span>
-        <span class="icon icon-chevron-right"></span>
-      </a>
-      
-    </nav>
-  
+	  </div>
+	</section>
+</article>
+
+
 
       <script>setLoadingBarProgress(60);</script>
     </main>

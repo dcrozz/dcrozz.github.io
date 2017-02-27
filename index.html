@@ -89,6 +89,38 @@
 
   
   <h2 class="title">
+    <a href="/2017/02/27/The-difference-between-i-1-and-i-i-1/">
+      The difference between i += 1 and i = i + 1
+    </a>
+  </h2>
+  
+  <time>
+    2月 27, 2017
+  </time>
+  <section class="content">
+	  <p>今天朋友碰到了问题</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">l = []</div><div class="line">lst = []</div><div class="line">lst.append(l)</div><div class="line">l += [1]</div><div class="line"># lst = [1]</div><div class="line">l = l + [2]</div><div class="line"># lst = [1]</div><div class="line">l += [3]</div><div class="line"># lst = [3]</div></pre></td></tr></table></figure>
+<p>为什么lst里面的l值通过 <code>l += [1]</code>可以改变， 而<code>l = l + [1]</code>就没法影响lst里面的值呢？<br>
+
+    
+	  <div class="readmore">
+      <a href="/2017/02/27/The-difference-between-i-1-and-i-i-1/">Read More</a>
+    </div>
+    
+    
+    
+	  <div class="tags">
+      <a class="tag-link" href="/tags/python/">python</a>
+	  </div>
+    
+
+  </section>
+</article>
+  
+    <article class="post ">
+
+  
+  <h2 class="title">
     <a href="/2017/02/20/转载］netstat使用/">
       [转载］netstat使用
     </a>
@@ -102,59 +134,11 @@
 <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>netstat命令用于显示与IP、TCP、UDP和ICMP协议相关的统计数据，一般用于检验本机各端口的网络连接情况。netstat是在内核中访问网络及相关信息的程序，它能提供TCP连接，TCP和UDP监听，进程内存管理的相关报告。</p>
 <p>如果你的计算机有时候接收到的数据报导致出错数据或故障，你不必感到奇怪，TCP/IP可以容许这些类型的错误，并能够自动重发数据报。但如果累计的出错情况数目占到所接收的IP数据报相当大的百分比，或者它的数目正迅速增加，那么你就应该使用netstat查一查为什么会出现这些情况了。</p>
 <p>netstat命令可以显示网络接口的很多统计信息，包括打开的socket和路由表。无选项运行命令显示打开的socket。</p>
-<h2 id="默认"><a href="#默认" class="headerlink" title="默认"></a>默认</h2><p><code># netstat</code></p>
-<p>我的mac上的输出</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">Active Internet connections</div><div class="line">Proto Recv-Q Send-Q  Local Address          Foreign Address        (state)</div><div class="line">tcp4       0      0  alexs-mbp.51472        www.evernote.com.https ESTABLISHED</div><div class="line">tcp4       0      0  alexs-mbp.51468        hkg12s09-in-f14..https ESTABLISHED</div><div class="line">tcp4       0      0  alexs-mbp.49451        ec2-54-149-28-20.https ESTABLISHED</div><div class="line">tcp4       0      0  alexs-mbp.49429        17.188.138.72.5223     ESTABLISHED</div><div class="line">tcp4       0      0  alexs-mbp.49425        173.112.255.173..https ESTABLISHED</div><div class="line">tcp4       0      0  alexs-mbp.49161        17.252.236.33.5223     ESTABLISHED</div><div class="line">udp4       0      0  *.*                    *.*</div><div class="line">udp4       0      0  *.*                    *.*</div><div class="line">udp4       0      0  *.61469                *.*</div><div class="line">udp4       0      0  *.*                    *.*</div><div class="line">udp4       0      0  *.*                    *.*</div><div class="line">udp4       0      0  *.*                    *.*</div><div class="line">udp6       0      0  alexs-mbp.local.ntp    *.*</div><div class="line">udp4       0      0  alexs-mbp.ntp          *.*</div></pre></td></tr></table></figure>
-<p>linux上的输出</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">[root@localhost ~]# netstat</div><div class="line">Active Internet connections (w/o servers)</div><div class="line">Proto Recv-Q Send-Q Local Address               Foreign Address             State      </div><div class="line">tcp        0    268 192.168.120.204:ssh         10.2.0.68:62420             ESTABLISHED </div><div class="line">udp        0      0 192.168.120.204:4371        10.58.119.119:domain        ESTABLISHED </div><div class="line">Active UNIX domain sockets (w/o servers)</div><div class="line">Proto RefCnt Flags       Type       State         I-Node Path</div><div class="line">unix  2      [ ]         DGRAM                    1491   @/org/kernel/udev/udevd</div><div class="line">unix  4      [ ]         DGRAM                    7337   /dev/log</div><div class="line">unix  2      [ ]         DGRAM                    708823 </div><div class="line">unix  2      [ ]         DGRAM                    7539   </div><div class="line">unix  3      [ ]         STREAM     CONNECTED     7287   </div><div class="line">unix  3      [ ]         STREAM     CONNECTED     7286</div></pre></td></tr></table></figure>
-<p>从整体上看，netstat的输出结果可以分为两个部分：</p>
-<p>一个是Active Internet connections，称为有源TCP连接，其中”Recv-Q”和”Send-Q”指的是接收队列和发送队列。这些数字一般都应该是0。如果不是则表示软件包正在队列中堆积。这种情况只能在非常少的情况见到。</p>
-<p>另一个是Active UNIX domain sockets，称为有源Unix域套接口(和网络套接字一样，但是只能用于本机通信，性能可以提高一倍)。</p>
-<p>Proto显示连接使用的协议,RefCnt表示连接到本套接口上的进程号,Types显示套接口的类型,State显示套接口当前的状态,Path表示连接到套接口的其它进程使用的路径名。</p>
-<p>套接口类型：</p>
-<ul>
-<li>-t TCP</li>
-<li>-u UDP</li>
-<li>-raw RAW类型</li>
-<li>–unix UNIX域类型</li>
-<li>–ax25 AX25类型</li>
-<li>–ipx ipx类型</li>
-<li>–netrom netrom类型</li>
-<li>-a (all)显示所有选项，默认不显示LISTEN相关</li>
-<li>-n 拒绝显示别名，能显示数字的全部转化成数字(比如默认会把22显示为ssh）</li>
-<li>-l 仅列出有在 Listen (监听) 的服務状态</li>
-<li>-p 显示建立相关链接的程序名</li>
-<li>-r 显示路由信息，路由表</li>
-<li>-e 显示扩展信息，例如uid等</li>
-<li>-s 按各个协议进行统计</li>
-<li>-c 每隔一个固定时间，执行该netstat命令。</li>
-</ul>
-<p>状态说明：</p>
-<ul>
-<li>LISTEN：侦听来自远方的TCP端口的连接请求</li>
-<li>SYN-SENT：再发送连接请求后等待匹配的连接请求（如果有大量这样的状态包，检查是否中招了）</li>
-<li>SYN-RECEIVED：再收到和发送一个连接请求后等待对方对连接请求的确认（如有大量此状态，估计被flood攻击了）</li>
-<li>ESTABLISHED：代表一个打开的连接</li>
-<li>FIN-WAIT-1：等待远程TCP连接中断请求，或先前的连接中断请求的确认</li>
-<li>FIN-WAIT-2：从远程TCP等待连接中断请求</li>
-<li>CLOSE-WAIT：等待从本地用户发来的连接中断请求</li>
-<li>CLOSING：等待远程TCP对连接中断的确认</li>
-<li>LAST-ACK：等待原来的发向远程TCP的连接中断请求的确认（不是什么好东西，此项出现，检查是否被攻击）</li>
-<li>TIME-WAIT：等待足够的时间以确保远程TCP接收到连接中断请求的确认</li>
-<li>CLOSED：没有任何连接状态</li>
-</ul>
-<h2 id="常用"><a href="#常用" class="headerlink" title="常用"></a>常用</h2><ul>
-<li>附加显示LISTEN的链接<br><code># netstat -a</code></li>
-<li>显示当前UDP连接状况<br><code>＃ netstat -nu</code></li>
-<li>显示UDP端口号的使用情况<br><code># netstat -apu</code></li>
-<li>查看10022端口使用情况 / 找出程序运行的端口<br><code>netstat -nap | grep 10022</code><br><code>netstat -ap | grep ssh</code>（ssh做端口名）</li>
-<li>在 netstat 输出中显示 PID 和进程名称<br><code>netstat -p</code></li>
-<li>显示网络接口列表<br><code>netstat -i</code></li>
-<li>显示网络统计信息<br><code># netstat -s</code><br>按照各个协议分别显示其统计数据。如果我们的应用程序（如Web浏览器）运行速度比较慢，或者不能显示Web页之类的数据，那么我们就可以用本选项来查看一下所显示的信息。我们需要仔细查看统计数据的各行，找到出错的关键字，进而确定问题所在。</li>
-<li>日常查端口<br><code>netstat -tulnp |grep ssh</code> （ssh做程序名）</li>
-</ul>
 
-
+    
+	  <div class="readmore">
+      <a href="/2017/02/20/转载］netstat使用/">Read More</a>
+    </div>
     
     
     
@@ -250,42 +234,6 @@
     
 	  <div class="tags">
       <a class="tag-link" href="/tags/linux/">linux</a><a class="tag-link" href="/tags/zsh/">zsh</a>
-	  </div>
-    
-
-  </section>
-</article>
-  
-    <article class="post ">
-
-  
-  <h2 class="title">
-    <a href="/2017/02/06/Set-up-flask-demo-with-open-source-project/">
-      Set up flask demo with open source project
-    </a>
-  </h2>
-  
-  <time>
-    2月 6, 2017
-  </time>
-  <section class="content">
-	  <p>今天的工作，老板终于要让我做CI了好感动。</p>
-<p>###Clone the project and set up virtual environment</p>
-<ul>
-<li><p>Choose a workspace to place the project</p>
-  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">$ mkdir gitlab</div><div class="line"></div><div class="line">$ cd mkdir</div><div class="line"></div><div class="line">$ gcl https://gitlab.com:cecid/microblog.git</div><div class="line"></div><div class="line">$ cd microblog</div></pre></td></tr></table></figure>
-</li>
-</ul>
-
-    
-	  <div class="readmore">
-      <a href="/2017/02/06/Set-up-flask-demo-with-open-source-project/">Read More</a>
-    </div>
-    
-    
-    
-	  <div class="tags">
-      <a class="tag-link" href="/tags/flask/">flask</a><a class="tag-link" href="/tags/python/">python</a>
 	  </div>
     
 
