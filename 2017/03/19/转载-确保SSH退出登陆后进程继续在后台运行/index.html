@@ -4,21 +4,34 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   
-  <title>Tag: linux | Alex&#39;s Heya</title>
+  <title>[转载]确保SSH退出登陆后进程继续在后台运行 | Alex&#39;s Heya</title>
   <meta name="description" content="{{theme.description}}" />
   <meta name="keywords" content="{{theme.keywords}}" />
   <meta name="HandheldFriendly" content="True" />
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="An Alex only Loves Angel">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Alex's Heya">
-<meta property="og:url" content="http://ukeyim.me/tags/linux/index.html">
+  <meta name="description" content="转载自:http://zjking.blog.51cto.com/976858/1117828
+作者:zjking 
+问题描述：当SSH远程连接到服务器上，然后运行一个服务 ./catalina.sh start，然后把终端开闭（切断SSH连接）之后，发现该服务中断，导致网页无法访问。
+解决方法：使用nohup命令让程序在关闭窗口（切换SSH连接）的时候程序还能继续在后台运行。
+Unix/Linu">
+<meta property="og:type" content="article">
+<meta property="og:title" content="[转载]确保SSH退出登陆后进程继续在后台运行">
+<meta property="og:url" content="http://ukeyim.me/2017/03/19/转载-确保SSH退出登陆后进程继续在后台运行/index.html">
 <meta property="og:site_name" content="Alex's Heya">
-<meta property="og:description" content="An Alex only Loves Angel">
+<meta property="og:description" content="转载自:http://zjking.blog.51cto.com/976858/1117828
+作者:zjking 
+问题描述：当SSH远程连接到服务器上，然后运行一个服务 ./catalina.sh start，然后把终端开闭（切断SSH连接）之后，发现该服务中断，导致网页无法访问。
+解决方法：使用nohup命令让程序在关闭窗口（切换SSH连接）的时候程序还能继续在后台运行。
+Unix/Linu">
+<meta property="og:updated_time" content="2017-03-20T15:35:09.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Alex's Heya">
-<meta name="twitter:description" content="An Alex only Loves Angel">
+<meta name="twitter:title" content="[转载]确保SSH退出登陆后进程继续在后台运行">
+<meta name="twitter:description" content="转载自:http://zjking.blog.51cto.com/976858/1117828
+作者:zjking 
+问题描述：当SSH远程连接到服务器上，然后运行一个服务 ./catalina.sh start，然后把终端开闭（切断SSH连接）之后，发现该服务中断，导致网页无法访问。
+解决方法：使用nohup命令让程序在关闭窗口（切换SSH连接）的时候程序还能继续在后台运行。
+Unix/Linu">
   
   
     <link rel="icon" href="/favicon.png">
@@ -77,32 +90,20 @@
     <script>setLoadingBarProgress(40);</script>
     
     <main id="main" role="main">
-      
-	<section class="page-header tag">
-    <h1>- <span>linux</span> -</h1>
-  </section>
-
-
-
-
-
-
-<section class="post-list">
-	
-    <article class="post ">
-
-  
-  <h2 class="title">
-    <a href="/2017/03/19/转载-确保SSH退出登陆后进程继续在后台运行/">
-      [转载]确保SSH退出登陆后进程继续在后台运行
+      <article id="post-转载-确保SSH退出登陆后进程继续在后台运行"
+  class="post article white-box article-type-post"
+  itemscope itemprop="blogPost">
+	<h2 class="title">
+  	<a href="/2017/03/19/转载-确保SSH退出登陆后进程继续在后台运行/">
+    	[转载]确保SSH退出登陆后进程继续在后台运行
     </a>
   </h2>
-  
-  <time>
-    3月 19, 2017
-  </time>
-  <section class="content">
-	  <p>转载自:<a href="http://zjking.blog.51cto.com/976858/1117828" target="_blank" rel="external">http://zjking.blog.51cto.com/976858/1117828</a></p>
+	<time>
+	  3月 19, 2017
+	</time>
+	<section class="content">
+  	<div class="article-entry" itemprop="articleBody">
+    	<p>转载自:<a href="http://zjking.blog.51cto.com/976858/1117828" target="_blank" rel="external">http://zjking.blog.51cto.com/976858/1117828</a></p>
 <p>作者:zjking </p>
 <h3 id="问题描述："><a href="#问题描述：" class="headerlink" title="问题描述："></a>问题描述：</h3><p>当SSH远程连接到服务器上，然后运行一个服务 ./catalina.sh start，然后把终端开闭（切断SSH连接）之后，发现该服务中断，导致网页无法访问。</p>
 <h3 id="解决方法："><a href="#解决方法：" class="headerlink" title="解决方法："></a>解决方法：</h3><p>使用nohup命令让程序在关闭窗口（切换SSH连接）的时候程序还能继续在后台运行。</p>
@@ -149,155 +150,16 @@
 <p>如果想在关闭ssh连接后刚才启动的程序继续运行怎么办，可以使用nohup。但是如果要求第二天来的时候，一开ssh，还能查看到昨天运行的程序的状态，然后继续工作，这时nohup是不行了，需要使用screen来达到这个目的。</p>
 <p>虽然nohup很容易使用，但还是比较“简陋”的，对于简单的命令能够应付过来，对于复杂的需要人机交互的任务就麻烦了。<br>其实我们可以使用一个更为强大的实用程序screen。流行的Linux发行版（例如Red Hat Enterprise Linux 4）通常会自带screen实用程序，如果没有的话，可以从GNU screen的官方网站下载。</p>
 
-
-    
-    
-    
-	  <div class="tags">
-      <a class="tag-link" href="/tags/linux/">linux</a>
+  	</div>
+	  
+	  <div class="article-tags tags">
+		  
+        <a class="tag-link" href="/tags/linux/">linux</a>
+      
 	  </div>
-    
-
-  </section>
+	</section>
 </article>
-  
-    <article class="post ">
 
-  
-  <h2 class="title">
-    <a href="/2017/02/20/转载］netstat使用/">
-      [转载］netstat使用
-    </a>
-  </h2>
-  
-  <time>
-    2月 20, 2017
-  </time>
-  <section class="content">
-	  <h2 id="写在最前面"><a href="#写在最前面" class="headerlink" title="写在最前面"></a>写在最前面</h2><p><strong>同学们，mac的netstat和linux的是不一样的啊</strong></p>
-<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>netstat命令用于显示与IP、TCP、UDP和ICMP协议相关的统计数据，一般用于检验本机各端口的网络连接情况。netstat是在内核中访问网络及相关信息的程序，它能提供TCP连接，TCP和UDP监听，进程内存管理的相关报告。</p>
-<p>如果你的计算机有时候接收到的数据报导致出错数据或故障，你不必感到奇怪，TCP/IP可以容许这些类型的错误，并能够自动重发数据报。但如果累计的出错情况数目占到所接收的IP数据报相当大的百分比，或者它的数目正迅速增加，那么你就应该使用netstat查一查为什么会出现这些情况了。</p>
-<p>netstat命令可以显示网络接口的很多统计信息，包括打开的socket和路由表。无选项运行命令显示打开的socket。</p>
-
-    
-	  <div class="readmore">
-      <a href="/2017/02/20/转载］netstat使用/">Read More</a>
-    </div>
-    
-    
-    
-	  <div class="tags">
-      <a class="tag-link" href="/tags/linux/">linux</a><a class="tag-link" href="/tags/netstat/">netstat</a>
-	  </div>
-    
-
-  </section>
-</article>
-  
-    <article class="post ">
-
-  
-  <h2 class="title">
-    <a href="/2017/02/09/SOLVED-Strange-backspace-behaviour-with-zsh/">
-      [SOLVED] Strange backspace behaviour with zsh
-    </a>
-  </h2>
-  
-  <time>
-    2月 9, 2017
-  </time>
-  <section class="content">
-	  <p>ssh登录学校的ubuntu主机，不知道是不是和装了xen有关，zsh对按键响应异常，delete虽然删除了字符但是向右多显示一个空格，⬅️不显示移动光标</p>
-<p>stty erase ‘^?’ 设置无果</p>
-<p>解决方案：<br>在.zshrc里添加<br>export TERM=xterm</p>
-<p>可能是zsh默认设置了一个不存在的term的问题，重新设置一个ubuntu自带的term就OK了。</p>
-<p>ps1: 不加的话，w3m的会报错’term not set’<br>ps2: 不加的话vim会报一个’Terminal entry not found in terminfo’的错。</p>
-
-
-    
-    
-    
-	  <div class="tags">
-      <a class="tag-link" href="/tags/linux/">linux</a><a class="tag-link" href="/tags/zsh/">zsh</a>
-	  </div>
-    
-
-  </section>
-</article>
-  
-    <article class="post ">
-
-  
-  <h2 class="title">
-    <a href="/2016/12/18/ssh反向隧道实现端口转发-需要公网server/">
-      ssh反向隧道实现端口转发(需要公网server)
-    </a>
-  </h2>
-  
-  <time>
-    12月 18, 2016
-  </time>
-  <section class="content">
-	  <h3 id="参考："><a href="#参考：" class="headerlink" title="参考："></a>参考：</h3><ul>
-<li>愛と奇跡の物語 <a href="http://arondight.me/2016/02/17/使用SSH反向隧道进行内网穿透/">http://arondight.me/2016/02/17/使用SSH反向隧道进行内网穿透/</a></li>
-<li>SSH原理与运用（二）：远程登录 - 阮一峰的网络日志 <a href="http://www.ruanyifeng.com/blog/2011/12/ssh_port_forwarding.html">http://www.ruanyifeng.com/blog/2011/12/ssh_port_forwarding.html</a></li>
-<li>【原创】使用ssh正向连接、反向连接、做socks代理的方法 <a href="http://dzmailbox.blog.163.com/blog/static/120534385201232642637847/">http://dzmailbox.blog.163.com/blog/static/120534385201232642637847/</a></li>
-<li>How to make ssh tunnel open to public?  <a href="http://superuser.com/questions/588591/how-to-make-ssh-tunnel-open-to-public">http://superuser.com/questions/588591/how-to-make-ssh-tunnel-open-to-public</a></li>
-</ul>
-<h3 id="其实参考里面写的很详细了，主要要注意的地方就是"><a href="#其实参考里面写的很详细了，主要要注意的地方就是" class="headerlink" title="其实参考里面写的很详细了，主要要注意的地方就是:"></a>其实参考里面写的很详细了，主要要注意的地方就是:</h3><ul>
-<li>要在<code>/etc/ssh/sshd_config</code>设置<code>Gatewayforword yes</code>，在用户目录下好像还是不行的</li>
-<li><strong>注意vps的防火墙</strong>，DO的vps自带ufw只对外开放22，80，443端口，（亏我还nmap了一下看到我定义的端口是开着的），关了ufw就可以直接端口转发了</li>
-<li>aria2界面可以进（转发了80端口）但是就算把6800端口映射过去也不能下载（直接跳失败），原因猜想是读取的是vps上的aria2配置（which does not exist），等搞出来了以后更新一下吧明天还要考试。</li>
-</ul>
-<h3 id="下面简单贴一下配置："><a href="#下面简单贴一下配置：" class="headerlink" title="下面简单贴一下配置："></a>下面简单贴一下配置：</h3>
-
-    
-	  <div class="readmore">
-      <a href="/2016/12/18/ssh反向隧道实现端口转发-需要公网server/">Read More</a>
-    </div>
-    
-    
-    
-	  <div class="tags">
-      <a class="tag-link" href="/tags/linux/">linux</a>
-	  </div>
-    
-
-  </section>
-</article>
-  
-    <article class="post ">
-
-  
-  <h2 class="title">
-    <a href="/2016/10/18/linux sniffing-nmap/">
-      linux嗅探命令:nmap研究(待更新)
-    </a>
-  </h2>
-  
-  <time>
-    10月 18, 2016
-  </time>
-  <section class="content">
-	  <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>起因是连着港大的wifi没法直接通过22号端口（ssh）访问别的站点（git push），debug的时候就在想是不是什么端口被关了，想扫描一下端口（其实好像不是扫描端口的问题），连这两天看了几篇讲nmap的文章感觉很不错，顺便恶补一下我的网络知识。</p>
-<h2 id="nmap入门"><a href="#nmap入门" class="headerlink" title="nmap入门"></a>nmap入门</h2>
-
-    
-	  <div class="readmore">
-      <a href="/2016/10/18/linux sniffing-nmap/">Read More</a>
-    </div>
-    
-    
-    
-	  <div class="tags">
-      <a class="tag-link" href="/tags/linux/">linux</a><a class="tag-link" href="/tags/nmap/">nmap</a>
-	  </div>
-    
-
-  </section>
-</article>
-  
-</section>
 
 
       <script>setLoadingBarProgress(60);</script>

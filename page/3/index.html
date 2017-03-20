@@ -49,7 +49,7 @@
 		<a id="logo" href="/">
 			<img src="/images/logo.png" />
 			<span id="site-desc">
-			  an alex always loves alex
+			  i dont wanna stop
       </span>
 		</a>
 		<button id="site-nav-switch">
@@ -85,6 +85,79 @@
 
 <section class="post-list">
 	
+    <article class="post ">
+
+  
+  <h2 class="title">
+    <a href="/2017/01/18/RST-Inline-Markup-Rules/">
+      RST Inline Markup Rules
+    </a>
+  </h2>
+  
+  <time>
+    1月 18, 2017
+  </time>
+  <section class="content">
+	  <p>RST Inline Markup Rules</p>
+<table>
+<thead>
+<tr>
+<th>Cross-referencing syntax</th>
+<th>content</th>
+<th>examples</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>:file:</code></td>
+<td>file</td>
+<td>:file:<code>ebms.{&lt;timestamp&gt;}@127.0.1.1.Payload.0</code> :file:<code>{&lt;timestamp&gt;}</code></td>
+</tr>
+<tr>
+<td><code>:literal:</code></td>
+<td>value</td>
+<td>:literal:<code>8080</code></td>
+</tr>
+<tr>
+<td><code>:envvar:</code></td>
+<td>environment variables</td>
+<td>:envvar:<code>Environment=JAVA_HOME=/usr/lib/jvm/java-1.8.0-openjdk-amd64/jre</code></td>
+</tr>
+<tr>
+<td><code>:samp:</code></td>
+<td>shell command / url</td>
+<td>:samp:<code>createuser -A -d -P -U {&lt;PROTGRES_ADMIN&gt;}</code> :samp:<code>http://{&lt;HERMES_HOST}:{&lt;HERMES_PORT&gt;}/corvus</code> ( same as :code: except for <code>{}</code> part will be highligh)</td>
+</tr>
+<tr>
+<td><code>:program:</code></td>
+<td>program</td>
+<td>:program:<code>as2-partnership</code></td>
+</tr>
+<tr>
+<td><code>:menuselection:</code></td>
+<td>gui selection</td>
+<td>:menuselection:<code>open with</code></td>
+</tr>
+<tr>
+<td><code>:guilabel</code></td>
+<td>gui button</td>
+<td><code>next</code>, <code>yes</code></td>
+</tr>
+</tbody>
+</table>
+
+
+    
+    
+    
+	  <div class="tags">
+      <a class="tag-link" href="/tags/rst/">rst</a>
+	  </div>
+    
+
+  </section>
+</article>
+  
     <article class="post ">
 
   
@@ -218,38 +291,6 @@
     
 	  <div class="tags">
       <a class="tag-link" href="/tags/linux/">linux</a>
-	  </div>
-    
-
-  </section>
-</article>
-  
-    <article class="post ">
-
-  
-  <h2 class="title">
-    <a href="/2016/12/16/（转）vim下单行长文本的时候卡顿解决办法/">
-      （转）vim下单行长文本的时候卡顿解决办法
-    </a>
-  </h2>
-  
-  <time>
-    12月 16, 2016
-  </time>
-  <section class="content">
-	  <p>最近还在用rst写文档的苦海里…</p>
-<p>在vim编辑文件时，若单行过长，可能会导致vim卡顿，严重影响使用体验</p>
-<p>估计是syntax匹配效率过滥导致。。</p>
-<p>偶尔发现了一个临时的解决办法就是关掉syntax然后再打开，即在命令模式下</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">:syntax off</div><div class="line">:syntax on</div></pre></td></tr></table></figure>
-<p>特别厉害</p>
-
-
-    
-    
-    
-	  <div class="tags">
-      <a class="tag-link" href="/tags/vim/">vim</a>
 	  </div>
     
 
