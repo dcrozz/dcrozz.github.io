@@ -24,7 +24,7 @@ zjking的几个思考写的很好啊忍不住想记下来，侵删
 
 zjking的几个思考写的很好啊忍不住想记下来，侵删
 问题描述：远程ssh用tar打包一">
-<meta property="og:updated_time" content="2017-03-21T15:45:35.000Z">
+<meta property="og:updated_time" content="2017-03-22T02:17:24.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="[转载][整理]解决SSH退出登陆后保持进程继续在后台运行">
 <meta name="twitter:description" content="转载自:http://zjking.blog.51cto.com/976858/1117828 作者:zjking 
@@ -109,7 +109,7 @@ zjking的几个思考写的很好啊忍不住想记下来，侵删
 </ul>
 <p>zjking的几个思考写的很好啊忍不住想记下来，侵删</p>
 <h3 id="问题描述："><a href="#问题描述：" class="headerlink" title="问题描述："></a>问题描述：</h3><p>远程ssh用tar打包一个文件夹或者unrar解压一个大文件，即使加了&amp;，退出ssh登录时解压进程中断。</p>
-<p>ps:直接exit的话会提示<code>zsh: you have running jobs.</code>，强行退出会有<code>zsh: warning: 1 jobs SIGHUPed</code>提示。</p>
+<p>ps:直接exit的话会提示<code>zsh: you have running jobs.</code>，强行退出会有<code>zsh: warning: 1 jobs SIGHUPed</code>提示。<br><a id="more"></a></p>
 <h3 id="关于SIGNUP信号"><a href="#关于SIGNUP信号" class="headerlink" title="关于SIGNUP信号"></a>关于SIGNUP信号</h3><p>直接转一段wiki</p>
 <p>If the process receiving SIGHUP is a Unix shell, then as part of job control it will often intercept the signal and ensure that all stopped processes are continued before sending the signal to child processes (more precisely, process groups, represented internally by the shell as a “job”), which by default terminates them.</p>
 <p>This can be circumvented in two ways. Firstly, the Single UNIX Specification describes a shell utility called <strong>nohup</strong>, which can be used as a wrapper to start a program and make it <strong>ignore SIGHUP by default</strong>. Secondly, child process groups can be “<strong>disowned</strong>“ by invoking disown with the job id, which <strong>removes the process group from the shell’s job table (so they will not be sent SIGHUP)</strong>, or (optionally) keeps them in the job table but prevents them from receiving SIGHUP on shell termination.</p>
