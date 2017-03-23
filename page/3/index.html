@@ -89,6 +89,39 @@
 
   
   <h2 class="title">
+    <a href="/2017/01/30/使用git给项目打patch/">
+      使用git给项目打patch
+    </a>
+  </h2>
+  
+  <time>
+    1月 30, 2017
+  </time>
+  <section class="content">
+	  <p>升级了ff51让vimperator不能用了，顿时感觉生活不能自理，按着issue给的方法给vimperator打patch重新make一下。</p>
+<p>使用git支持两种patch，对应着不同的打patch方法。</p>
+<h3 id="通过git-diff生成的patch"><a href="#通过git-diff生成的patch" class="headerlink" title="通过git diff生成的patch"></a>通过git diff生成的patch</h3><h4 id="生成patch"><a href="#生成patch" class="headerlink" title="生成patch"></a>生成patch</h4><p><code>$git diff master &gt; patch</code></p>
+<h4 id="patch格式"><a href="#patch格式" class="headerlink" title="patch格式"></a>patch格式</h4>
+
+    
+	  <div class="readmore">
+      <a href="/2017/01/30/使用git给项目打patch/">Read More</a>
+    </div>
+    
+    
+    
+	  <div class="tags">
+      <a class="tag-link" href="/tags/git/">git</a>
+	  </div>
+    
+
+  </section>
+</article>
+  
+    <article class="post ">
+
+  
+  <h2 class="title">
     <a href="/2017/01/18/RST-Inline-Markup-Rules/">
       RST Inline Markup Rules
     </a>
@@ -250,47 +283,6 @@
     
 	  <div class="tags">
       <a class="tag-link" href="/tags/vimperator/">vimperator</a>
-	  </div>
-    
-
-  </section>
-</article>
-  
-    <article class="post ">
-
-  
-  <h2 class="title">
-    <a href="/2016/12/18/ssh反向隧道实现端口转发-需要公网server/">
-      ssh反向隧道实现端口转发(需要公网server)
-    </a>
-  </h2>
-  
-  <time>
-    12月 18, 2016
-  </time>
-  <section class="content">
-	  <h3 id="参考："><a href="#参考：" class="headerlink" title="参考："></a>参考：</h3><ul>
-<li>愛と奇跡の物語 <a href="http://arondight.me/2016/02/17/使用SSH反向隧道进行内网穿透/">http://arondight.me/2016/02/17/使用SSH反向隧道进行内网穿透/</a></li>
-<li>SSH原理与运用（二）：远程登录 - 阮一峰的网络日志 <a href="http://www.ruanyifeng.com/blog/2011/12/ssh_port_forwarding.html">http://www.ruanyifeng.com/blog/2011/12/ssh_port_forwarding.html</a></li>
-<li>【原创】使用ssh正向连接、反向连接、做socks代理的方法 <a href="http://dzmailbox.blog.163.com/blog/static/120534385201232642637847/">http://dzmailbox.blog.163.com/blog/static/120534385201232642637847/</a></li>
-<li>How to make ssh tunnel open to public?  <a href="http://superuser.com/questions/588591/how-to-make-ssh-tunnel-open-to-public">http://superuser.com/questions/588591/how-to-make-ssh-tunnel-open-to-public</a></li>
-</ul>
-<h3 id="其实参考里面写的很详细了，主要要注意的地方就是"><a href="#其实参考里面写的很详细了，主要要注意的地方就是" class="headerlink" title="其实参考里面写的很详细了，主要要注意的地方就是:"></a>其实参考里面写的很详细了，主要要注意的地方就是:</h3><ul>
-<li>要在<code>/etc/ssh/sshd_config</code>设置<code>Gatewayforword yes</code>，在用户目录下好像还是不行的</li>
-<li><strong>注意vps的防火墙</strong>，DO的vps自带ufw只对外开放22，80，443端口，（亏我还nmap了一下看到我定义的端口是开着的），关了ufw就可以直接端口转发了</li>
-<li>aria2界面可以进（转发了80端口）但是就算把6800端口映射过去也不能下载（直接跳失败），原因猜想是读取的是vps上的aria2配置（which does not exist），等搞出来了以后更新一下吧明天还要考试。</li>
-</ul>
-<h3 id="下面简单贴一下配置："><a href="#下面简单贴一下配置：" class="headerlink" title="下面简单贴一下配置："></a>下面简单贴一下配置：</h3>
-
-    
-	  <div class="readmore">
-      <a href="/2016/12/18/ssh反向隧道实现端口转发-需要公网server/">Read More</a>
-    </div>
-    
-    
-    
-	  <div class="tags">
-      <a class="tag-link" href="/tags/linux/">linux</a>
 	  </div>
     
 
