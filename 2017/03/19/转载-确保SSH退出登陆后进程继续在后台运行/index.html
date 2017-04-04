@@ -24,7 +24,7 @@ zjking的几个思考写的很好啊忍不住想记下来，侵删
 
 zjking的几个思考写的很好啊忍不住想记下来，侵删
 问题描述：远程ssh用tar打包一">
-<meta property="og:updated_time" content="2017-03-22T05:41:04.000Z">
+<meta property="og:updated_time" content="2017-04-04T14:05:51.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="[转载][整理]解决SSH退出登陆后保持进程继续在后台运行">
 <meta name="twitter:description" content="转载自:http://zjking.blog.51cto.com/976858/1117828 作者:zjking 
@@ -148,11 +148,14 @@ zjking的几个思考写的很好啊忍不住想记下来，侵删
 <p>  简而言之： <strong>就是ssh 打开以后，bash等都是他的子程序，一旦ssh关闭，系统将所有相关进程杀掉！！ 导致一旦ssh关闭，执行中的任务就取消了</strong></p>
 <p>  例子：<br>  我们来看一个例子。打开两个SSH终端窗口，在其中一个运行top命令。</p>
   <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">[root@tivf09 root]# top</div></pre></td></tr></table></figure>
-<p>  在另一个终端窗口，找到top的进程ID为5180，其父进程ID为5128，即登录shell。</p>
-  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">[root@tivf09 root]# ps -ef|grep top</div><div class="line">root      5180  5128  0 01:03 pts/0    00:00:02 top</div><div class="line">root      5857  3672  0 01:12 pts/2    00:00:00 grep top</div></pre></td></tr></table></figure>
 </li>
 </ul>
-<pre><code>使用pstree命令可以更清楚地看到这个关系：
+<pre><code>在另一个终端窗口，找到top的进程ID为5180，其父进程ID为5128，即登录shell。
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">[root@tivf09 root]# ps -ef|grep top</div><div class="line">root      5180  5128  0 01:03 pts/0    00:00:02 top</div><div class="line">root      5857  3672  0 01:12 pts/2    00:00:00 grep top</div></pre></td></tr></table></figure>
+
+
+使用pstree命令可以更清楚地看到这个关系：
 
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">[root@tivf09 root]# pstree -H 5180|grep top</div><div class="line">|-sshd-+-sshd---bash---top</div><div class="line">```       </div><div class="line"></div><div class="line">使用ps-xj命令可以看到，登录shell（PID 5128）和top在同一个会话期，shell为会话期首进程，所在进程组PGID为5128，top所在进程组PGID为5180，为前台进程组。</div></pre></td></tr></table></figure>
 
