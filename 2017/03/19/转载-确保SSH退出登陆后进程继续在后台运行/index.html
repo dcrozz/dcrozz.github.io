@@ -24,7 +24,7 @@ zjking的几个思考写的很好啊忍不住想记下来，侵删
 
 zjking的几个思考写的很好啊忍不住想记下来，侵删
 问题描述：远程ssh用tar打包一">
-<meta property="og:updated_time" content="2017-04-04T14:05:51.000Z">
+<meta property="og:updated_time" content="2017-04-10T14:50:59.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="[转载][整理]解决SSH退出登陆后保持进程继续在后台运行">
 <meta name="twitter:description" content="转载自:http://zjking.blog.51cto.com/976858/1117828 作者:zjking 
@@ -138,60 +138,49 @@ zjking的几个思考写的很好啊忍不住想记下来，侵删
 <p><strong>结合重定向知识:</strong><br>为了不让一些执行信息输出到前台（控制台），我们还会加上刚才提到的&gt;/dev/null 2&gt;&amp;1命令来丢弃所有的输出：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"># nohup java -jar xxxx.jar &gt;/dev/null 2&gt;&amp;1 &amp;</div></pre></td></tr></table></figure>
 <h3 id="思考"><a href="#思考" class="headerlink" title="思考"></a>思考</h3><ul>
-<li><p>问题1为什么ssh一关闭，程序就不再运行了？</p>
-<p>  元凶：SIGHUP 信号<br>  让我们来看看为什么关掉窗口/断开连接会使得正在运行的程序死掉。</p>
-<p>  在Linux/Unix中，有这样几个概念：</p>
-<p>  <strong>进程组（process group）</strong>：一个或多个进程的集合，每一个进程组有唯一一个进程组ID，即进程组长进程的ID。</p>
-<p>  <strong>会话期（session）</strong>：一个或多个进程组的集合，有唯一一个会话期首进程（session leader）。会话期ID为首进程的ID。<br>  会话期可以有一个单独的控制终端（controlling terminal）。与控制终端连接的会话期首进程叫做控制进程（controlling process）。当前与终端交互的进程称为前台进程组。其余进程组称为后台进程组。</p>
-<p>  根据POSIX.1定义：<br>  <strong>挂断信号（SIGHUP）</strong>默认的动作是终止程序。<br>  当终端接口检测到网络连接断开，将挂断信号发送给控制进程（会话期首进程）。<br>  如果会话期首进程终止，则该信号发送到该会话期前台进程组。<br>  一个进程退出导致一个孤儿进程组中产生时，如果任意一个孤儿进程组进程处于STOP状态，发送SIGHUP和SIGCONT信号到该进程组中所有进程。（关于孤儿进程参照：<a href="http://blog.csdn.net/hmsiwtv/article/details/7901711" target="_blank" rel="external">http://blog.csdn.net/hmsiwtv/article/details/7901711</a> ）</p>
-<p>  结论：因此当网络断开或终端窗口关闭后，也就是SSH断开以后，控制进程收到SIGHUP信号退出，会导致该会话期内其他进程退出。</p>
-<p>  简而言之： <strong>就是ssh 打开以后，bash等都是他的子程序，一旦ssh关闭，系统将所有相关进程杀掉！！ 导致一旦ssh关闭，执行中的任务就取消了</strong></p>
-<p>  例子：<br>  我们来看一个例子。打开两个SSH终端窗口，在其中一个运行top命令。</p>
-  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">[root@tivf09 root]# top</div></pre></td></tr></table></figure>
-</li>
+<li>问题1为什么ssh一关闭，程序就不再运行了？</li>
 </ul>
-<pre><code>在另一个终端窗口，找到top的进程ID为5180，其父进程ID为5128，即登录shell。
-
+<p>元凶：SIGHUP 信号<br>让我们来看看为什么关掉窗口/断开连接会使得正在运行的程序死掉。</p>
+<p>在Linux/Unix中，有这样几个概念：</p>
+<p><strong>进程组（process group）</strong>：一个或多个进程的集合，每一个进程组有唯一一个进程组ID，即进程组长进程的ID。</p>
+<p><strong>会话期（session）</strong>：一个或多个进程组的集合，有唯一一个会话期首进程（session leader）。会话期ID为首进程的ID。<br>会话期可以有一个单独的控制终端（controlling terminal）。与控制终端连接的会话期首进程叫做控制进程（controlling process）。当前与终端交互的进程称为前台进程组。其余进程组称为后台进程组。</p>
+<p>根据POSIX.1定义：<br><strong>挂断信号（SIGHUP）</strong>默认的动作是终止程序。<br>当终端接口检测到网络连接断开，将挂断信号发送给控制进程（会话期首进程）。<br>如果会话期首进程终止，则该信号发送到该会话期前台进程组。<br>一个进程退出导致一个孤儿进程组中产生时，如果任意一个孤儿进程组进程处于STOP状态，发送SIGHUP和SIGCONT信号到该进程组中所有进程。（关于孤儿进程参照：<a href="http://blog.csdn.net/hmsiwtv/article/details/7901711" target="_blank" rel="external">http://blog.csdn.net/hmsiwtv/article/details/7901711</a> ）</p>
+<p>结论：因此当网络断开或终端窗口关闭后，也就是SSH断开以后，控制进程收到SIGHUP信号退出，会导致该会话期内其他进程退出。</p>
+<p>简而言之： <strong>就是ssh 打开以后，bash等都是他的子程序，一旦ssh关闭，系统将所有相关进程杀掉！！ 导致一旦ssh关闭，执行中的任务就取消了</strong></p>
+<p>例子：<br>我们来看一个例子。打开两个SSH终端窗口，在其中一个运行top命令。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">[root@tivf09 root]# top</div></pre></td></tr></table></figure>
+<p>在另一个终端窗口，找到top的进程ID为5180，其父进程ID为5128，即登录shell。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">[root@tivf09 root]# ps -ef|grep top</div><div class="line">root      5180  5128  0 01:03 pts/0    00:00:02 top</div><div class="line">root      5857  3672  0 01:12 pts/2    00:00:00 grep top</div></pre></td></tr></table></figure>
-
-
-使用pstree命令可以更清楚地看到这个关系：
-
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">[root@tivf09 root]# pstree -H 5180|grep top</div><div class="line">|-sshd-+-sshd---bash---top</div><div class="line">```       </div><div class="line"></div><div class="line">使用ps-xj命令可以看到，登录shell（PID 5128）和top在同一个会话期，shell为会话期首进程，所在进程组PGID为5128，top所在进程组PGID为5180，为前台进程组。</div></pre></td></tr></table></figure>
-
-[root@tivf09 root]# ps -xj|grep 5128
-5126  5128  5128  5128 pts/0     5180 S        0   0:00 -bash
-5128  5180  5180  5128 pts/0     5180 S        0   0:50 top
-3672 18095 18094  3672 pts/2    18094 S        0   0:00 grep 5128
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">关闭第一个SSH窗口，在另一个窗口中可以看到top也被杀掉了。</div></pre></td></tr></table></figure>
-
-[root@tivf09 root]# ps -ef|grep 5128
-root     18699  3672  0 04:35 pts/2    00:00:00 grep 5128
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">* 问题2   为什么守护程序就算ssh 打开的，就算关闭ssh也不会影响其运行？</div><div class="line"></div><div class="line">	因为他们的程序特殊，比如httpd –k start运行这个以后， **他不属于sshd这个进程组  而是单独的进程组**，所以就算关闭了ssh，和他也没有任何关系！</div></pre></td></tr></table></figure>
-
-[root@CentOS5-4 ~]# pstree |grep http
-     |-httpd
-[root@CentOS5-4 ~]# pstree |grep top
-     |-sshd-+-sshd---bash---top
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">	</div><div class="line">	结论：守护进程的启动命令本身就是特殊的，和一般命令不同的，比如mysqld_safe 这样的命令 一旦使用了  就是守护进程运行。所以想把一般程序改造为守护程序是不可能，</div><div class="line"></div><div class="line">* 问题3 使用后台运行命令&amp;  能否将程序摆脱ssh进程组控制呢  也就是ssh关闭，后台程序继续运行？</div><div class="line"></div><div class="line">	我们做一个试验:</div></pre></td></tr></table></figure>
-
-find / -name &apos;*http*&apos;&amp;
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">利用ctrl+d 注销以后 再进入系统  会不会看见这个命令再运行?</div><div class="line">答案是  :命令被中止了!!</div><div class="line"></div><div class="line">**因为他依然属于这个ssh进程组** 就算加了&amp;也无法摆脱！！</div></pre></td></tr></table></figure>
-
-[root@CentOS5-4 ~]# pstree |grep find
-     |-sshd-+-sshd---bash---find
-```
-
-结论就是：**只要是ssh 打开执行的一般命令，不是守护程序，无论加不加&amp;，一旦关闭ssh，系统就会用SIGHUP终止**
-</code></pre><ul>
-<li><p>问题4  nohup能解决的问题</p>
-<p>  但是为了能够再注销以后 依然能后台运行，那么我们就可以使用nohup这个命令，我们现在开始查找<code>find / -name ‘*http*’&amp;</code>，并且希望在后台运行，<br>  那么就使用nohup：<code>nohup find / -name &quot;*httpd*&quot;</code></p>
-<p>  此时默认地程序运行的输出信息放到当前文件夹的nohup.out 文件中去<br>  加不加&amp;并不会影响这个命令   只是让程序 前台或者后台运行而已</p>
-</li>
-<li><p>延伸：Linux命令nohup+screen命令</p>
-<p>如果想在关闭ssh连接后刚才启动的程序继续运行怎么办，可以使用nohup。但是如果要求第二天来的时候，一开ssh，还能查看到昨天运行的程序的状态，然后继续工作，这时nohup是不行了，需要使用screen来达到这个目的。</p>
-</li>
+<p>使用pstree命令可以更清楚地看到这个关系：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">[root@tivf09 root]# pstree -H 5180|grep top</div><div class="line">|-sshd-+-sshd---bash---top</div></pre></td></tr></table></figure>
+<p>使用ps-xj命令可以看到，登录shell（PID 5128）和top在同一个会话期，shell为会话期首进程，所在进程组PGID为5128，top所在进程组PGID为5180，为前台进程组。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">[root@tivf09 root]# ps -xj|grep 5128</div><div class="line">5126  5128  5128  5128 pts/0     5180 S        0   0:00 -bash</div><div class="line">5128  5180  5180  5128 pts/0     5180 S        0   0:50 top</div><div class="line">3672 18095 18094  3672 pts/2    18094 S        0   0:00 grep 5128</div></pre></td></tr></table></figure>
+<p>关闭第一个SSH窗口，在另一个窗口中可以看到top也被杀掉了。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">[root@tivf09 root]# ps -ef|grep 5128</div><div class="line">root     18699  3672  0 04:35 pts/2    00:00:00 grep 5128</div></pre></td></tr></table></figure>
+<ul>
+<li>问题2   为什么守护程序就算ssh 打开的，就算关闭ssh也不会影响其运行？</li>
 </ul>
+<p>因为他们的程序特殊，比如httpd –k start运行这个以后， <strong>他不属于sshd这个进程组  而是单独的进程组</strong>，所以就算关闭了ssh，和他也没有任何关系！</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">[root@CentOS5-4 ~]# pstree |grep http</div><div class="line">     |-httpd</div><div class="line">[root@CentOS5-4 ~]# pstree |grep top</div><div class="line">     |-sshd-+-sshd---bash---top</div></pre></td></tr></table></figure>
+<p>结论：守护进程的启动命令本身就是特殊的，和一般命令不同的，比如mysqld_safe 这样的命令 一旦使用了  就是守护进程运行。所以想把一般程序改造为守护程序是不可能，</p>
+<ul>
+<li>问题3 使用后台运行命令&amp;  能否将程序摆脱ssh进程组控制呢  也就是ssh关闭，后台程序继续运行？</li>
+</ul>
+<p>我们做一个试验:  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">find / -name &apos;*http*&apos;&amp;</div></pre></td></tr></table></figure>
+<p>利用ctrl+d 注销以后 再进入系统  会不会看见这个命令再运行?<br>答案是  :命令被中止了!!</p>
+<p><strong>因为他依然属于这个ssh进程组</strong> 就算加了&amp;也无法摆脱！！</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">[root@CentOS5-4 ~]# pstree |grep find</div><div class="line">     |-sshd-+-sshd---bash---find</div></pre></td></tr></table></figure>
+<p>结论就是： <strong>只要是ssh 打开执行的一般命令，不是守护程序，无论加不加&amp;，一旦关闭ssh，系统就会用SIGHUP终止</strong></p>
+<ul>
+<li>问题4  nohup能解决的问题</li>
+</ul>
+<p>但是为了能够再注销以后 依然能后台运行，那么我们就可以使用nohup这个命令，我们现在开始查找<code>find / -name ‘*http*’&amp;</code>，并且希望在后台运行，<br>那么就使用nohup：<code>nohup find / -name &quot;*httpd*&quot;</code></p>
+<p>此时默认地程序运行的输出信息放到当前文件夹的nohup.out 文件中去<br>加不加&amp;并不会影响这个命令   只是让程序 前台或者后台运行而已</p>
+<ul>
+<li>延伸：Linux命令nohup+screen命令</li>
+</ul>
+<p>如果想在关闭ssh连接后刚才启动的程序继续运行怎么办，可以使用nohup。但是如果要求第二天来的时候，一开ssh，还能查看到昨天运行的程序的状态，然后继续工作，这时nohup是不行了，需要使用screen来达到这个目的。</p>
 
   	</div>
 	  
