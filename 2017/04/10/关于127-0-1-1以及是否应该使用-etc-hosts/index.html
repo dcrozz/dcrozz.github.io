@@ -4,21 +4,34 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   
-  <title>Archives: 2017 | Alex&#39;s Heya</title>
+  <title>关于127.0.1.1以及是否应该使用/etc/hosts | Alex&#39;s Heya</title>
   <meta name="description" content="{{theme.description}}" />
   <meta name="keywords" content="{{theme.keywords}}" />
   <meta name="HandheldFriendly" content="True" />
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="An Alex only Loves Angel">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Alex's Heya">
-<meta property="og:url" content="http://ukeyim.me/archives/2017/index.html">
+  <meta name="description" content="这种东西都写出来感觉自己是不是太无所事事了orz
+起因一开始只是疑惑为什么debian/ubuntu里面的/etc/hosts有第二行127.0.1.1 &amp;lt;host_name&amp;gt;，查下来才知道127/8的地址都是环路地址，127.0.1.1只是为了确保访问自己的hostname的时候 总是访问的是本机地址。
+只是看到一句话比较在意
+
+In the long run the UNIX ho">
+<meta property="og:type" content="article">
+<meta property="og:title" content="关于127.0.1.1以及是否应该使用/etc/hosts">
+<meta property="og:url" content="http://ukeyim.me/2017/04/10/关于127-0-1-1以及是否应该使用-etc-hosts/index.html">
 <meta property="og:site_name" content="Alex's Heya">
-<meta property="og:description" content="An Alex only Loves Angel">
+<meta property="og:description" content="这种东西都写出来感觉自己是不是太无所事事了orz
+起因一开始只是疑惑为什么debian/ubuntu里面的/etc/hosts有第二行127.0.1.1 &amp;lt;host_name&amp;gt;，查下来才知道127/8的地址都是环路地址，127.0.1.1只是为了确保访问自己的hostname的时候 总是访问的是本机地址。
+只是看到一句话比较在意
+
+In the long run the UNIX ho">
+<meta property="og:updated_time" content="2017-04-10T14:07:03.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Alex's Heya">
-<meta name="twitter:description" content="An Alex only Loves Angel">
+<meta name="twitter:title" content="关于127.0.1.1以及是否应该使用/etc/hosts">
+<meta name="twitter:description" content="这种东西都写出来感觉自己是不是太无所事事了orz
+起因一开始只是疑惑为什么debian/ubuntu里面的/etc/hosts有第二行127.0.1.1 &amp;lt;host_name&amp;gt;，查下来才知道127/8的地址都是环路地址，127.0.1.1只是为了确保访问自己的hostname的时候 总是访问的是本机地址。
+只是看到一句话比较在意
+
+In the long run the UNIX ho">
   
   
     <link rel="icon" href="/favicon.png">
@@ -77,33 +90,20 @@
     <script>setLoadingBarProgress(40);</script>
     
     <main id="main" role="main">
-      
-	
-
-
-	<section class="page-header archive">
-    <h1>- <span>2017</span> -</h1>
-  </section>
-
-
-
-
-<section class="post-list">
-	
-    <article class="post ">
-
-  
-  <h2 class="title">
-    <a href="/2017/04/10/关于127-0-1-1以及是否应该使用-etc-hosts/">
-      关于127.0.1.1以及是否应该使用/etc/hosts
+      <article id="post-关于127-0-1-1以及是否应该使用-etc-hosts"
+  class="post article white-box article-type-post"
+  itemscope itemprop="blogPost">
+	<h2 class="title">
+  	<a href="/2017/04/10/关于127-0-1-1以及是否应该使用-etc-hosts/">
+    	关于127.0.1.1以及是否应该使用/etc/hosts
     </a>
   </h2>
-  
-  <time>
-    4月 10, 2017
-  </time>
-  <section class="content">
-	  <p>这种东西都写出来感觉自己是不是太无所事事了orz</p>
+	<time>
+	  4月 10, 2017
+	</time>
+	<section class="content">
+  	<div class="article-entry" itemprop="articleBody">
+    	<p>这种东西都写出来感觉自己是不是太无所事事了orz</p>
 <h3 id="起因"><a href="#起因" class="headerlink" title="起因"></a>起因</h3><p>一开始只是疑惑为什么debian/ubuntu里面的<code>/etc/hosts</code>有第二行<code>127.0.1.1 &lt;host_name&gt;</code>，查下来才知道<code>127/8</code>的地址都是环路地址，<code>127.0.1.1</code>只是为了确保访问自己的hostname的时候 <strong>总是</strong>访问的是本机地址。</p>
 <p>只是看到一句话比较在意</p>
 <blockquote>
@@ -137,166 +137,19 @@
 <p>As long as your host agrees with your domain name, specifying it or not in <code>/etc/hosts</code> won’t change anything. Another practice is to have it specified as the domain parameter in <code>/etc/resolv.conf</code>. Not specifying it could simplify your life if, one day, your network administrator changes it. Specifying it doesn’t change anything, as far as I know.</p>
 <p>You should definitely leave <code>127.0.0.1 localhost</code> or <code>127.0.0.1 localhost localhost.localdomain</code> in <code>/etc/hosts</code>. Some applications could start having a really strange behaviour is <code>localhost</code> binds to anything other than your loopback address because this is a really, really, unexpected setting.</p>
 </blockquote>
-<p>Referece:<br><a href="http://unix.stackexchange.com/questions/77917/include-domain-name-or-not-in-etc-hosts">Include domain name or not in /etc/hosts?</a><br><a href="https://kb.iu.edu/d/aiuv">What is a fully qualified domain name (FQDN)?</a>    </p>
+<p>Referece:<br><a href="http://unix.stackexchange.com/questions/77917/include-domain-name-or-not-in-etc-hosts" target="_blank" rel="external">Include domain name or not in /etc/hosts?</a><br><a href="https://kb.iu.edu/d/aiuv" target="_blank" rel="external">What is a fully qualified domain name (FQDN)?</a>    </p>
+<a id="more"></a>
 
-    
-	  <div class="readmore">
-      <a href="/2017/04/10/关于127-0-1-1以及是否应该使用-etc-hosts/">Read More</a>
-    </div>
-    
-    
-    
-	  <div class="tags">
-      <a class="tag-link" href="/tags/linux/">linux</a><a class="tag-link" href="/tags/network/">network</a>
+  	</div>
+	  
+	  <div class="article-tags tags">
+		  
+        <a class="tag-link" href="/tags/linux/">linux</a><a class="tag-link" href="/tags/network/">network</a>
+      
 	  </div>
-    
-
-  </section>
+	</section>
 </article>
-  
-    <article class="post ">
 
-  
-  <h2 class="title">
-    <a href="/2017/03/23/转载-windows下建立-开头的文件/">
-      [转载]windows下建立.开头的文件
-    </a>
-  </h2>
-  
-  <time>
-    3月 23, 2017
-  </time>
-  <section class="content">
-	  <p>转载自 <a href="https://www.zendstudio.net/archives/create-htaccess-file-in-windows/" target="_blank" rel="external">https://www.zendstudio.net/archives/create-htaccess-file-in-windows/</a></p>
-<ol>
-<li>使用屏幕编辑命令<code>copy con .htaccess</code>后回车，输入内容，最后按下<code>ctrl+z</code>结束编辑，就成功生成了.htaccess；</li>
-<li>使用重命名命令<code>ren 1.txt .htaccess</code>，这是最常规的方法了，在windows窗口下不能执行的命令，在cmd下却如履平地；</li>
-<li>使用重定向命令<code>echo. &gt;.htaccess</code>，这里将一个回车符输入到.htaccess，同样能创建成功；</li>
-<li>直接通过文本编辑工具保存 另存为的时候 <strong>保存类型</strong>选 <strong>所有文件</strong>，文件名就是.开头的文件。</li>
-</ol>
-<p>感觉2，3比较常用，4太慢了，别的应该也没更快的方法了。</p>
-
-
-    
-    
-    
-	  <div class="tags">
-      <a class="tag-link" href="/tags/windows/">windows</a>
-	  </div>
-    
-
-  </section>
-</article>
-  
-    <article class="post ">
-
-  
-  <h2 class="title">
-    <a href="/2017/03/19/转载-确保SSH退出登陆后进程继续在后台运行/">
-      [转载][整理]解决SSH退出登陆后保持进程继续在后台运行
-    </a>
-  </h2>
-  
-  <time>
-    3月 19, 2017
-  </time>
-  <section class="content">
-	  <ul>
-<li>转载自:<a href="http://zjking.blog.51cto.com/976858/1117828">http://zjking.blog.51cto.com/976858/1117828</a> 作者:zjking </li>
-<li>转载自:<a href="http://askubuntu.com/questions/8653/how-to-keep-processes-running-after-ending-ssh-session">http://askubuntu.com/questions/8653/how-to-keep-processes-running-after-ending-ssh-session</a></li>
-</ul>
-<p>zjking的几个思考写的很好啊忍不住想记下来，侵删</p>
-<h3 id="问题描述："><a href="#问题描述：" class="headerlink" title="问题描述："></a>问题描述：</h3><p>远程ssh用tar打包一个文件夹或者unrar解压一个大文件，即使加了&amp;，退出ssh登录时解压进程中断。</p>
-<p>ps:直接exit的话会提示<code>zsh: you have running jobs.</code>，强行退出会有<code>zsh: warning: 1 jobs SIGHUPed</code>提示。<br>
-
-    
-	  <div class="readmore">
-      <a href="/2017/03/19/转载-确保SSH退出登陆后进程继续在后台运行/">Read More</a>
-    </div>
-    
-    
-    
-	  <div class="tags">
-      <a class="tag-link" href="/tags/linux/">linux</a>
-	  </div>
-    
-
-  </section>
-</article>
-  
-    <article class="post ">
-
-  
-  <h2 class="title">
-    <a href="/2017/03/07/全排列的递归与非递归及c-11的lambda-for-each-sort初见/">
-      全排列的递归与非递归及c++11的lambda, for_each, sort初见
-    </a>
-  </h2>
-  
-  <time>
-    3月 7, 2017
-  </time>
-  <section class="content">
-	  <p>一直说着STL终于开始接触了，作为新特性还是挺好上手的。<br>具体实现直接写在代码里了（这大概是一篇只留给自己看的manual..)</p>
-<h3 id="使用clang编译"><a href="#使用clang编译" class="headerlink" title="使用clang编译"></a>使用clang编译</h3><p><code>$ clang -std=c++11 -stdlib=libc++ permutation_1.cpp -o test</code><br>注意这样一来就一定要加<code>using namespace std;</code></p>
-<p>具体还有什么坑等更新的时候想起来再写。<br>
-
-    
-	  <div class="readmore">
-      <a href="/2017/03/07/全排列的递归与非递归及c-11的lambda-for-each-sort初见/">Read More</a>
-    </div>
-    
-    
-    
-
-  </section>
-</article>
-  
-    <article class="post ">
-
-  
-  <h2 class="title">
-    <a href="/2017/02/27/The-difference-between-i-1-and-i-i-1/">
-      The difference between i += 1 and i = i + 1
-    </a>
-  </h2>
-  
-  <time>
-    2月 27, 2017
-  </time>
-  <section class="content">
-	  <p>今天朋友碰到了问题</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">l = []</div><div class="line">lst = []</div><div class="line">lst.append(l)</div><div class="line">l += [1]</div><div class="line"># lst = [1]</div><div class="line">l = l + [2]</div><div class="line"># lst = [1]</div><div class="line">l += [3]</div><div class="line"># lst = [3]</div></pre></td></tr></table></figure>
-<p>为什么lst里面的l值通过 <code>l += [1]</code>可以改变， 而<code>l = l + [1]</code>就没法影响lst里面的值呢？<br>
-
-    
-	  <div class="readmore">
-      <a href="/2017/02/27/The-difference-between-i-1-and-i-i-1/">Read More</a>
-    </div>
-    
-    
-    
-	  <div class="tags">
-      <a class="tag-link" href="/tags/python/">python</a>
-	  </div>
-    
-
-  </section>
-</article>
-  
-</section>
-
-
-  <nav id="page-nav">
-    
-    
-    <a class="next" rel="next" href="/archives/2017/page/2/">
-      <span class="text">Next</span>
-      <span class="icon icon-chevron-right"></span>
-    </a>
-    
-  </nav>
-  
 
 
       <script>setLoadingBarProgress(60);</script>
