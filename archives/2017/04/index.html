@@ -110,34 +110,6 @@
 <p>In the long run the UNIX hostname should not be put in /etc/hosts at all.</p>
 </blockquote>
 <p>是不是说所有的hostname应该交给上级DNS解析（<code>/etc/resolv.conf</code>中指定），而不用自己定义<code>/etc/hosts</code>的意思？</p>
-<h3 id="搜索"><a href="#搜索" class="headerlink" title="搜索"></a>搜索</h3><p>看到好多地方提到FQDN，就搜了一下，真是纯字面意思…</p>
-<h5 id="FQDN（fully-qualified-domain-name）"><a href="#FQDN（fully-qualified-domain-name）" class="headerlink" title="FQDN（fully qualified domain name）"></a>FQDN（fully qualified domain name）</h5><blockquote>
-<p>A fully qualified domain name (FQDN) is the complete domain name for a specific computer, or host, on the Internet. The FQDN consists of two parts: the hostname and the domain name. For example, an FQDN for a hypothetical mail server might be mymail.somecollege.edu. The hostname is mymail, and the host is located within the domain somecollege.edu.</p>
-<p>In this example, .edu is the top-level domain (TLD). This is similar to the root directory on a typical workstation, where all other directories (or folders) originate. (Within the .edu TLD, Indiana University Bloomington has been assigned the indiana.edu domain, and has authority to create subdomains within it.)</p>
-<p>The same applies to web addresses. For example, www.indiana.edu is the FQDN on the web for IU. In this case, www is the name of the host in the indiana.edu domain.</p>
-</blockquote>
-<h4 id="结论1"><a href="#结论1" class="headerlink" title="结论1"></a>结论1</h4><p>不写<code>/etc/hosts</code>的话，FQDN会没法好好显示</p>
-<blockquote>
-<p>The way detection of the fully qualified host name works:</p>
-</blockquote>
-<ol>
-<li>It first gets the hostname, or ‘shortname’. This is the output of uname -n or hostname.</li>
-<li>It then gets the IP address for that hostname by consulting /etc/hosts (or whatever you have in /etc/resolv.conf, and falling back to the latter sources if not found in /etc/hosts).</li>
-<li>Once it has the IP it then does a reverse lookup by again consulting /etc/hosts.</li>
-<li>Once it has a record in /etc/hosts, the first entry is used as the fully qualified hostname.</li>
-</ol>
-<blockquote>
-<p>In a nutshell, if you want fully qualified hostname to work, you should do either:</p>
-</blockquote>
-<p><code>127.0.0.1 fully.qualified.hostname hostname localhost.localdomain localhost</code></p>
-<p>or</p>
-<p><code>127.0.0.1 localhost.localdomain localhost</code><br><code>1.2.3.4 fully.qualified.hostname hostname</code></p>
-<h4 id="结论2"><a href="#结论2" class="headerlink" title="结论2"></a>结论2</h4><p>下面一段引用基本意思就是交给上级DNS处理吧，和没事别删<code>localhost</code>这行</p>
-<blockquote>
-<p>As long as your host agrees with your domain name, specifying it or not in <code>/etc/hosts</code> won’t change anything. Another practice is to have it specified as the domain parameter in <code>/etc/resolv.conf</code>. Not specifying it could simplify your life if, one day, your network administrator changes it. Specifying it doesn’t change anything, as far as I know.</p>
-<p>You should definitely leave <code>127.0.0.1 localhost</code> or <code>127.0.0.1 localhost localhost.localdomain</code> in <code>/etc/hosts</code>. Some applications could start having a really strange behaviour is <code>localhost</code> binds to anything other than your loopback address because this is a really, really, unexpected setting.</p>
-</blockquote>
-<p>Referece:<br><a href="http://unix.stackexchange.com/questions/77917/include-domain-name-or-not-in-etc-hosts">Include domain name or not in /etc/hosts?</a><br><a href="https://kb.iu.edu/d/aiuv">What is a fully qualified domain name (FQDN)?</a>    </p>
 
     
 	  <div class="readmore">
@@ -215,7 +187,6 @@
     
   </div>
 
-/*   */
   
 
 <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>

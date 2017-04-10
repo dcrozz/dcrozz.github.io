@@ -24,7 +24,7 @@ In the long run the UNIX ho">
 只是看到一句话比较在意
 
 In the long run the UNIX ho">
-<meta property="og:updated_time" content="2017-04-10T14:07:03.000Z">
+<meta property="og:updated_time" content="2017-04-10T14:13:02.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="关于127.0.1.1以及是否应该使用/etc/hosts">
 <meta name="twitter:description" content="这种东西都写出来感觉自己是不是太无所事事了orz
@@ -110,6 +110,7 @@ In the long run the UNIX ho">
 <p>In the long run the UNIX hostname should not be put in /etc/hosts at all.</p>
 </blockquote>
 <p>是不是说所有的hostname应该交给上级DNS解析（<code>/etc/resolv.conf</code>中指定），而不用自己定义<code>/etc/hosts</code>的意思？</p>
+<a id="more"></a>
 <h3 id="搜索"><a href="#搜索" class="headerlink" title="搜索"></a>搜索</h3><p>看到好多地方提到FQDN，就搜了一下，真是纯字面意思…</p>
 <h5 id="FQDN（fully-qualified-domain-name）"><a href="#FQDN（fully-qualified-domain-name）" class="headerlink" title="FQDN（fully qualified domain name）"></a>FQDN（fully qualified domain name）</h5><blockquote>
 <p>A fully qualified domain name (FQDN) is the complete domain name for a specific computer, or host, on the Internet. The FQDN consists of two parts: the hostname and the domain name. For example, an FQDN for a hypothetical mail server might be mymail.somecollege.edu. The hostname is mymail, and the host is located within the domain somecollege.edu.</p>
@@ -138,7 +139,6 @@ In the long run the UNIX ho">
 <p>You should definitely leave <code>127.0.0.1 localhost</code> or <code>127.0.0.1 localhost localhost.localdomain</code> in <code>/etc/hosts</code>. Some applications could start having a really strange behaviour is <code>localhost</code> binds to anything other than your loopback address because this is a really, really, unexpected setting.</p>
 </blockquote>
 <p>Referece:<br><a href="http://unix.stackexchange.com/questions/77917/include-domain-name-or-not-in-etc-hosts" target="_blank" rel="external">Include domain name or not in /etc/hosts?</a><br><a href="https://kb.iu.edu/d/aiuv" target="_blank" rel="external">What is a fully qualified domain name (FQDN)?</a>    </p>
-<a id="more"></a>
 
   	</div>
 	  
@@ -209,7 +209,6 @@ In the long run the UNIX ho">
     
   </div>
 
-/*   */
   
 
 <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
