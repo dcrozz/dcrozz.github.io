@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   
-  <title>[转载][整理]解决SSH退出登陆后保持进程继续在后台运行 | Alex&#39;s Heya</title>
+  <title>［更新][转载][整理]解决SSH退出登陆后保持进程继续在后台运行 | Alex&#39;s Heya</title>
   <meta name="description" content="{{theme.description}}" />
   <meta name="keywords" content="{{theme.keywords}}" />
   <meta name="HandheldFriendly" content="True" />
@@ -16,7 +16,7 @@
 zjking的几个思考写的很好啊忍不住想记下来，侵删
 问题描述：远程ssh用tar打包一">
 <meta property="og:type" content="article">
-<meta property="og:title" content="[转载][整理]解决SSH退出登陆后保持进程继续在后台运行">
+<meta property="og:title" content="［更新][转载][整理]解决SSH退出登陆后保持进程继续在后台运行">
 <meta property="og:url" content="http://ukeyim.me/2017/03/19/转载-确保SSH退出登陆后进程继续在后台运行/index.html">
 <meta property="og:site_name" content="Alex's Heya">
 <meta property="og:description" content="转载自:http://zjking.blog.51cto.com/976858/1117828 作者:zjking 
@@ -24,9 +24,9 @@ zjking的几个思考写的很好啊忍不住想记下来，侵删
 
 zjking的几个思考写的很好啊忍不住想记下来，侵删
 问题描述：远程ssh用tar打包一">
-<meta property="og:updated_time" content="2017-04-10T14:50:59.000Z">
+<meta property="og:updated_time" content="2017-04-25T03:54:22.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="[转载][整理]解决SSH退出登陆后保持进程继续在后台运行">
+<meta name="twitter:title" content="［更新][转载][整理]解决SSH退出登陆后保持进程继续在后台运行">
 <meta name="twitter:description" content="转载自:http://zjking.blog.51cto.com/976858/1117828 作者:zjking 
 转载自:http://askubuntu.com/questions/8653/how-to-keep-processes-running-after-ending-ssh-session
 
@@ -95,7 +95,7 @@ zjking的几个思考写的很好啊忍不住想记下来，侵删
   itemscope itemprop="blogPost">
 	<h2 class="title">
   	<a href="/2017/03/19/转载-确保SSH退出登陆后进程继续在后台运行/">
-    	[转载][整理]解决SSH退出登陆后保持进程继续在后台运行
+    	［更新][转载][整理]解决SSH退出登陆后保持进程继续在后台运行
     </a>
   </h2>
 	<time>
@@ -116,7 +116,7 @@ zjking的几个思考写的很好啊忍不住想记下来，侵删
 <h3 id="解决方法："><a href="#解决方法：" class="headerlink" title="解决方法："></a>解决方法：</h3><p>目前有以下几种解决方案：</p>
 <ol>
 <li>nohup。使用nohup命令让程序在关闭窗口（切换SSH连接）的时候程序还能继续在后台运行。</li>
-<li>disown。注意要在后台运行，<c-z>挂在后台的话会提示<code>disown: warning: job is suspended, use &#39;kill -CONT -pid&#39; to resume&#39;</code></c-z></li>
+<li>disown。注意 <strong>要在后台运行</strong>，<c-z>挂在后台的话会提示<code>disown: warning: job is suspended, use &#39;kill -CONT -pid&#39; to resume&#39;</code>,不运行的话退出以后还是会杀掉进程，保持运行的话变成孤儿进程。</c-z></li>
 <li>使用tmux的detach（<code>&lt;C-b&gt;</code> + <code>D</code>)来detach一个session，之后回去的时候<code>tmux attach</code>回到那个session</li>
 <li>screen。不过有tmux就别用screen了，byobu大概更好用一点但是习惯tmux了而且也不太喜欢F1,F2之类的快捷键</li>
 </ol>
@@ -181,6 +181,17 @@ zjking的几个思考写的很好啊忍不住想记下来，侵删
 <li>延伸：Linux命令nohup+screen命令</li>
 </ul>
 <p>如果想在关闭ssh连接后刚才启动的程序继续运行怎么办，可以使用nohup。但是如果要求第二天来的时候，一开ssh，还能查看到昨天运行的程序的状态，然后继续工作，这时nohup是不行了，需要使用screen来达到这个目的。</p>
+<h3 id="Update"><a href="#Update" class="headerlink" title="Update"></a>Update</h3><h4 id="disown的用途"><a href="#disown的用途" class="headerlink" title="disown的用途"></a>disown的用途</h4><p>引用一下wiki - <a href="https://en.wikipedia.org/wiki/Job_control_%28Unix%29" target="_blank" rel="external">Job control</a></p>
+<blockquote>
+<p>The disown command can be used to remove jobs from the job table, so that when the session ends the child process groups are not sent SIGHUP, nor does the shell wait for them to terminate. They thus become orphan processes, and may be terminated by the operating system, though more often this is used so the processes are adopted by init (the kernel sets their parent process to init) and continue executing as daemons.</p>
+</blockquote>
+<p>disown一个程序以后它的sid不会变，但是session leader关了以后不会发SIGHUP给它，所以挂后台可以继续运行。</p>
+<p><strong>ps</strong> 程序不能有到终端的输出，否则还是会直接挂断程序（比如top），可以重定向到文件，退出ssh登录时就不会挂断（重点是在后台跑）</p>
+<h4 id="信号量"><a href="#信号量" class="headerlink" title="信号量"></a>信号量</h4><p><code>kill -l</code>可以查看所有信号量，可以用<code>kill -CONT pid</code>继续进程。</p>
+<h4 id="更新2种可以挂后台的方法"><a href="#更新2种可以挂后台的方法" class="headerlink" title="更新2种可以挂后台的方法"></a>更新2种可以挂后台的方法</h4><ul>
+<li>setsid设置进程，sid就是自己的pid</li>
+<li>使用subshell， e.g. <code>(python sleep.py &gt; /dev/null &amp;)</code></li>
+</ul>
 
   	</div>
 	  
