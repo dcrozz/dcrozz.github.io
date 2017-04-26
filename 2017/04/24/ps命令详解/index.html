@@ -30,7 +30,7 @@ BSD 风格，选项可以组合在一起，但是选项前不能有“-”连字
 GNU 风格的长选项，选项前有两个“-”连字符
 
 UNIX风格1">
-<meta property="og:updated_time" content="2017-04-25T03:55:18.000Z">
+<meta property="og:updated_time" content="2017-04-26T15:53:03.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ps命令详解">
 <meta name="twitter:description" content="还是在看disown的问题，发现就算是disown或者nohup了一个进程，他所属的pgid和sid也没有变化嘛，好谜，索性这里把ps命令的参数和输出都过一遍吧。
@@ -159,11 +159,8 @@ UNIX风格1">
 <h4 id="日常"><a href="#日常" class="headerlink" title="日常"></a>日常</h4><ul>
 <li>ps j -C 进程名字</li>
 <li>ps j -s sessionID号</li>
+<li>ps -eLf 可以看到所有线程(LWP = TID, NLWP = 线程数)</li>
 </ul>
-<h4 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h4><ol>
-<li>然而还是没找到disown以后会有什么区别…</li>
-<li><code>setsid</code>可以把进程设置为不属于任何session组， 为什么退出ssh还是挂了啊，哪里来的信号？</li>
-</ol>
 
   	</div>
 	  
