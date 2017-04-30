@@ -89,6 +89,42 @@
 
   
   <h2 class="title">
+    <a href="/2017/04/10/关于127-0-1-1以及是否应该使用-etc-hosts/">
+      关于127.0.1.1以及是否应该使用/etc/hosts
+    </a>
+  </h2>
+  
+  <time>
+    4月 10, 2017
+  </time>
+  <section class="content">
+	  <p>这种东西都写出来感觉自己是不是太无所事事了orz</p>
+<h3 id="起因"><a href="#起因" class="headerlink" title="起因"></a>起因</h3><p>一开始只是疑惑为什么debian/ubuntu里面的<code>/etc/hosts</code>有第二行<code>127.0.1.1 &lt;host_name&gt;</code>，查下来才知道<code>127/8</code>的地址都是环路地址，<code>127.0.1.1</code>只是为了确保访问自己的hostname的时候 <strong>总是</strong>访问的是本机地址。</p>
+<p>只是看到一句话比较在意</p>
+<blockquote>
+<p>In the long run the UNIX hostname should not be put in /etc/hosts at all.</p>
+</blockquote>
+<p>是不是说所有的hostname应该交给上级DNS解析（<code>/etc/resolv.conf</code>中指定），而不用自己定义<code>/etc/hosts</code>的意思？</p>
+
+    
+	  <div class="readmore">
+      <a href="/2017/04/10/关于127-0-1-1以及是否应该使用-etc-hosts/">Read More</a>
+    </div>
+    
+    
+    
+	  <div class="tags">
+      <a class="tag-link" href="/tags/linux/">linux</a><a class="tag-link" href="/tags/network/">network</a>
+	  </div>
+    
+
+  </section>
+</article>
+  
+    <article class="post ">
+
+  
+  <h2 class="title">
     <a href="/2017/03/23/转载-windows下建立-开头的文件/">
       [转载]windows下建立.开头的文件
     </a>
@@ -209,39 +245,6 @@
     
 	  <div class="tags">
       <a class="tag-link" href="/tags/python/">python</a>
-	  </div>
-    
-
-  </section>
-</article>
-  
-    <article class="post ">
-
-  
-  <h2 class="title">
-    <a href="/2017/02/20/转载］netstat使用/">
-      [转载］netstat使用
-    </a>
-  </h2>
-  
-  <time>
-    2月 20, 2017
-  </time>
-  <section class="content">
-	  <h2 id="写在最前面"><a href="#写在最前面" class="headerlink" title="写在最前面"></a>写在最前面</h2><p><strong>同学们，mac的netstat和linux的是不一样的啊</strong></p>
-<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>netstat命令用于显示与IP、TCP、UDP和ICMP协议相关的统计数据，一般用于检验本机各端口的网络连接情况。netstat是在内核中访问网络及相关信息的程序，它能提供TCP连接，TCP和UDP监听，进程内存管理的相关报告。</p>
-<p>如果你的计算机有时候接收到的数据报导致出错数据或故障，你不必感到奇怪，TCP/IP可以容许这些类型的错误，并能够自动重发数据报。但如果累计的出错情况数目占到所接收的IP数据报相当大的百分比，或者它的数目正迅速增加，那么你就应该使用netstat查一查为什么会出现这些情况了。</p>
-<p>netstat命令可以显示网络接口的很多统计信息，包括打开的socket和路由表。无选项运行命令显示打开的socket。</p>
-
-    
-	  <div class="readmore">
-      <a href="/2017/02/20/转载］netstat使用/">Read More</a>
-    </div>
-    
-    
-    
-	  <div class="tags">
-      <a class="tag-link" href="/tags/linux/">linux</a><a class="tag-link" href="/tags/netstat/">netstat</a>
 	  </div>
     
 

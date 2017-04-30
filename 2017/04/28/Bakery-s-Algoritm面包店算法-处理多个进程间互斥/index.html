@@ -4,21 +4,37 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   
-  <title>Tag: 算法 | Alex&#39;s Heya</title>
+  <title>Bakery&#39;s Algoritm面包店算法-处理多个进程间互斥 | Alex&#39;s Heya</title>
   <meta name="description" content="{{theme.description}}" />
   <meta name="keywords" content="{{theme.keywords}}" />
   <meta name="HandheldFriendly" content="True" />
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="An Alex only Loves Angel">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Alex's Heya">
-<meta property="og:url" content="http://ukeyim.me/tags/算法/index.html">
+  <meta name="description" content="Outline
+在进入临界区以前，进程获得一个编号
+最小编号的进程进入临界区
+出临界区以后，ticket设为0
+
+伪代码123456789101112131415161718192021Initial choosing[0..n]=flase;ticket[0..n]=0;Repeat  choosing[i] = true;  ticket[i] = max(ticket[0], ticket[">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Bakery's Algoritm面包店算法-处理多个进程间互斥">
+<meta property="og:url" content="http://ukeyim.me/2017/04/28/Bakery-s-Algoritm面包店算法-处理多个进程间互斥/index.html">
 <meta property="og:site_name" content="Alex's Heya">
-<meta property="og:description" content="An Alex only Loves Angel">
+<meta property="og:description" content="Outline
+在进入临界区以前，进程获得一个编号
+最小编号的进程进入临界区
+出临界区以后，ticket设为0
+
+伪代码123456789101112131415161718192021Initial choosing[0..n]=flase;ticket[0..n]=0;Repeat  choosing[i] = true;  ticket[i] = max(ticket[0], ticket[">
+<meta property="og:updated_time" content="2017-04-28T07:13:44.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Alex's Heya">
-<meta name="twitter:description" content="An Alex only Loves Angel">
+<meta name="twitter:title" content="Bakery's Algoritm面包店算法-处理多个进程间互斥">
+<meta name="twitter:description" content="Outline
+在进入临界区以前，进程获得一个编号
+最小编号的进程进入临界区
+出临界区以后，ticket设为0
+
+伪代码123456789101112131415161718192021Initial choosing[0..n]=flase;ticket[0..n]=0;Repeat  choosing[i] = true;  ticket[i] = max(ticket[0], ticket[">
   
   
     <link rel="icon" href="/favicon.png">
@@ -77,85 +93,45 @@
     <script>setLoadingBarProgress(40);</script>
     
     <main id="main" role="main">
-      
-	<section class="page-header tag">
-    <h1>- <span>算法</span> -</h1>
-  </section>
-
-
-
-
-
-
-<section class="post-list">
-	
-    <article class="post ">
-
-  
-  <h2 class="title">
-    <a href="/2017/04/28/Bakery-s-Algoritm面包店算法-处理多个进程间互斥/">
-      Bakery&#39;s Algoritm面包店算法-处理多个进程间互斥
+      <article id="post-Bakery-s-Algoritm面包店算法-处理多个进程间互斥"
+  class="post article white-box article-type-post"
+  itemscope itemprop="blogPost">
+	<h2 class="title">
+  	<a href="/2017/04/28/Bakery-s-Algoritm面包店算法-处理多个进程间互斥/">
+    	Bakery&#39;s Algoritm面包店算法-处理多个进程间互斥
     </a>
   </h2>
-  
-  <time>
-    4月 28, 2017
-  </time>
-  <section class="content">
-	  <h3 id="Outline"><a href="#Outline" class="headerlink" title="Outline"></a>Outline</h3><ul>
+	<time>
+	  4月 28, 2017
+	</time>
+	<section class="content">
+  	<div class="article-entry" itemprop="articleBody">
+    	<h3 id="Outline"><a href="#Outline" class="headerlink" title="Outline"></a>Outline</h3><ul>
 <li>在进入临界区以前，进程获得一个编号</li>
 <li>最小编号的进程进入临界区</li>
 <li>出临界区以后，ticket设为0</li>
 </ul>
 <h3 id="伪代码"><a href="#伪代码" class="headerlink" title="伪代码"></a>伪代码</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">Initial </div><div class="line">choosing[0..n]=flase;</div><div class="line">ticket[0..n]=0;</div><div class="line"></div><div class="line"></div><div class="line">Repeat</div><div class="line">  choosing[i] = true;</div><div class="line">  ticket[i] = max(ticket[0], ticket[1], ..., ticket[n-1]) + 1;  //给i一个最大的ticket号</div><div class="line">  choosing[i] = false;</div><div class="line">  </div><div class="line">  for k = 0 to n - 1</div><div class="line">    do begin</div><div class="line">      while choosing[k] do no-op; //当前有人在获取ticket号，等待</div><div class="line">      while ticket[k] != 0 and ( ticket[k], k) &lt; (ticket[i], i) do no-op;  //有进程优先级更高</div><div class="line">      end</div><div class="line">      </div><div class="line">  critical section</div><div class="line">      </div><div class="line">  ticket[i] = 0; //当ticket = 0，说明没有拿ticket</div><div class="line">  remainder section</div><div class="line">until false</div></pre></td></tr></table></figure>
+<a id="more"></a>
+<h3 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h3><ul>
+<li>取ticket的时候没有加保护条件（期间可能产生context switch），所以获得的ticket序列可能是1, 2, 3, 3, 3, 3, 4, 5…不过相同ticket号码时，进程序列号小的先跑</li>
+<li>还是会空等</li>
+<li>实现要规定号进程数量</li>
+</ul>
+<h3 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h3><ul>
+<li><a href="http://blog.csdn.net/johnny710vip/article/details/7032300" target="_blank" rel="external">进程互斥软件算法(Lamport面包店算法和Eisenberg算法) </a> johnny710vip</li>
+</ul>
 
-    
-	  <div class="readmore">
-      <a href="/2017/04/28/Bakery-s-Algoritm面包店算法-处理多个进程间互斥/">Read More</a>
-    </div>
-    
-    
-    
-	  <div class="tags">
-      <a class="tag-link" href="/tags/操作系统/">操作系统</a><a class="tag-link" href="/tags/算法/">算法</a>
+  	</div>
+	  
+	  <div class="article-tags tags">
+		  
+        <a class="tag-link" href="/tags/操作系统/">操作系统</a><a class="tag-link" href="/tags/算法/">算法</a>
+      
 	  </div>
-    
-
-  </section>
+	</section>
 </article>
-  
-    <article class="post ">
 
-  
-  <h2 class="title">
-    <a href="/2017/04/28/Dekker算法与Peterson算法-处理两个进程间互斥/">
-      Dekker算法与Peterson算法-处理两个进程间互斥
-    </a>
-  </h2>
-  
-  <time>
-    4月 28, 2017
-  </time>
-  <section class="content">
-	  <p>最近在复习操作系统知识，本文主要就是HKU的COMP3230的笔记。</p>
-<p>Dekker算法是处理（两个）进程的互斥关系的软件方法，其它方法还有硬件方法、信号量方法、管程等方法，有机会再写。<br>
-
-    
-	  <div class="readmore">
-      <a href="/2017/04/28/Dekker算法与Peterson算法-处理两个进程间互斥/">Read More</a>
-    </div>
-    
-    
-    
-	  <div class="tags">
-      <a class="tag-link" href="/tags/操作系统/">操作系统</a><a class="tag-link" href="/tags/算法/">算法</a>
-	  </div>
-    
-
-  </section>
-</article>
-  
-</section>
 
 
       <script>setLoadingBarProgress(60);</script>
