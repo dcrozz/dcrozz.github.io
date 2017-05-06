@@ -89,6 +89,36 @@
 
   
   <h2 class="title">
+    <a href="/2017/01/05/monitoring-stack-using-CollectD-Graphite/">
+      monitoring stack using CollectD, Graphite
+    </a>
+  </h2>
+  
+  <time>
+    1月 5, 2017
+  </time>
+  <section class="content">
+	  <h1 id="monitoring-stack-using-CollectD-Graphite"><a href="#monitoring-stack-using-CollectD-Graphite" class="headerlink" title="monitoring stack using CollectD, Graphite"></a>monitoring stack using CollectD, Graphite</h1><h3 id="Install-Graphite"><a href="#Install-Graphite" class="headerlink" title="Install Graphite"></a>Install Graphite</h3><p>On Graphite Server install graphite packages: </p>
+<p><code>sudo apt-get update</code></p>
+<p><code>sudo apt-get install graphite-web graphite-carbon</code></p>
+<h3 id="Install-and-configure-PostgreSQL"><a href="#Install-and-configure-PostgreSQL" class="headerlink" title="Install and configure PostgreSQL"></a>Install and configure PostgreSQL</h3><p><code>sudo apt-get install postgresql libpq-dev python-psycopg2</code></p>
+<p>Switch to postgres user and create DB user graphite_user<br>
+
+    
+	  <div class="readmore">
+      <a href="/2017/01/05/monitoring-stack-using-CollectD-Graphite/">Read More</a>
+    </div>
+    
+    
+    
+
+  </section>
+</article>
+  
+    <article class="post ">
+
+  
+  <h2 class="title">
     <a href="/2016/12/19/vimperator-bookmark-management/">
       vimperator bookmark management
     </a>
@@ -211,35 +241,6 @@
     
 	  <div class="readmore">
       <a href="/2016/12/12/NAT-Traversal/">Read More</a>
-    </div>
-    
-    
-    
-
-  </section>
-</article>
-  
-    <article class="post ">
-
-  
-  <h2 class="title">
-    <a href="/2016/12/12/Vim-register/">
-      Vim register
-    </a>
-  </h2>
-  
-  <time>
-    12月 12, 2016
-  </time>
-  <section class="content">
-	  <h1 id="vim寄存器"><a href="#vim寄存器" class="headerlink" title="vim寄存器"></a>vim寄存器</h1><p>转载自<br><a href="http://www.blogdaren.com/m/?post=1629">http://www.blogdaren.com/m/?post=1629</a></p>
-<h3 id="数字寄存器"><a href="#数字寄存器" class="headerlink" title="数字寄存器"></a>数字寄存器</h3><p>有些寄存器是有特殊作用的如数字寄存器。在介绍数字寄存器前先看一个命令:reg。现在输入这个命令<code>:reg</code>。有没有看到许多”号开始的数字或字 符呢，这些就是寄存器。这里面有你以前删除的文本和最近复制的文本。</p>
-<p>寄存器”0到”9就叫做数字寄存器。 <strong>寄存器”0存着上一次复制操作所复制的文本。寄存器”1到”9分别保存着你最近删除的文本。”1的内容总是你 上一次删除的内容。每删除一次这些寄存器的内容就往下传递。</strong>刚删除的文本到了”1，而原来的寄存器”1的内容到了”2，原来”2的内容到了”3，……，原 来”9的内容则被丢弃。数字寄存器只保留最近9条删条的文本和一条复制的文本。</p>
-<h3 id="字母寄存器"><a href="#字母寄存器" class="headerlink" title="字母寄存器"></a>字母寄存器</h3><p>现在看一下今天要讲的第二种寄存器：字母寄存器（named register）。字母寄存器的名称是单个英文字母。可以用这种方式表示一个字母寄存器：”a,”b,…,”z。 <strong>同一个字母的大写形式与小写形式表示的是同一个寄存器</strong>，但它们在“行为”会有所不同，这点稍后说明。字母寄存器只有在用户指定时才被使用。<br>
-
-    
-	  <div class="readmore">
-      <a href="/2016/12/12/Vim-register/">Read More</a>
     </div>
     
     
