@@ -12,12 +12,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="An Alex only Loves Angel">
 <meta property="og:type" content="website">
-<meta property="og:title" content="Alex's Heya">
+<meta property="og:title" content="Alex&#39;s Heya">
 <meta property="og:url" content="http://ukeyim.me/archives/2017/page/4/index.html">
-<meta property="og:site_name" content="Alex's Heya">
+<meta property="og:site_name" content="Alex&#39;s Heya">
 <meta property="og:description" content="An Alex only Loves Angel">
+<meta property="og:locale" content="zh-CN">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Alex's Heya">
+<meta name="twitter:title" content="Alex&#39;s Heya">
 <meta name="twitter:description" content="An Alex only Loves Angel">
   
   
@@ -90,6 +91,37 @@
 
 <section class="post-list">
 	
+    <article class="post ">
+
+  
+  <h2 class="title">
+    <a href="/2017/02/09/SOLVED-Strange-backspace-behaviour-with-zsh/">
+      [SOLVED] Strange backspace behaviour with zsh
+    </a>
+  </h2>
+  
+  <time>
+    2月 9, 2017
+  </time>
+  <section class="content">
+	  <p>ssh登录学校的ubuntu主机，不知道是不是和装了xen有关，zsh对按键响应异常，delete虽然删除了字符但是向右多显示一个空格，⬅️不显示移动光标</p>
+<p>stty erase ‘^?’ 设置无果</p>
+<p>解决方案：<br>在.zshrc里添加<br>export TERM=xterm</p>
+<p>可能是zsh默认设置了一个不存在的term的问题，重新设置一个ubuntu自带的term就OK了。</p>
+<p>ps1: 不加的话，w3m的会报错’term not set’<br>ps2: 不加的话vim会报一个’Terminal entry not found in terminfo’的错。</p>
+
+
+    
+    
+    
+	  <div class="tags">
+      <a class="tag-link" href="/tags/linux/">linux</a><a class="tag-link" href="/tags/zsh/">zsh</a>
+	  </div>
+    
+
+  </section>
+</article>
+  
     <article class="post ">
 
   
@@ -259,42 +291,6 @@
     
 	  <div class="tags">
       <a class="tag-link" href="/tags/rst/">rst</a>
-	  </div>
-    
-
-  </section>
-</article>
-  
-    <article class="post ">
-
-  
-  <h2 class="title">
-    <a href="/2017/01/09/MacVim-Tips-When-Editing-RST/">
-      MacVim Tips When Editing RST
-    </a>
-  </h2>
-  
-  <time>
-    1月 9, 2017
-  </time>
-  <section class="content">
-	  <p>今天帮老板写了一天的rst（其实就是修改table，人工给table换行，方便线上阅读源码）。全程用vim修改的，中间搜搜找找再造来几个小轮子，在这里记录一下心得</p>
-<h4 id="处理前"><a href="#处理前" class="headerlink" title="处理前"></a>处理前</h4><p><img src="http://upload-images.jianshu.io/upload_images/4259031-24503339a5dd733c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
-<h4 id="处理后"><a href="#处理后" class="headerlink" title="处理后"></a>处理后</h4><p><img src="http://upload-images.jianshu.io/upload_images/4259031-c6a642b36a2f5752.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br>覆盖剪切和覆盖黏贴（不影响缩进的剪切和黏贴）</p>
-<p>处理table最烦的地方就是画边框，第一次是用<a href="https://github.com/mgaitan/sublime-rst-completion">sublime的rst插件</a>画的（<a href="https://github.com/nvie/vim-rst-tables">vim版本</a>的插件蜜汁不能用），但之后的维护实在是想哭－－每次一动就要再调整边框，于是想如何不影响缩进的对文本进行插入和黏贴。</p>
-<h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><ul>
-<li>剪切：把visual选中的地方存到一个寄存器里（我用的是a，其实无所谓），之后在gv重新选中刚才的区域，r一下用空格（也可以用别的字符）替换就好。</li>
-<li>粘贴：先用R进入批量替换模式，<Ctrl-R>来调用寄存器，按下a把寄存器a里面的内容粘贴出来，在<ESC>退出，完全不影响缩进。
-
-    
-	  <div class="readmore">
-      <a href="/2017/01/09/MacVim-Tips-When-Editing-RST/">Read More</a>
-    </div>
-    
-    
-    
-	  <div class="tags">
-      <a class="tag-link" href="/tags/vim/">vim</a>
 	  </div>
     
 

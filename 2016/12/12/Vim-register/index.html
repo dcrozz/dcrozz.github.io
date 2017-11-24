@@ -10,22 +10,17 @@
   <meta name="HandheldFriendly" content="True" />
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="vim寄存器转载自http://www.blogdaren.com/m/?post=1629
-数字寄存器有些寄存器是有特殊作用的如数字寄存器。在介绍数字寄存器前先看一个命令:reg。现在输入这个命令:reg。有没有看到许多”号开始的数字或字 符呢，这些就是寄存器。这里面有你以前删除的文本和最近复制的文本。
-寄存器”0到”9就叫做数字寄存器。 寄存器”0存着上一次复制操作所复制的文本。寄存器”1到”">
+  <meta name="description" content="vim寄存器转载自http://www.blogdaren.com/m/?post=1629 数字寄存器有些寄存器是有特殊作用的如数字寄存器。在介绍数字寄存器前先看一个命令:reg。现在输入这个命令:reg。有没有看到许多”号开始的数字或字 符呢，这些就是寄存器。这里面有你以前删除的文本和最近复制的文本。 寄存器”0到">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Vim register">
 <meta property="og:url" content="http://ukeyim.me/2016/12/12/Vim-register/index.html">
-<meta property="og:site_name" content="Alex's Heya">
-<meta property="og:description" content="vim寄存器转载自http://www.blogdaren.com/m/?post=1629
-数字寄存器有些寄存器是有特殊作用的如数字寄存器。在介绍数字寄存器前先看一个命令:reg。现在输入这个命令:reg。有没有看到许多”号开始的数字或字 符呢，这些就是寄存器。这里面有你以前删除的文本和最近复制的文本。
-寄存器”0到”9就叫做数字寄存器。 寄存器”0存着上一次复制操作所复制的文本。寄存器”1到”">
+<meta property="og:site_name" content="Alex&#39;s Heya">
+<meta property="og:description" content="vim寄存器转载自http://www.blogdaren.com/m/?post=1629 数字寄存器有些寄存器是有特殊作用的如数字寄存器。在介绍数字寄存器前先看一个命令:reg。现在输入这个命令:reg。有没有看到许多”号开始的数字或字 符呢，这些就是寄存器。这里面有你以前删除的文本和最近复制的文本。 寄存器”0到”9就叫做数字寄存器。 寄存器”0存着上一次复制操作所复制的文本。寄存器”1到”">
+<meta property="og:locale" content="zh-CN">
 <meta property="og:updated_time" content="2016-12-12T02:31:04.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Vim register">
-<meta name="twitter:description" content="vim寄存器转载自http://www.blogdaren.com/m/?post=1629
-数字寄存器有些寄存器是有特殊作用的如数字寄存器。在介绍数字寄存器前先看一个命令:reg。现在输入这个命令:reg。有没有看到许多”号开始的数字或字 符呢，这些就是寄存器。这里面有你以前删除的文本和最近复制的文本。
-寄存器”0到”9就叫做数字寄存器。 寄存器”0存着上一次复制操作所复制的文本。寄存器”1到”">
+<meta name="twitter:description" content="vim寄存器转载自http://www.blogdaren.com/m/?post=1629 数字寄存器有些寄存器是有特殊作用的如数字寄存器。在介绍数字寄存器前先看一个命令:reg。现在输入这个命令:reg。有没有看到许多”号开始的数字或字 符呢，这些就是寄存器。这里面有你以前删除的文本和最近复制的文本。 寄存器”0到”9就叫做数字寄存器。 寄存器”0存着上一次复制操作所复制的文本。寄存器”1到”">
   
   
     <link rel="icon" href="/favicon.png">
@@ -97,7 +92,7 @@
 	</time>
 	<section class="content">
   	<div class="article-entry" itemprop="articleBody">
-    	<h1 id="vim寄存器"><a href="#vim寄存器" class="headerlink" title="vim寄存器"></a>vim寄存器</h1><p>转载自<br><a href="http://www.blogdaren.com/m/?post=1629" target="_blank" rel="external">http://www.blogdaren.com/m/?post=1629</a></p>
+    	<h1 id="vim寄存器"><a href="#vim寄存器" class="headerlink" title="vim寄存器"></a>vim寄存器</h1><p>转载自<br><a href="http://www.blogdaren.com/m/?post=1629" target="_blank" rel="noopener">http://www.blogdaren.com/m/?post=1629</a></p>
 <h3 id="数字寄存器"><a href="#数字寄存器" class="headerlink" title="数字寄存器"></a>数字寄存器</h3><p>有些寄存器是有特殊作用的如数字寄存器。在介绍数字寄存器前先看一个命令:reg。现在输入这个命令<code>:reg</code>。有没有看到许多”号开始的数字或字 符呢，这些就是寄存器。这里面有你以前删除的文本和最近复制的文本。</p>
 <p>寄存器”0到”9就叫做数字寄存器。 <strong>寄存器”0存着上一次复制操作所复制的文本。寄存器”1到”9分别保存着你最近删除的文本。”1的内容总是你 上一次删除的内容。每删除一次这些寄存器的内容就往下传递。</strong>刚删除的文本到了”1，而原来的寄存器”1的内容到了”2，原来”2的内容到了”3，……，原 来”9的内容则被丢弃。数字寄存器只保留最近9条删条的文本和一条复制的文本。</p>
 <h3 id="字母寄存器"><a href="#字母寄存器" class="headerlink" title="字母寄存器"></a>字母寄存器</h3><p>现在看一下今天要讲的第二种寄存器：字母寄存器（named register）。字母寄存器的名称是单个英文字母。可以用这种方式表示一个字母寄存器：”a,”b,…,”z。 <strong>同一个字母的大写形式与小写形式表示的是同一个寄存器</strong>，但它们在“行为”会有所不同，这点稍后说明。字母寄存器只有在用户指定时才被使用。<br><a id="more"></a><br>一般模式（normal mode）下要访问寄存器只要在使用复制和删除指令y和d时，在前面加上寄存器的名称即可。比如要将当前行及随后两行（1+2=3）复制到寄存器c 中：”c3yy。要将刚保存到寄存器c的内容“粘贴”出来：”cp。数字寄存器也是一样的使用方式，要将数字寄存器3的内容粘贴出来：”3p。</p>

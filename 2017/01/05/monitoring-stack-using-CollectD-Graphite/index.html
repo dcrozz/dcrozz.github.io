@@ -10,25 +10,17 @@
   <meta name="HandheldFriendly" content="True" />
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="monitoring stack using CollectD, GraphiteInstall GraphiteOn Graphite Server install graphite packages: 
-sudo apt-get update
-sudo apt-get install graphite-web graphite-carbon
-Install and configure Post">
+  <meta name="description" content="monitoring stack using CollectD, GraphiteInstall GraphiteOn Graphite Server install graphite packages:  sudo apt-get update sudo apt-get install graphite-web gr">
 <meta property="og:type" content="article">
 <meta property="og:title" content="monitoring stack using CollectD, Graphite">
 <meta property="og:url" content="http://ukeyim.me/2017/01/05/monitoring-stack-using-CollectD-Graphite/index.html">
-<meta property="og:site_name" content="Alex's Heya">
-<meta property="og:description" content="monitoring stack using CollectD, GraphiteInstall GraphiteOn Graphite Server install graphite packages: 
-sudo apt-get update
-sudo apt-get install graphite-web graphite-carbon
-Install and configure Post">
+<meta property="og:site_name" content="Alex&#39;s Heya">
+<meta property="og:description" content="monitoring stack using CollectD, GraphiteInstall GraphiteOn Graphite Server install graphite packages:  sudo apt-get update sudo apt-get install graphite-web graphite-carbon Install and configure Post">
+<meta property="og:locale" content="zh-CN">
 <meta property="og:updated_time" content="2017-01-05T13:44:43.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="monitoring stack using CollectD, Graphite">
-<meta name="twitter:description" content="monitoring stack using CollectD, GraphiteInstall GraphiteOn Graphite Server install graphite packages: 
-sudo apt-get update
-sudo apt-get install graphite-web graphite-carbon
-Install and configure Post">
+<meta name="twitter:description" content="monitoring stack using CollectD, GraphiteInstall GraphiteOn Graphite Server install graphite packages:  sudo apt-get update sudo apt-get install graphite-web graphite-carbon Install and configure Post">
   
   
     <link rel="icon" href="/favicon.png">
@@ -143,7 +135,7 @@ Install and configure Post">
 <p>Enable Graphite virtual host and reload Apache to implement changes:</p>
 <p><code>sudo a2ensite apache2-graphite</code></p>
 <p><code>sudo service apache2 reload</code></p>
-<p>We can now access Graphite interface by browsing to <a href="http://YOUR_SERVER_IP" target="_blank" rel="external">http://YOUR_SERVER_IP</a>.</p>
+<p>We can now access Graphite interface by browsing to <a href="http://YOUR_SERVER_IP" target="_blank" rel="noopener">http://YOUR_SERVER_IP</a>.</p>
 <h3 id="Install-and-configure-CollectD"><a href="#Install-and-configure-CollectD" class="headerlink" title="Install and configure CollectD"></a>Install and configure CollectD</h3><p>Collectd is simply a daemon which collects system performance statistics and sends it to Graphite. It’s easy to configure and has a high number of plugins. It uses Plaintext protocol to send data series to Graphite/Carbon.</p>
 <p>Install collectd packages:</p>
 <p><code>sudo apt-get install collectd collectd-utils</code></p>

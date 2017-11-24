@@ -12,12 +12,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="An Alex only Loves Angel">
 <meta property="og:type" content="website">
-<meta property="og:title" content="Alex's Heya">
+<meta property="og:title" content="Alex&#39;s Heya">
 <meta property="og:url" content="http://ukeyim.me/page/6/index.html">
-<meta property="og:site_name" content="Alex's Heya">
+<meta property="og:site_name" content="Alex&#39;s Heya">
 <meta property="og:description" content="An Alex only Loves Angel">
+<meta property="og:locale" content="zh-CN">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Alex's Heya">
+<meta name="twitter:title" content="Alex&#39;s Heya">
 <meta name="twitter:description" content="An Alex only Loves Angel">
   
   
@@ -89,6 +90,35 @@
 
   
   <h2 class="title">
+    <a href="/2016/12/12/NAT-Traversal/">
+      NAT Traversal
+    </a>
+  </h2>
+  
+  <time>
+    12月 12, 2016
+  </time>
+  <section class="content">
+	  <h1 id="NAT穿透的详细讲解及分析-转载"><a href="#NAT穿透的详细讲解及分析-转载" class="headerlink" title="NAT穿透的详细讲解及分析(转载)"></a>NAT穿透的详细讲解及分析(转载)</h1><p>转载：<a href="http://michankong.blog.51cto.com/1464983/761270" target="_blank" rel="noopener">http://michankong.blog.51cto.com/1464983/761270</a>  </p>
+<p>其实本来只是想做一个ssh反向隧道，但是NAT原理一直没搞明白，这篇写得好好啊<em> (:3」∠)</em></p>
+<h2 id="一、什么是NAT？为什么要使用NAT？"><a href="#一、什么是NAT？为什么要使用NAT？" class="headerlink" title="一、什么是NAT？为什么要使用NAT？"></a>一、什么是NAT？为什么要使用NAT？</h2><p>NAT是将私有地址转换为合法IP地址的技术，通俗的讲就是将内网与内网通信时怎么将内网私有IP地址转换为可在网络中传播的合法IP地址。NAT的出现完美地解决了lP地址不足的问题，而且还能够有效地避免来自网络外部的攻击，隐藏并保护网络内部的计算机。 </p>
+<h2 id="二、NAT的分类"><a href="#二、NAT的分类" class="headerlink" title="二、NAT的分类"></a>二、NAT的分类</h2><p>STUN标准中，根据内部终端的地址(LocalIP:LocalPort)到NAT出口的公网地址(PublicIP:PublicPort)的影射方式，把NAT分为四种类型：<br>
+
+    
+	  <div class="readmore">
+      <a href="/2016/12/12/NAT-Traversal/">Read More</a>
+    </div>
+    
+    
+    
+
+  </section>
+</article>
+  
+    <article class="post ">
+
+  
+  <h2 class="title">
     <a href="/2016/12/12/Vim-register/">
       Vim register
     </a>
@@ -98,7 +128,7 @@
     12月 12, 2016
   </time>
   <section class="content">
-	  <h1 id="vim寄存器"><a href="#vim寄存器" class="headerlink" title="vim寄存器"></a>vim寄存器</h1><p>转载自<br><a href="http://www.blogdaren.com/m/?post=1629">http://www.blogdaren.com/m/?post=1629</a></p>
+	  <h1 id="vim寄存器"><a href="#vim寄存器" class="headerlink" title="vim寄存器"></a>vim寄存器</h1><p>转载自<br><a href="http://www.blogdaren.com/m/?post=1629" target="_blank" rel="noopener">http://www.blogdaren.com/m/?post=1629</a></p>
 <h3 id="数字寄存器"><a href="#数字寄存器" class="headerlink" title="数字寄存器"></a>数字寄存器</h3><p>有些寄存器是有特殊作用的如数字寄存器。在介绍数字寄存器前先看一个命令:reg。现在输入这个命令<code>:reg</code>。有没有看到许多”号开始的数字或字 符呢，这些就是寄存器。这里面有你以前删除的文本和最近复制的文本。</p>
 <p>寄存器”0到”9就叫做数字寄存器。 <strong>寄存器”0存着上一次复制操作所复制的文本。寄存器”1到”9分别保存着你最近删除的文本。”1的内容总是你 上一次删除的内容。每删除一次这些寄存器的内容就往下传递。</strong>刚删除的文本到了”1，而原来的寄存器”1的内容到了”2，原来”2的内容到了”3，……，原 来”9的内容则被丢弃。数字寄存器只保留最近9条删条的文本和一条复制的文本。</p>
 <h3 id="字母寄存器"><a href="#字母寄存器" class="headerlink" title="字母寄存器"></a>字母寄存器</h3><p>现在看一下今天要讲的第二种寄存器：字母寄存器（named register）。字母寄存器的名称是单个英文字母。可以用这种方式表示一个字母寄存器：”a,”b,…,”z。 <strong>同一个字母的大写形式与小写形式表示的是同一个寄存器</strong>，但它们在“行为”会有所不同，这点稍后说明。字母寄存器只有在用户指定时才被使用。<br>
@@ -159,7 +189,7 @@
     12月 3, 2016
   </time>
   <section class="content">
-	  <h1 id="reStructuredText-Note"><a href="#reStructuredText-Note" class="headerlink" title="reStructuredText Note"></a>reStructuredText Note</h1><p>转载自<br><a href="http://docutils.sourceforge.net/docs/user/rst/quickref.html">http://docutils.sourceforge.net/docs/user/rst/quickref.html</a></p>
+	  <h1 id="reStructuredText-Note"><a href="#reStructuredText-Note" class="headerlink" title="reStructuredText Note"></a>reStructuredText Note</h1><p>转载自<br><a href="http://docutils.sourceforge.net/docs/user/rst/quickref.html" target="_blank" rel="noopener">http://docutils.sourceforge.net/docs/user/rst/quickref.html</a></p>
 <h2 id="Inline-Markup"><a href="#Inline-Markup" class="headerlink" title="Inline Markup"></a>Inline Markup</h2>
 
     
@@ -209,46 +239,6 @@
     
 	  <div class="tags">
       <a class="tag-link" href="/tags/vim/">vim</a>
-	  </div>
-    
-
-  </section>
-</article>
-  
-    <article class="post ">
-
-  
-  <h2 class="title">
-    <a href="/2016/11/18/Drupal-8-Import-CSV-to-D8/">
-      Drupal 8 -- Import CSV to D8
-    </a>
-  </h2>
-  
-  <time>
-    11月 18, 2016
-  </time>
-  <section class="content">
-	  <h1 id="Drupal-8-–-Import-CSV-to-D8"><a href="#Drupal-8-–-Import-CSV-to-D8" class="headerlink" title="Drupal 8 – Import CSV to D8"></a>Drupal 8 – Import CSV to D8</h1><h3 id="reference"><a href="#reference" class="headerlink" title="reference:"></a>reference:</h3><ul>
-<li>bmik’s answer <a href="https://www.drupal.org/node/2679899">https://www.drupal.org/node/2679899</a></li>
-<li><a href="https://www.mtech-llc.com/blog/lucas-hedding/migrating-using-csv">https://www.mtech-llc.com/blog/lucas-hedding/migrating-using-csv</a></li>
-</ul>
-<p>Migration in D8 is bloody suffering. IT SHOULD NOT BE THIS HARD!<br>Migrations in D8 follow a 3 step process. Gather the data, massage the data, then save the data into a destination.</p>
-<ol>
-<li>Gather = Source plugin</li>
-<li>Massage = Process plugin</li>
-<li>Save = Destination plugin</li>
-</ol>
-<p>Here’s a super simple source excerpt:<br>
-
-    
-	  <div class="readmore">
-      <a href="/2016/11/18/Drupal-8-Import-CSV-to-D8/">Read More</a>
-    </div>
-    
-    
-    
-	  <div class="tags">
-      <a class="tag-link" href="/tags/drupal/">drupal</a>
 	  </div>
     
 

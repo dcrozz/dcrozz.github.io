@@ -10,25 +10,17 @@
   <meta name="HandheldFriendly" content="True" />
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="前言什么时候可以认真看过一遍SICP啊 (:3」∠)
-以下单纯的作为学习笔记
-迭代器好像没什么徒手撸一个迭代器的机会所以留意一下Python的for循环本质上就是通过不断调用next()函数实现。next()方法返回容器的下一个元素，在结尾时引发StopIteration异常
-12345678910# 首先获得Iterator对象:it = iter([1, 2, 3, 4, 5])# 循环:wh">
+  <meta name="description" content="前言什么时候可以认真看过一遍SICP啊 (:3」∠) 以下单纯的作为学习笔记 迭代器好像没什么徒手撸一个迭代器的机会所以留意一下Python的for循环本质上就是通过不断调用next()函数实现。next()方法返回容器的下一个元素，在结尾时引发StopIteration异常 12345678910# 首先获得Iter">
 <meta property="og:type" content="article">
 <meta property="og:title" content="关于pyhton的yield, 生成器与尾调用">
 <meta property="og:url" content="http://ukeyim.me/2017/04/23/关于pyhton的yield-迭代器-生成器与尾调用/index.html">
-<meta property="og:site_name" content="Alex's Heya">
-<meta property="og:description" content="前言什么时候可以认真看过一遍SICP啊 (:3」∠)
-以下单纯的作为学习笔记
-迭代器好像没什么徒手撸一个迭代器的机会所以留意一下Python的for循环本质上就是通过不断调用next()函数实现。next()方法返回容器的下一个元素，在结尾时引发StopIteration异常
-12345678910# 首先获得Iterator对象:it = iter([1, 2, 3, 4, 5])# 循环:wh">
+<meta property="og:site_name" content="Alex&#39;s Heya">
+<meta property="og:description" content="前言什么时候可以认真看过一遍SICP啊 (:3」∠) 以下单纯的作为学习笔记 迭代器好像没什么徒手撸一个迭代器的机会所以留意一下Python的for循环本质上就是通过不断调用next()函数实现。next()方法返回容器的下一个元素，在结尾时引发StopIteration异常 12345678910# 首先获得Iterator对象:it = iter([1, 2, 3, 4, 5])# 循环:wh">
+<meta property="og:locale" content="zh-CN">
 <meta property="og:updated_time" content="2017-04-23T16:43:28.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="关于pyhton的yield, 生成器与尾调用">
-<meta name="twitter:description" content="前言什么时候可以认真看过一遍SICP啊 (:3」∠)
-以下单纯的作为学习笔记
-迭代器好像没什么徒手撸一个迭代器的机会所以留意一下Python的for循环本质上就是通过不断调用next()函数实现。next()方法返回容器的下一个元素，在结尾时引发StopIteration异常
-12345678910# 首先获得Iterator对象:it = iter([1, 2, 3, 4, 5])# 循环:wh">
+<meta name="twitter:description" content="前言什么时候可以认真看过一遍SICP啊 (:3」∠) 以下单纯的作为学习笔记 迭代器好像没什么徒手撸一个迭代器的机会所以留意一下Python的for循环本质上就是通过不断调用next()函数实现。next()方法返回容器的下一个元素，在结尾时引发StopIteration异常 12345678910# 首先获得Iterator对象:it = iter([1, 2, 3, 4, 5])# 循环:wh">
   
   
     <link rel="icon" href="/favicon.png">
@@ -134,9 +126,9 @@
 <p>总之超帅的</p>
 <h3 id="Reference："><a href="#Reference：" class="headerlink" title="Reference："></a>Reference：</h3><p>两篇写的都real棒</p>
 <ul>
-<li>neo1218 <a href="https://segmentfault.com/a/1190000007641519" target="_blank" rel="external">一般递归与尾递归</a></li>
-<li>阮一峰 <a href="http://www.ruanyifeng.com/blog/2015/04/tail-call.html" target="_blank" rel="external">尾调用优化</a></li>
-<li>80s老人 <a href="http://www.jianshu.com/p/d36746ad845d" target="_blank" rel="external">谁说Python不能尾递归优化</a></li>
+<li>neo1218 <a href="https://segmentfault.com/a/1190000007641519" target="_blank" rel="noopener">一般递归与尾递归</a></li>
+<li>阮一峰 <a href="http://www.ruanyifeng.com/blog/2015/04/tail-call.html" target="_blank" rel="noopener">尾调用优化</a></li>
+<li>80s老人 <a href="http://www.jianshu.com/p/d36746ad845d" target="_blank" rel="noopener">谁说Python不能尾递归优化</a></li>
 </ul>
 
   	</div>

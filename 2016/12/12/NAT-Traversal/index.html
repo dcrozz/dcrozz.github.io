@@ -10,22 +10,17 @@
   <meta name="HandheldFriendly" content="True" />
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="NAT穿透的详细讲解及分析(转载)转载：http://michankong.blog.51cto.com/1464983/761270  
-其实本来只是想做一个ssh反向隧道，但是NAT原理一直没搞明白，这篇写得好好啊 (:3」∠)
-一、什么是NAT？为什么要使用NAT？NAT是将私有地址转换为合法IP地址的技术，通俗的讲就是将内网与内网通信时怎么将内网私有IP地址转换为可在网络中传播的合法IP地">
+  <meta name="description" content="NAT穿透的详细讲解及分析(转载)转载：http://michankong.blog.51cto.com/1464983/761270   其实本来只是想做一个ssh反向隧道，但是NAT原理一直没搞明白，这篇写得好好啊 (:3」∠) 一、什么是NAT？为什么要使用NAT？NAT是将私有地址转换为合法IP地址的技术，通俗">
 <meta property="og:type" content="article">
 <meta property="og:title" content="NAT Traversal">
 <meta property="og:url" content="http://ukeyim.me/2016/12/12/NAT-Traversal/index.html">
-<meta property="og:site_name" content="Alex's Heya">
-<meta property="og:description" content="NAT穿透的详细讲解及分析(转载)转载：http://michankong.blog.51cto.com/1464983/761270  
-其实本来只是想做一个ssh反向隧道，但是NAT原理一直没搞明白，这篇写得好好啊 (:3」∠)
-一、什么是NAT？为什么要使用NAT？NAT是将私有地址转换为合法IP地址的技术，通俗的讲就是将内网与内网通信时怎么将内网私有IP地址转换为可在网络中传播的合法IP地">
+<meta property="og:site_name" content="Alex&#39;s Heya">
+<meta property="og:description" content="NAT穿透的详细讲解及分析(转载)转载：http://michankong.blog.51cto.com/1464983/761270   其实本来只是想做一个ssh反向隧道，但是NAT原理一直没搞明白，这篇写得好好啊 (:3」∠) 一、什么是NAT？为什么要使用NAT？NAT是将私有地址转换为合法IP地址的技术，通俗的讲就是将内网与内网通信时怎么将内网私有IP地址转换为可在网络中传播的合法IP地">
+<meta property="og:locale" content="zh-CN">
 <meta property="og:updated_time" content="2016-12-12T12:58:19.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="NAT Traversal">
-<meta name="twitter:description" content="NAT穿透的详细讲解及分析(转载)转载：http://michankong.blog.51cto.com/1464983/761270  
-其实本来只是想做一个ssh反向隧道，但是NAT原理一直没搞明白，这篇写得好好啊 (:3」∠)
-一、什么是NAT？为什么要使用NAT？NAT是将私有地址转换为合法IP地址的技术，通俗的讲就是将内网与内网通信时怎么将内网私有IP地址转换为可在网络中传播的合法IP地">
+<meta name="twitter:description" content="NAT穿透的详细讲解及分析(转载)转载：http://michankong.blog.51cto.com/1464983/761270   其实本来只是想做一个ssh反向隧道，但是NAT原理一直没搞明白，这篇写得好好啊 (:3」∠) 一、什么是NAT？为什么要使用NAT？NAT是将私有地址转换为合法IP地址的技术，通俗的讲就是将内网与内网通信时怎么将内网私有IP地址转换为可在网络中传播的合法IP地">
   
   
     <link rel="icon" href="/favicon.png">
@@ -97,7 +92,7 @@
 	</time>
 	<section class="content">
   	<div class="article-entry" itemprop="articleBody">
-    	<h1 id="NAT穿透的详细讲解及分析-转载"><a href="#NAT穿透的详细讲解及分析-转载" class="headerlink" title="NAT穿透的详细讲解及分析(转载)"></a>NAT穿透的详细讲解及分析(转载)</h1><p>转载：<a href="http://michankong.blog.51cto.com/1464983/761270" target="_blank" rel="external">http://michankong.blog.51cto.com/1464983/761270</a>  </p>
+    	<h1 id="NAT穿透的详细讲解及分析-转载"><a href="#NAT穿透的详细讲解及分析-转载" class="headerlink" title="NAT穿透的详细讲解及分析(转载)"></a>NAT穿透的详细讲解及分析(转载)</h1><p>转载：<a href="http://michankong.blog.51cto.com/1464983/761270" target="_blank" rel="noopener">http://michankong.blog.51cto.com/1464983/761270</a>  </p>
 <p>其实本来只是想做一个ssh反向隧道，但是NAT原理一直没搞明白，这篇写得好好啊<em> (:3」∠)</em></p>
 <h2 id="一、什么是NAT？为什么要使用NAT？"><a href="#一、什么是NAT？为什么要使用NAT？" class="headerlink" title="一、什么是NAT？为什么要使用NAT？"></a>一、什么是NAT？为什么要使用NAT？</h2><p>NAT是将私有地址转换为合法IP地址的技术，通俗的讲就是将内网与内网通信时怎么将内网私有IP地址转换为可在网络中传播的合法IP地址。NAT的出现完美地解决了lP地址不足的问题，而且还能够有效地避免来自网络外部的攻击，隐藏并保护网络内部的计算机。 </p>
 <h2 id="二、NAT的分类"><a href="#二、NAT的分类" class="headerlink" title="二、NAT的分类"></a>二、NAT的分类</h2><p>STUN标准中，根据内部终端的地址(LocalIP:LocalPort)到NAT出口的公网地址(PublicIP:PublicPort)的影射方式，把NAT分为四种类型：<br><a id="more"></a></p>

@@ -10,22 +10,18 @@
   <meta name="HandheldFriendly" content="True" />
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="转载自StackOverflow
-SQLalchemy连接数据库时要用一串url形如“mysql+pymysql://user:passwd@host/database”当passwd包含“@”的时候这串url就没法正常解析了。在SO上看到的答案，使用python的url解析库
-http://stackoverflow.com/questions/1423804/writing-a-connect">
+  <meta name="description" content="转载自StackOverflow SQLalchemy连接数据库时要用一串url形如“mysql+pymysql://user:passwd@host/database”当passwd包含“@”的时候这串url就没法正常解析了。在SO上看到的答案，使用python的url解析库 http://stackoverflow">
+<meta name="keywords" content="python,flask">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Writing a connection string when password contains special characters">
 <meta property="og:url" content="http://ukeyim.me/2017/02/09/Writing-a-connection-string-when-password-contains-special-characters/index.html">
-<meta property="og:site_name" content="Alex's Heya">
-<meta property="og:description" content="转载自StackOverflow
-SQLalchemy连接数据库时要用一串url形如“mysql+pymysql://user:passwd@host/database”当passwd包含“@”的时候这串url就没法正常解析了。在SO上看到的答案，使用python的url解析库
-http://stackoverflow.com/questions/1423804/writing-a-connect">
+<meta property="og:site_name" content="Alex&#39;s Heya">
+<meta property="og:description" content="转载自StackOverflow SQLalchemy连接数据库时要用一串url形如“mysql+pymysql://user:passwd@host/database”当passwd包含“@”的时候这串url就没法正常解析了。在SO上看到的答案，使用python的url解析库 http://stackoverflow.com/questions/1423804/writing-a-connect">
+<meta property="og:locale" content="zh-CN">
 <meta property="og:updated_time" content="2017-02-09T07:13:36.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Writing a connection string when password contains special characters">
-<meta name="twitter:description" content="转载自StackOverflow
-SQLalchemy连接数据库时要用一串url形如“mysql+pymysql://user:passwd@host/database”当passwd包含“@”的时候这串url就没法正常解析了。在SO上看到的答案，使用python的url解析库
-http://stackoverflow.com/questions/1423804/writing-a-connect">
+<meta name="twitter:description" content="转载自StackOverflow SQLalchemy连接数据库时要用一串url形如“mysql+pymysql://user:passwd@host/database”当passwd包含“@”的时候这串url就没法正常解析了。在SO上看到的答案，使用python的url解析库 http://stackoverflow.com/questions/1423804/writing-a-connect">
   
   
     <link rel="icon" href="/favicon.png">
@@ -99,7 +95,7 @@ http://stackoverflow.com/questions/1423804/writing-a-connect">
   	<div class="article-entry" itemprop="articleBody">
     	<p>转载自StackOverflow</p>
 <p>SQLalchemy连接数据库时要用一串url形如“mysql+pymysql://user:passwd@host/database”<br>当passwd包含“@”的时候这串url就没法正常解析了。<br>在SO上看到的答案，使用python的url解析库</p>
-<p><a href="http://stackoverflow.com/questions/1423804/writing-a-connection-string-when-password-contains-special-characters" target="_blank" rel="external">http://stackoverflow.com/questions/1423804/writing-a-connection-string-when-password-contains-special-characters</a></p>
+<p><a href="http://stackoverflow.com/questions/1423804/writing-a-connection-string-when-password-contains-special-characters" target="_blank" rel="noopener">http://stackoverflow.com/questions/1423804/writing-a-connection-string-when-password-contains-special-characters</a></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">python2</div><div class="line">from urllib import quote_plus as urlquote</div><div class="line">from sqlalchemy.engine import create_engine</div><div class="line">engine = create_engine(&apos;postgres://user:%s@host/database&apos; % urlquote(&apos;badpass&apos;))</div></pre></td></tr></table></figure>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">python3</div><div class="line">from urllib import parse</div><div class="line">from sqlalchemy.engine import create_engine</div><div class="line">engine = create_engine(&apos;postgres://user:%s@host/database&apos; % parse.unquote_plus(&apos;badpass&apos;))</div></pre></td></tr></table></figure>
 

@@ -12,12 +12,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="An Alex only Loves Angel">
 <meta property="og:type" content="website">
-<meta property="og:title" content="Alex's Heya">
+<meta property="og:title" content="Alex&#39;s Heya">
 <meta property="og:url" content="http://ukeyim.me/archives/2016/page/4/index.html">
-<meta property="og:site_name" content="Alex's Heya">
+<meta property="og:site_name" content="Alex&#39;s Heya">
 <meta property="og:description" content="An Alex only Loves Angel">
+<meta property="og:locale" content="zh-CN">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Alex's Heya">
+<meta name="twitter:title" content="Alex&#39;s Heya">
 <meta name="twitter:description" content="An Alex only Loves Angel">
   
   
@@ -106,7 +107,7 @@
 	  <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>在HKU实验室搬砖，这边的网络和mac绑定的，调试linux服务器只能用一台局域网里的垃圾windows8.1，实在是太annoying，果断改mac上mac。</p>
 <h2 id="过程"><a href="#过程" class="headerlink" title="过程"></a>过程</h2><p>本想用ifconfig直接修改mac地址，</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ ipconfig en0 down</div><div class="line">$ sudo ipconfig en0 ether xx:xx:xx:xx:xx</div></pre></td></tr></table></figure>
-<p>结果收到提示<code>ifconfig: ioctl (SIOCAIFADDR): Device power is off</code><br>查了一下osx 10.7还是多少以上不能用<code>ifconfig</code>这样改，所幸发现了<a href="https://github.com/feross/SpoofMAC">SpoofMac</a>，装了可以轻轻松松修改en0了不过…<br>
+<p>结果收到提示<code>ifconfig: ioctl (SIOCAIFADDR): Device power is off</code><br>查了一下osx 10.7还是多少以上不能用<code>ifconfig</code>这样改，所幸发现了<a href="https://github.com/feross/SpoofMAC" target="_blank" rel="noopener">SpoofMac</a>，装了可以轻轻松松修改en0了不过…<br>
 
     
 	  <div class="readmore">

@@ -10,25 +10,18 @@
   <meta name="HandheldFriendly" content="True" />
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="前言在HKU实验室搬砖，这边的网络和mac绑定的，调试linux服务器只能用一台局域网里的垃圾windows8.1，实在是太annoying，果断改mac上mac。
-过程本想用ifconfig直接修改mac地址，
-12$ ipconfig en0 down$ sudo ipconfig en0 ether xx:xx:xx:xx:xx
-结果收到提示ifconfig: ioctl (SIOCAIFA">
+  <meta name="description" content="前言在HKU实验室搬砖，这边的网络和mac绑定的，调试linux服务器只能用一台局域网里的垃圾windows8.1，实在是太annoying，果断改mac上mac。 过程本想用ifconfig直接修改mac地址， 12$ ipconfig en0 down$ sudo ipconfig en0 ether xx:xx:">
+<meta name="keywords" content="osx">
 <meta property="og:type" content="article">
 <meta property="og:title" content="osx 10.11 El Capitan 修改usb网卡的mac地址">
 <meta property="og:url" content="http://ukeyim.me/2016/10/19/Mac-10-11-修改usb网卡的mac地址/index.html">
-<meta property="og:site_name" content="Alex's Heya">
-<meta property="og:description" content="前言在HKU实验室搬砖，这边的网络和mac绑定的，调试linux服务器只能用一台局域网里的垃圾windows8.1，实在是太annoying，果断改mac上mac。
-过程本想用ifconfig直接修改mac地址，
-12$ ipconfig en0 down$ sudo ipconfig en0 ether xx:xx:xx:xx:xx
-结果收到提示ifconfig: ioctl (SIOCAIFA">
+<meta property="og:site_name" content="Alex&#39;s Heya">
+<meta property="og:description" content="前言在HKU实验室搬砖，这边的网络和mac绑定的，调试linux服务器只能用一台局域网里的垃圾windows8.1，实在是太annoying，果断改mac上mac。 过程本想用ifconfig直接修改mac地址， 12$ ipconfig en0 down$ sudo ipconfig en0 ether xx:xx:xx:xx:xx 结果收到提示ifconfig: ioctl (SIOCAIFA">
+<meta property="og:locale" content="zh-CN">
 <meta property="og:updated_time" content="2016-10-19T12:46:42.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="osx 10.11 El Capitan 修改usb网卡的mac地址">
-<meta name="twitter:description" content="前言在HKU实验室搬砖，这边的网络和mac绑定的，调试linux服务器只能用一台局域网里的垃圾windows8.1，实在是太annoying，果断改mac上mac。
-过程本想用ifconfig直接修改mac地址，
-12$ ipconfig en0 down$ sudo ipconfig en0 ether xx:xx:xx:xx:xx
-结果收到提示ifconfig: ioctl (SIOCAIFA">
+<meta name="twitter:description" content="前言在HKU实验室搬砖，这边的网络和mac绑定的，调试linux服务器只能用一台局域网里的垃圾windows8.1，实在是太annoying，果断改mac上mac。 过程本想用ifconfig直接修改mac地址， 12$ ipconfig en0 down$ sudo ipconfig en0 ether xx:xx:xx:xx:xx 结果收到提示ifconfig: ioctl (SIOCAIFA">
   
   
     <link rel="icon" href="/favicon.png">
@@ -103,9 +96,9 @@
     	<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>在HKU实验室搬砖，这边的网络和mac绑定的，调试linux服务器只能用一台局域网里的垃圾windows8.1，实在是太annoying，果断改mac上mac。</p>
 <h2 id="过程"><a href="#过程" class="headerlink" title="过程"></a>过程</h2><p>本想用ifconfig直接修改mac地址，</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ ipconfig en0 down</div><div class="line">$ sudo ipconfig en0 ether xx:xx:xx:xx:xx</div></pre></td></tr></table></figure>
-<p>结果收到提示<code>ifconfig: ioctl (SIOCAIFADDR): Device power is off</code><br>查了一下osx 10.7还是多少以上不能用<code>ifconfig</code>这样改，所幸发现了<a href="https://github.com/feross/SpoofMAC" target="_blank" rel="external">SpoofMac</a>，装了可以轻轻松松修改en0了不过…<br><a id="more"></a></p>
+<p>结果收到提示<code>ifconfig: ioctl (SIOCAIFADDR): Device power is off</code><br>查了一下osx 10.7还是多少以上不能用<code>ifconfig</code>这样改，所幸发现了<a href="https://github.com/feross/SpoofMAC" target="_blank" rel="noopener">SpoofMac</a>，装了可以轻轻松松修改en0了不过…<br><a id="more"></a></p>
 <p><strong>没法修改外置USB转ether的mac啊</strong><br>就是明明改了但没提示，ifconfig了以后还是原来的mac。</p>
-<p>继续google发现是驱动的问题，上Realtek官网找到自己的芯片就好(在system information里面看设备信息，我的是RTL8152)，付个我下载的链接（<a href="http://www.realtek.com.tw/downloads/downloadsView.aspx?Langid=1&amp;PNid=14&amp;PFid=55&amp;Level=5&amp;Conn=4&amp;DownTypeID=3&amp;GetDown=false）" target="_blank" rel="external">http://www.realtek.com.tw/downloads/downloadsView.aspx?Langid=1&amp;PNid=14&amp;PFid=55&amp;Level=5&amp;Conn=4&amp;DownTypeID=3&amp;GetDown=false）</a></p>
+<p>继续google发现是驱动的问题，上Realtek官网找到自己的芯片就好(在system information里面看设备信息，我的是RTL8152)，付个我下载的链接（<a href="http://www.realtek.com.tw/downloads/downloadsView.aspx?Langid=1&amp;PNid=14&amp;PFid=55&amp;Level=5&amp;Conn=4&amp;DownTypeID=3&amp;GetDown=false）" target="_blank" rel="noopener">http://www.realtek.com.tw/downloads/downloadsView.aspx?Langid=1&amp;PNid=14&amp;PFid=55&amp;Level=5&amp;Conn=4&amp;DownTypeID=3&amp;GetDown=false）</a></p>
 <p>装上以后就可以修改usb网卡的mac了，珍爱生命远离windows。</p>
 <h2 id="后文"><a href="#后文" class="headerlink" title="后文"></a>后文</h2><p>不知道为什么装了驱动以后在system information里找不到usb网卡这个设备了，改天再好好研究下。</p>
 

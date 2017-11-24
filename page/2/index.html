@@ -12,12 +12,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="An Alex only Loves Angel">
 <meta property="og:type" content="website">
-<meta property="og:title" content="Alex's Heya">
+<meta property="og:title" content="Alex&#39;s Heya">
 <meta property="og:url" content="http://ukeyim.me/page/2/index.html">
-<meta property="og:site_name" content="Alex's Heya">
+<meta property="og:site_name" content="Alex&#39;s Heya">
 <meta property="og:description" content="An Alex only Loves Angel">
+<meta property="og:locale" content="zh-CN">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Alex's Heya">
+<meta name="twitter:title" content="Alex&#39;s Heya">
 <meta name="twitter:description" content="An Alex only Loves Angel">
   
   
@@ -85,6 +86,35 @@
 
 <section class="post-list">
 	
+    <article class="post ">
+
+  
+  <h2 class="title">
+    <a href="/2017/04/23/关于pyhton的yield-迭代器-生成器与尾调用/">
+      关于pyhton的yield, 生成器与尾调用
+    </a>
+  </h2>
+  
+  <time>
+    4月 23, 2017
+  </time>
+  <section class="content">
+	  <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>什么时候可以认真看过一遍SICP啊<em> (:3」∠)</em></p>
+<p>以下单纯的作为学习笔记</p>
+<h3 id="迭代器"><a href="#迭代器" class="headerlink" title="迭代器"></a>迭代器</h3><p>好像没什么徒手撸一个迭代器的机会所以留意一下Python的for循环本质上就是通过不断调用<code>next()</code>函数实现。<code>next()</code>方法返回容器的下一个元素，在结尾时引发<code>StopIteration</code>异常</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"># 首先获得Iterator对象:</div><div class="line">it = iter([1, 2, 3, 4, 5])</div><div class="line"># 循环:</div><div class="line">while True:</div><div class="line">    try:</div><div class="line">        # 获得下一个值:</div><div class="line">        print(next(it))</div><div class="line">    except StopIteration:</div><div class="line">        # 遇到StopIteration就退出循环</div><div class="line">        break</div></pre></td></tr></table></figure>
+
+    
+	  <div class="readmore">
+      <a href="/2017/04/23/关于pyhton的yield-迭代器-生成器与尾调用/">Read More</a>
+    </div>
+    
+    
+    
+
+  </section>
+</article>
+  
     <article class="post ">
 
   
@@ -164,7 +194,7 @@
     3月 23, 2017
   </time>
   <section class="content">
-	  <p>转载自 <a href="https://www.zendstudio.net/archives/create-htaccess-file-in-windows/" target="_blank" rel="external">https://www.zendstudio.net/archives/create-htaccess-file-in-windows/</a></p>
+	  <p>转载自 <a href="https://www.zendstudio.net/archives/create-htaccess-file-in-windows/" target="_blank" rel="noopener">https://www.zendstudio.net/archives/create-htaccess-file-in-windows/</a></p>
 <ol>
 <li>使用屏幕编辑命令<code>copy con .htaccess</code>后回车，输入内容，最后按下<code>ctrl+z</code>结束编辑，就成功生成了.htaccess；</li>
 <li>使用重命名命令<code>ren 1.txt .htaccess</code>，这是最常规的方法了，在windows窗口下不能执行的命令，在cmd下却如履平地；</li>
@@ -199,8 +229,8 @@
   </time>
   <section class="content">
 	  <ul>
-<li>转载自:<a href="http://zjking.blog.51cto.com/976858/1117828">http://zjking.blog.51cto.com/976858/1117828</a> 作者:zjking </li>
-<li>转载自:<a href="http://askubuntu.com/questions/8653/how-to-keep-processes-running-after-ending-ssh-session">http://askubuntu.com/questions/8653/how-to-keep-processes-running-after-ending-ssh-session</a></li>
+<li>转载自:<a href="http://zjking.blog.51cto.com/976858/1117828" target="_blank" rel="noopener">http://zjking.blog.51cto.com/976858/1117828</a> 作者:zjking </li>
+<li>转载自:<a href="http://askubuntu.com/questions/8653/how-to-keep-processes-running-after-ending-ssh-session" target="_blank" rel="noopener">http://askubuntu.com/questions/8653/how-to-keep-processes-running-after-ending-ssh-session</a></li>
 </ul>
 <p>zjking的几个思考写的很好啊忍不住想记下来，侵删</p>
 <h3 id="问题描述："><a href="#问题描述：" class="headerlink" title="问题描述："></a>问题描述：</h3><p>远程ssh用tar打包一个文件夹或者unrar解压一个大文件，即使加了&amp;，退出ssh登录时解压进程中断。</p>
@@ -216,34 +246,6 @@
 	  <div class="tags">
       <a class="tag-link" href="/tags/linux/">linux</a>
 	  </div>
-    
-
-  </section>
-</article>
-  
-    <article class="post ">
-
-  
-  <h2 class="title">
-    <a href="/2017/03/07/全排列的递归与非递归及c-11的lambda-for-each-sort初见/">
-      全排列的递归与非递归及c++11的lambda, for_each, sort初见
-    </a>
-  </h2>
-  
-  <time>
-    3月 7, 2017
-  </time>
-  <section class="content">
-	  <p>一直说着STL终于开始接触了，作为新特性还是挺好上手的。<br>具体实现直接写在代码里了（这大概是一篇只留给自己看的manual..)</p>
-<h3 id="使用clang编译"><a href="#使用clang编译" class="headerlink" title="使用clang编译"></a>使用clang编译</h3><p><code>$ clang -std=c++11 -stdlib=libc++ permutation_1.cpp -o test</code><br>注意这样一来就一定要加<code>using namespace std;</code></p>
-<p>具体还有什么坑等更新的时候想起来再写。<br>
-
-    
-	  <div class="readmore">
-      <a href="/2017/03/07/全排列的递归与非递归及c-11的lambda-for-each-sort初见/">Read More</a>
-    </div>
-    
-    
     
 
   </section>

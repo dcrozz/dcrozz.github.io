@@ -10,28 +10,18 @@
   <meta name="HandheldFriendly" content="True" />
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="这种东西都写出来感觉自己是不是太无所事事了orz
-起因一开始只是疑惑为什么debian/ubuntu里面的/etc/hosts有第二行127.0.1.1 &amp;lt;host_name&amp;gt;，查下来才知道127/8的地址都是环路地址，127.0.1.1只是为了确保访问自己的hostname的时候 总是访问的是本机地址。
-只是看到一句话比较在意
-
-In the long run the UNIX ho">
+  <meta name="description" content="这种东西都写出来感觉自己是不是太无所事事了orz 起因一开始只是疑惑为什么debian/ubuntu里面的/etc/hosts有第二行127.0.1.1 &amp;lt;host_name&amp;gt;，查下来才知道127/8的地址都是环路地址，127.0.1.1只是为了确保访问自己的hostname的时候 总是访问">
+<meta name="keywords" content="linux,network">
 <meta property="og:type" content="article">
-<meta property="og:title" content="关于127.0.1.1以及是否应该使用/etc/hosts">
+<meta property="og:title" content="关于127.0.1.1以及是否应该使用&#x2F;etc&#x2F;hosts">
 <meta property="og:url" content="http://ukeyim.me/2017/04/10/关于127-0-1-1以及是否应该使用-etc-hosts/index.html">
-<meta property="og:site_name" content="Alex's Heya">
-<meta property="og:description" content="这种东西都写出来感觉自己是不是太无所事事了orz
-起因一开始只是疑惑为什么debian/ubuntu里面的/etc/hosts有第二行127.0.1.1 &amp;lt;host_name&amp;gt;，查下来才知道127/8的地址都是环路地址，127.0.1.1只是为了确保访问自己的hostname的时候 总是访问的是本机地址。
-只是看到一句话比较在意
-
-In the long run the UNIX ho">
+<meta property="og:site_name" content="Alex&#39;s Heya">
+<meta property="og:description" content="这种东西都写出来感觉自己是不是太无所事事了orz 起因一开始只是疑惑为什么debian/ubuntu里面的/etc/hosts有第二行127.0.1.1 &amp;lt;host_name&amp;gt;，查下来才知道127/8的地址都是环路地址，127.0.1.1只是为了确保访问自己的hostname的时候 总是访问的是本机地址。 只是看到一句话比较在意  In the long run the UNIX ho">
+<meta property="og:locale" content="zh-CN">
 <meta property="og:updated_time" content="2017-04-10T14:13:02.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="关于127.0.1.1以及是否应该使用/etc/hosts">
-<meta name="twitter:description" content="这种东西都写出来感觉自己是不是太无所事事了orz
-起因一开始只是疑惑为什么debian/ubuntu里面的/etc/hosts有第二行127.0.1.1 &amp;lt;host_name&amp;gt;，查下来才知道127/8的地址都是环路地址，127.0.1.1只是为了确保访问自己的hostname的时候 总是访问的是本机地址。
-只是看到一句话比较在意
-
-In the long run the UNIX ho">
+<meta name="twitter:title" content="关于127.0.1.1以及是否应该使用&#x2F;etc&#x2F;hosts">
+<meta name="twitter:description" content="这种东西都写出来感觉自己是不是太无所事事了orz 起因一开始只是疑惑为什么debian/ubuntu里面的/etc/hosts有第二行127.0.1.1 &amp;lt;host_name&amp;gt;，查下来才知道127/8的地址都是环路地址，127.0.1.1只是为了确保访问自己的hostname的时候 总是访问的是本机地址。 只是看到一句话比较在意  In the long run the UNIX ho">
   
   
     <link rel="icon" href="/favicon.png">
@@ -138,7 +128,7 @@ In the long run the UNIX ho">
 <p>As long as your host agrees with your domain name, specifying it or not in <code>/etc/hosts</code> won’t change anything. Another practice is to have it specified as the domain parameter in <code>/etc/resolv.conf</code>. Not specifying it could simplify your life if, one day, your network administrator changes it. Specifying it doesn’t change anything, as far as I know.</p>
 <p>You should definitely leave <code>127.0.0.1 localhost</code> or <code>127.0.0.1 localhost localhost.localdomain</code> in <code>/etc/hosts</code>. Some applications could start having a really strange behaviour is <code>localhost</code> binds to anything other than your loopback address because this is a really, really, unexpected setting.</p>
 </blockquote>
-<p>Referece:<br><a href="http://unix.stackexchange.com/questions/77917/include-domain-name-or-not-in-etc-hosts" target="_blank" rel="external">Include domain name or not in /etc/hosts?</a><br><a href="https://kb.iu.edu/d/aiuv" target="_blank" rel="external">What is a fully qualified domain name (FQDN)?</a>    </p>
+<p>Referece:<br><a href="http://unix.stackexchange.com/questions/77917/include-domain-name-or-not-in-etc-hosts" target="_blank" rel="noopener">Include domain name or not in /etc/hosts?</a><br><a href="https://kb.iu.edu/d/aiuv" target="_blank" rel="noopener">What is a fully qualified domain name (FQDN)?</a>    </p>
 
   	</div>
 	  
