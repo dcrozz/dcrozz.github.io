@@ -90,6 +90,49 @@
 
   
   <h2 class="title">
+    <a href="/2016/11/04/Drupal-8-Add-Url-to-Slideshow/">
+      Drupal 8 -- Add Url to Slideshow
+    </a>
+  </h2>
+  
+  <time>
+    11月 4, 2016
+  </time>
+  <section class="content">
+	  <p>进度太滑水今天被boss批评了（望天</p>
+<p>本来以为很好实现的功能结果到处找不到哪里可以加连接，简单搜索一下这个功能竟然还有要用插件，试了两个插件以后最后还是找到免插件的解决方案（其实也是写不来token）。  </p>
+<p>原文：</p>
+<blockquote>
+<pre><code>BY jeni_dc commented 5 years ago 
+
+I&apos;d just create a view to display that image on my node type. Add another field to store the link in your node, then create a view with two fields, your link and your image. Arrange the fields in your view so the link is first, then the image.
+
+Exclude the link field from display. When setting up your image field in the view you&apos;ll need to rewrite the results. Select &quot;output this field as a link&quot;, and in the link path enter the token for your link field, that will be in the replacement patterns below.
+
+Then to make sure your view is only showing the image and link associated with the particular node you are viewing, you&apos;ll need to add a contextual filter. Just add a filter for &quot;Content: Nid&quot; and select &quot;Hide view&quot; for when the filter is not available.
+
+Then in your panel for your node display, remove the field that was displaying your image and add the view in it&apos;s place.
+</code></pre>
+
+    
+	  <div class="readmore">
+      <a href="/2016/11/04/Drupal-8-Add-Url-to-Slideshow/">Read More</a>
+    </div>
+    
+    
+    
+	  <div class="tags">
+      <a class="tag-link" href="/tags/drupal/">drupal</a>
+	  </div>
+    
+
+  </section>
+</article>
+  
+    <article class="post ">
+
+  
+  <h2 class="title">
     <a href="/2016/11/04/Drupal-8-主题开发笔记/">
       Drupal 8 主题开发笔记
     </a>
@@ -214,42 +257,6 @@
     
 	  <div class="tags">
       <a class="tag-link" href="/tags/linux/">linux</a><a class="tag-link" href="/tags/nmap/">nmap</a>
-	  </div>
-    
-
-  </section>
-</article>
-  
-    <article class="post ">
-
-  
-  <h2 class="title">
-    <a href="/2016/10/17/Set-Drupal-on-Mac/">
-      Set Drupal on Mac
-    </a>
-  </h2>
-  
-  <time>
-    10月 17, 2016
-  </time>
-  <section class="content">
-	  <h1 id="Apache-amp-PHP-config-on-Mac"><a href="#Apache-amp-PHP-config-on-Mac" class="headerlink" title="Apache &amp; PHP config on Mac"></a>Apache &amp; PHP config on Mac</h1><p>Three ways to check the php config</p>
-<ul>
-<li>php -i | grep php.ini</li>
-<li>php –ini</li>
-<li>create php file with following line: &lt;?php phpinfo(); and open the file in the browser</li>
-</ul>
-<h2 id="PHP-opcache-config"><a href="#PHP-opcache-config" class="headerlink" title="PHP opcache config"></a>PHP opcache config</h2><p>/etc/php.ini</p>
-
-    
-	  <div class="readmore">
-      <a href="/2016/10/17/Set-Drupal-on-Mac/">Read More</a>
-    </div>
-    
-    
-    
-	  <div class="tags">
-      <a class="tag-link" href="/tags/drupal/">drupal</a><a class="tag-link" href="/tags/mac/">mac</a>
 	  </div>
     
 
