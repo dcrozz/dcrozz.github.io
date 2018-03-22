@@ -90,6 +90,39 @@
 
   
   <h2 class="title">
+    <a href="/2018/03/22/osx-10-13-python-SSL报错-ssl-module-in-Python-is-not-available）/">
+      osx 10.13 python SSL报错(ssl module in Python is not available）
+    </a>
+  </h2>
+  
+  <time>
+    3月 22, 2018
+  </time>
+  <section class="content">
+	  <p>###问题描述<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">$ pip install pyopenssl --trusted-host pypi.python.org</div><div class="line">pip is configured with locations that require TLS/SSL, however the ssl module <span class="keyword">in</span> Python is not available.</div><div class="line">Collecting pyopenssl</div><div class="line">  Could not fetch URL https://pypi.python.org/simple/pyopenssl/: There was a problem confirming the ssl certificate: Can<span class="string">'t connect to HTTPS URL because the SSL module is not available. - skipping</span></div><div class="line">  Could not find a version that satisfies the requirement pyopenssl (from versions: )</div><div class="line">No matching distribution found for pyopenssl</div></pre></td></tr></table></figure></p>
+<p>From <a href="http://cpython-devguide.readthedocs.io/setup/#build-dependencies" target="_blank" rel="noopener">Python Developer’s Guide</a></p>
+<blockquote>
+<p>As of OS X 10.11, Apple no longer provides header files for the deprecated system version of OpenSSL which means that you will not be able to build the _ssl extension.<br>
+
+    
+	  <div class="readmore">
+      <a href="/2018/03/22/osx-10-13-python-SSL报错-ssl-module-in-Python-is-not-available）/">Read More</a>
+    </div>
+    
+    
+    
+	  <div class="tags">
+      <a class="tag-link" href="/tags/osx/">osx</a>
+	  </div>
+    
+
+  </section>
+</article>
+  
+    <article class="post ">
+
+  
+  <h2 class="title">
     <a href="/2018/03/19/使用privoxy让iterm走ss代理/">
       使用privoxy让iterm走ss代理
     </a>
@@ -191,37 +224,6 @@
     
 	  <div class="readmore">
       <a href="/2017/04/28/Bakery-s-Algoritm面包店算法-处理多个进程间互斥/">Read More</a>
-    </div>
-    
-    
-    
-	  <div class="tags">
-      <a class="tag-link" href="/tags/操作系统/">操作系统</a><a class="tag-link" href="/tags/算法/">算法</a>
-	  </div>
-    
-
-  </section>
-</article>
-  
-    <article class="post ">
-
-  
-  <h2 class="title">
-    <a href="/2017/04/28/Dekker算法与Peterson算法-处理两个进程间互斥/">
-      Dekker算法与Peterson算法-处理两个进程间互斥
-    </a>
-  </h2>
-  
-  <time>
-    4月 28, 2017
-  </time>
-  <section class="content">
-	  <p>最近在复习操作系统知识，本文主要就是HKU的COMP3230的笔记。</p>
-<p>Dekker算法是处理（两个）进程的互斥关系的软件方法，其它方法还有硬件方法、信号量方法、管程等方法，有机会再写。<br>
-
-    
-	  <div class="readmore">
-      <a href="/2017/04/28/Dekker算法与Peterson算法-处理两个进程间互斥/">Read More</a>
     </div>
     
     

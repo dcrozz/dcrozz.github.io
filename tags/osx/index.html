@@ -94,6 +94,39 @@
 
   
   <h2 class="title">
+    <a href="/2018/03/22/osx-10-13-python-SSL报错-ssl-module-in-Python-is-not-available）/">
+      osx 10.13 python SSL报错(ssl module in Python is not available）
+    </a>
+  </h2>
+  
+  <time>
+    3月 22, 2018
+  </time>
+  <section class="content">
+	  <p>###问题描述<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">$ pip install pyopenssl --trusted-host pypi.python.org</div><div class="line">pip is configured with locations that require TLS/SSL, however the ssl module <span class="keyword">in</span> Python is not available.</div><div class="line">Collecting pyopenssl</div><div class="line">  Could not fetch URL https://pypi.python.org/simple/pyopenssl/: There was a problem confirming the ssl certificate: Can<span class="string">'t connect to HTTPS URL because the SSL module is not available. - skipping</span></div><div class="line">  Could not find a version that satisfies the requirement pyopenssl (from versions: )</div><div class="line">No matching distribution found for pyopenssl</div></pre></td></tr></table></figure></p>
+<p>From <a href="http://cpython-devguide.readthedocs.io/setup/#build-dependencies" target="_blank" rel="noopener">Python Developer’s Guide</a></p>
+<blockquote>
+<p>As of OS X 10.11, Apple no longer provides header files for the deprecated system version of OpenSSL which means that you will not be able to build the _ssl extension.<br>
+
+    
+	  <div class="readmore">
+      <a href="/2018/03/22/osx-10-13-python-SSL报错-ssl-module-in-Python-is-not-available）/">Read More</a>
+    </div>
+    
+    
+    
+	  <div class="tags">
+      <a class="tag-link" href="/tags/osx/">osx</a>
+	  </div>
+    
+
+  </section>
+</article>
+  
+    <article class="post ">
+
+  
+  <h2 class="title">
     <a href="/2017/11/25/osx-transfer-file-to-android/">
       osx transfer file to android
     </a>

@@ -90,6 +90,40 @@
 
   
   <h2 class="title">
+    <a href="/2017/03/23/转载-windows下建立-开头的文件/">
+      [转载]windows下建立.开头的文件
+    </a>
+  </h2>
+  
+  <time>
+    3月 23, 2017
+  </time>
+  <section class="content">
+	  <p>转载自 <a href="https://www.zendstudio.net/archives/create-htaccess-file-in-windows/" target="_blank" rel="noopener">https://www.zendstudio.net/archives/create-htaccess-file-in-windows/</a></p>
+<ol>
+<li>使用屏幕编辑命令<code>copy con .htaccess</code>后回车，输入内容，最后按下<code>ctrl+z</code>结束编辑，就成功生成了.htaccess；</li>
+<li>使用重命名命令<code>ren 1.txt .htaccess</code>，这是最常规的方法了，在windows窗口下不能执行的命令，在cmd下却如履平地；</li>
+<li>使用重定向命令<code>echo. &gt;.htaccess</code>，这里将一个回车符输入到.htaccess，同样能创建成功；</li>
+<li>直接通过文本编辑工具保存 另存为的时候 <strong>保存类型</strong>选 <strong>所有文件</strong>，文件名就是.开头的文件。</li>
+</ol>
+<p>感觉2，3比较常用，4太慢了，别的应该也没更快的方法了。</p>
+
+
+    
+    
+    
+	  <div class="tags">
+      <a class="tag-link" href="/tags/windows/">windows</a>
+	  </div>
+    
+
+  </section>
+</article>
+  
+    <article class="post ">
+
+  
+  <h2 class="title">
     <a href="/2017/03/19/转载-确保SSH退出登陆后进程继续在后台运行/">
       ［更新][转载][整理]解决SSH退出登陆后保持进程继续在后台运行
     </a>
@@ -209,34 +243,6 @@
     
 	  <div class="tags">
       <a class="tag-link" href="/tags/linux/">linux</a><a class="tag-link" href="/tags/netstat/">netstat</a>
-	  </div>
-    
-
-  </section>
-</article>
-  
-    <article class="post ">
-
-  
-  <h2 class="title">
-    <a href="/2017/02/14/Firefox-清除地址栏中的自动补全结果/">
-      Firefox 清除地址栏中的自动补全结果
-    </a>
-  </h2>
-  
-  <time>
-    2月 14, 2017
-  </time>
-  <section class="content">
-	  <p>一直都是在找是不是书签还是什么，一直删不干净，今天发现可以通过<code>shift + delete</code>删除自动补全的内容。</p>
-<p>再也不用担心和老板演示web应用的时候突然跳出来dmm奇怪的日文关键词补全啦<em> (:3」∠)</em></p>
-
-
-    
-    
-    
-	  <div class="tags">
-      <a class="tag-link" href="/tags/firefox/">firefox</a>
 	  </div>
     
 
