@@ -137,7 +137,13 @@
     3月 19, 2018
   </time>
   <section class="content">
-	  <p>3.19update</p>
+	  <p>主要参考<a href="https://tech.jandou.com/to-accelerate-the-terminal.html" target="_blank" rel="noopener">使用 shadowsocks 加速 Mac 自带终端或iTerm 2</a></p>
+<p><strong>shadowsocks-NG自带privoxy</strong></p>
+<h3 id="Privoxy配置"><a href="#Privoxy配置" class="headerlink" title="Privoxy配置"></a>Privoxy配置</h3><p>在<code>vim /usr/local/etc/privoxy/config</code>中添加</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">listen-address 0.0.0.0:1087 #全局域网可访问</div><div class="line">forward-socks5 / localhost:1080 . #最后有个.</div></pre></td></tr></table></figure>
+<p>然后<code>sudo privoxy /usr/local/privoxy/config</code></p>
+<p>mac段查看端口<code>lsof -iTCP:1087</code>   </p>
+<h3 id="使用ShadowsocksX-NG"><a href="#使用ShadowsocksX-NG" class="headerlink" title="使用ShadowsocksX-NG"></a>使用ShadowsocksX-NG</h3><p>在<code>HTTP Proxy Preference</code>选端口</p>
 
     
 	  <div class="readmore">
